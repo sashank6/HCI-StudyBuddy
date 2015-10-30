@@ -1,3 +1,19 @@
+function init()
+{
+	var hour_html="";
+	var minute_html="";
+	for(var i=0;i<24;i++)
+		hour_html+="<option>"+i+"</option>";
+	for(var i=0;i<60;i++)
+		minute_html+="<option>"+i+"</option>"
+	document.getElementById("from-hour").innerHTML=hour_html;
+	document.getElementById("to-hour").innerHTML=hour_html;
+	document.getElementById("from-minute").innerHTML=minute_html;
+	document.getElementById("to-minute").innerHTML=minute_html;
+	
+}
+
+
 function onchangegroup()
 {
 	if(document.getElementById("group").checked)

@@ -6,7 +6,7 @@ table,td
 	border: 1px solid black;
 }
 </style>
-<body>
+<body onload="init()">
 	<h1>StudyBuddy</h1>
 	<table>
 		<th></th><th></th><th></th>
@@ -23,7 +23,7 @@ table,td
 					</div>
 					<input type="checkbox" name="partner">Partner<br/>
 					Date: <input type="date" name="selectDate"/><br/>
-					From:<select name="from-hour"></select><select name="from-minutes"></select> To: <select name="to-hour"></select><select name="to-minutes"></select><br/>
+					From:<select name="from-hour" id="from-hour"></select><select name="from-minute" id="from-minute"></select> To: <select name="to-hour" id="to-hour"></select><select name="to-minute" id="to-minute"></select><br/>
 					<div data-name="Purpose">
 						<p>Purpose:</p>
 						<input type="checkbox" name="homework"/>HomeWork</br>
