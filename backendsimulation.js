@@ -28,11 +28,13 @@ function applyfilter()
 	var fromminute=document.getElementById("from-minute").selectedIndex;
 	var tohour=document.getElementById("to-hour").selectedIndex;
 	var tominute=document.getElementById("to-minute").selectedIndex;
-	var homework=document.getElementById("homework").selected;
-	var examstudy=document.getElementById("examstudy").selected;
-	var lecture_review=document.getElementById("lecture_review").selected;
-	var notes=document.getElementById("notes").selected;
-	var other=document.getElementById("other").selected;
+	var homework=document.getElementById("homework").checked;
+	var examstudy=document.getElementById("examstudy").checked;
+	var lecture_review=document.getElementById("lecture_review").checked;
+	var notes=document.getElementById("notes").checked;
+	var other=document.getElementById("other").checked;
+	alert(group+","+minsize+","+maxsize+","+partner+","+fromhour+","+fromminute+","+tohour+","+tominute+","+homework+","+examstudy+","+lecture_review+","+notes+","+other);
+	
 
 	
 	
