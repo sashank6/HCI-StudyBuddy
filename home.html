@@ -1,0 +1,61 @@
+<html>
+<script src="backendsimulation.js"></script>
+<style>
+table,td
+{
+	border: 1px solid black;
+}
+</style>
+<body>
+	<h1>StudyBuddy</h1>
+	<table>
+		<th></th><th></th><th></th>
+		<tr>
+			<td data-name="left-column-body">
+				<div>
+					<h3>NahNah Kim</h3>
+					<h4>Washington University in St. Louis</h4>
+				</div>
+				<div data-name="search-filters">
+					<h5>Narrow Search</h5>
+					<input type="checkbox" name="group" onclick="onchangegroup()" id="group"/>Group<br/>
+					<div name="ifgroupchecked" id="ifgroupchecked">
+					</div>
+					<input type="checkbox" name="partner">Partner<br/>
+					Date: <input type="date" name="selectDate"/><br/>
+					From:<select name="from-hour"></select><select name="from-minutes"></select> To: <select name="to-hour"></select><select name="to-minutes"></select><br/>
+					<div data-name="Purpose">
+						<p>Purpose:</p>
+						<input type="checkbox" name="homework"/>HomeWork</br>
+						<input type="checkbox" name="examstudy"/>Exam Study</br>
+						<input type="checkbox" name="lecture review"/>Lecture Review</br>
+						<input type="checkbox" name="notes"/>Notes</br>
+						<input type="checkbox" name="other"/>Other</br>
+					</div> 
+					<input type="button" value="Apply Filters"/>
+				</div>
+				<div data-name="menu">
+					<p>Post Study Session</p>
+					<p>My Messages</p>
+				</div>
+			</td>
+			<td data-name="main-body">
+				<div data-name="Search-bar">
+				<input type="text" placeholder="Search" name="main-search"/>
+				<input type="button" value="Search"><br/>
+				</div>
+				<div data-name="selected-subjects" name="selected-subjects">
+				</div>
+				<div data-name="search-results" name="results">
+				</div>
+				
+			</td>
+			<td data-name="dummy">
+			</td>
+		</tr>
+	</table>
+</body>
+
+
+
+</html>
