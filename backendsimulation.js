@@ -12,6 +12,19 @@ function init()
 	document.getElementById("to-minute").innerHTML=minute_html;
 	
 }
+function applyfilter()
+{
+	var group=false;
+	var minsize=0;
+	var maxsize=0;
+	if(document.getElementById("group").checked)
+	{
+		group=true;
+		minsize=document.getElementById("minsize").selectedIndex+1;
+		maxsize=document.getElementById("maxsize").selectedIndex+1;
+	}
+	
+}
 
 
 function onchangegroup()
