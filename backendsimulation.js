@@ -29,7 +29,11 @@ function applyfilter()
 	var tohour=document.getElementById("to-hour").selectedIndex;
 	var tominute=document.getElementById("to-minute").selectedIndex;
 	var homework=document.getElementById("homework").selected;
-	
+	var examstudy=document.getElementById("examstudy").selected;
+	var lecture_review=document.getElementById("lecture_review").selected;
+	var notes=document.getElementById("notes").selected;
+	var other=document.getElementById("other").selected;
+
 	
 	
 	
