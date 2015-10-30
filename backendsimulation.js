@@ -23,6 +23,16 @@ function applyfilter()
 		minsize=document.getElementById("minsize").selectedIndex+1;
 		maxsize=document.getElementById("maxsize").selectedIndex+1;
 	}
+	var partner=document.getElementById("partner").checked;
+	var fromhour=document.getElementById("from-hour").selectedIndex;
+	var fromminute=document.getElementById("from-minute").selectedIndex;
+	var tohour=document.getElementById("to-hour").selectedIndex;
+	var tominute=document.getElementById("to-minute").selectedIndex;
+	var homework=document.getElementById("homework").selected;
+	
+	
+	
+	
 	
 }
 
