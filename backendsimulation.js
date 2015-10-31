@@ -1,3 +1,11 @@
+function login()
+{
+	alert();
+	/*var user=document.getElementById("username");
+	var password=document.getElementById("password");
+	if(user=="sashank" && password="fix")
+		window.location.href="home.html";*/
+}
 function init()
 {
 	var hour_html="";
