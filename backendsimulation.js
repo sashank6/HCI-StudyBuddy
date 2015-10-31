@@ -1,11 +1,3 @@
-function login()
-{
-	alert();
-	/*var user=document.getElementById("username");
-	var password=document.getElementById("password");
-	if(user=="sashank" && password="fix")
-		window.location.href="home.html";*/
-}
 function init()
 {
 	var hour_html="";
@@ -21,6 +13,13 @@ function init()
 	var post={group:false,minsize:0,maxsize:0,partner:false,fromhour:0,fromminute:0,tohour:0,tominute:0,homework:false,examstudy:false,lecture_review:false,notes:false,other:false}
 	
 	
+}
+function login()
+{
+	var username=document.getElementById("username").value;
+	var password=document.getElementById("password").value;
+	if(username=="sashank" && password=="hci")
+		window.location="home.html";
 }
 function applyfilter()
 {
