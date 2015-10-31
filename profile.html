@@ -1,0 +1,69 @@
+<html>
+<script src="backendsimulation.js"></script>
+<style>
+table,td
+{
+	border: 1px solid black;
+}
+</style>
+<body onload="init()">
+	<h1>StudyBuddy</h1>
+	<div id="MyEdit">
+		This text will change
+	</div>
+	<table>
+		<th></th><th></th><th></th>
+		<tr>
+			<td data-name="left-column-body">
+				<div>
+					<br/>
+					<h3>Name: <input type="text" name="name" id="name"/><br/></h3>
+					<h4>Washington University in St. Louis</h4>
+				</div>
+				<div data-name="search-filters">
+					<h3>Course:</h3> 
+					<h6><ul>CSE 556</ul><ul>CSE 541T</ul><ul>CSE 511A</ul></h6>
+					<h3>Add Course: <input type="text" name="coursename" id="coursename"/><br/></h3>
+					<input type="button" value="Add Course" onclick="addcourse()"/>
+					
+					<div name="ifgroupchecked" id="ifgroupchecked">
+					</div>
+					<input type="checkbox" name="partner" id="partner"/>Partner<br/>
+					Date: <input type="date" name="selectDate" id="selectDate"/><br/>
+					From:<select name="from-hour" id="from-hour"></select><select name="from-minute" id="from-minute"></select> To: <select name="to-hour" id="to-hour"></select><select name="to-minute" id="to-minute"></select><br/>
+					<div data-name="Purpose">
+						<p>Purpose:</p>
+						<input type="checkbox" name="homework" id="homework"/>HomeWork</br>
+						<input type="checkbox" name="examstudy" id="examstudy"/>Exam Study</br>
+						<input type="checkbox" name="lecture_review" id="lecture_review"/>Lecture Review</br>
+						<input type="checkbox" name="notes" id="notes"/>Notes</br>
+						<input type="checkbox" name="other" id="other"/>Other</br>
+					</div> 
+					<input type="button" value="Apply Filters" onclick="applyfilter()"/>
+				</div>
+				<div data-name="menu">
+					<p>Post Study Session</p>
+					<a href="profile.html">My profile</a>
+					<p>My Messages</p>
+				</div>
+			</td>
+			<td data-name="main-body">
+				<div data-name="Search-bar">
+				<input type="text" placeholder="Search" name="main-search"/>
+				<input type="button" value="Search"><br/>
+				</div>
+				<div data-name="selected-subjects" name="selected-subjects">
+				</div>
+				<div data-name="search-results" name="results">
+				</div>
+				
+			</td>
+			<td data-name="dummy">
+			</td>
+		</tr>
+	</table>
+</body>
+
+
+
+</html>

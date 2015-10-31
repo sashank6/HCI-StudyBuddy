@@ -39,7 +39,7 @@ function verification()
 {
 	
 	var verification=document.getElementById("verification").value;
-	if(verification == "CSE556")
+	if(verification == "cse556")
 		window.location="home.html";
 }
 function register()
