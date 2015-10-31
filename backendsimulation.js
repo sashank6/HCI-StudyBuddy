@@ -22,6 +22,22 @@ function login()
 	if(username=="sashank" && password=="hci")
 		window.location="home.html";
 }
+function verification()
+{
+	
+	var verification=document.getElementById("verification").value;
+	if(verification == "CSE556")
+		window.location="home.html";
+}
+function register()
+{
+	var email=document.getElementById("email").value;
+	var username=document.getElementById("username").value;
+	var password=document.getElementById("password").value;
+	var confirmpassword=document.getElementById("confirmpassword").value;
+	if(email != "d" && username!="d" && password==confirmpassword)
+		window.location="verification.html";
+}
 function applyfilter()
 {
 	var group=false;
