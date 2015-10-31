@@ -45,10 +45,10 @@ function verification()
 function register()
 {
 	var email=document.getElementById("email").value;
-	var username=document.getElementById("username").value;
-	var password=document.getElementById("password").value;
+	var username=document.getElementById("username1").value;
+	var password=document.getElementById("password1").value;
 	var confirmpassword=document.getElementById("confirmpassword").value;
-	if(email != "d" && username!="d" && password==confirmpassword)
+	if(password==confirmpassword)
 		window.location="verification.html";
 }
 function applyfilter()
