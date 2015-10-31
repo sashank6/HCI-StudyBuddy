@@ -10,7 +10,8 @@ function init()
 	document.getElementById("to-hour").innerHTML=hour_html;
 	document.getElementById("from-minute").innerHTML=minute_html;
 	document.getElementById("to-minute").innerHTML=minute_html;
-	var post={group:false,minsize:0,maxsize:0,partner:false,fromhour:0,fromminute:0,tohour:0,tominute:0,homework:false,examstudy:false,lecture_review:false,notes:false,other:false}
+	var post={group:false,minsize:0,maxsize:0,partner:false,fromhour:0,fromminute:0,tohour:0,tominute:0,homework:false,examstudy:false,lecture_review:false,notes:false,other:false,subject:"",description:""}
+	
 	
 	
 }
