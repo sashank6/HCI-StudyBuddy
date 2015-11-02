@@ -16,20 +16,20 @@ table,td
 				<div data-name="search-filters">
 					<h5>Welcome back to StudyBuddy</h5>
 
-					Usename: <input type="text" name="username" id="username"/><br/>
-					Password: <input type="password" name="password" id="password"/><br/>
-					<input type="button" value="Login" onclick="login()"/>
+					Usename: <input type="text" name="username" id="username" onkeydown="if (event.keyCode == 13) document.getElementById('login').click()"/><br/>
+					Password: <input type="password" name="password" id="password" onkeydown="if (event.keyCode == 13) document.getElementById('login').click()"//><br/>
+					<input type="button" value="Login" id ="login" onclick="login()"/>
 
 				</div>
 			</td>
 			<td data-name="register-body">
 				<h3>Does not have an account?</h3>
 				<div data-name="Search-bar">
-				Email: <input type="text" name="email" id="email"/><br/>
-				Usename: <input type="text" name="username" id="username1"/><br/>
-				Password: <input type="password" name="password" id="password1"/><br/>
-				Confirm Password: <input type="password" name="confirmpassword" id="confirmpassword"/><br/>
-				<input type="button" value="Register" onclick="register()"/><br/>
+				Email: <input type="text" name="email" id="email" onkeydown="if (event.keyCode == 13) document.getElementById('register').click()"//><br/>
+				Usename: <input type="text" name="username" id="username1" onkeydown="if (event.keyCode == 13) document.getElementById('register').click()"/><br/>
+				Password: <input type="password" name="password" id="password1" onkeydown="if (event.keyCode == 13) document.getElementById('register').click()"/><br/>
+				Confirm Password: <input type="password" name="confirmpassword" id="confirmpassword" onkeydown="if (event.keyCode == 13) document.getElementById('register').click()"/><br/>
+				<input type="button" value="Register" id ="register" onclick="register()"/><br/>
 				</div>
 				
 			</td>

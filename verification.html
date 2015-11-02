@@ -9,8 +9,8 @@ table,td
 <body onload="init()"></br></br></br></br></br></br></br></br></br>
 	<h1>StudyBuddy</h1>
 	
-	Please enter your verification code: <input type="text" name="verification" id="verification"/><br/>
-	<input type="button" onclick="verification()" value="Start StudyBuddy" /> <!--modify to our home page-->
+	Please enter your verification code: <input type="text" name="verification" id="verification" onkeydown="if (event.keyCode == 13) document.getElementById('verify').click()"/><br/>
+	<input type="button" onclick="verification()" value="Start StudyBuddy" id="verify"/> <!--modify to our home page-->
 
 </body>
 

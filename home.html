@@ -18,21 +18,24 @@ table,td
 				</div>
 				<div data-name="search-filters">
 					<h5>Narrow Search</h5>
-					<input type="checkbox" name="group" onclick="onchangegroup()" id="group"/>Group<br/>
+					<input type="checkbox" name="group" onclick="onchangegroup()" id="group" onkeydown="if (event.keyCode == 13) document.getElementById('applyfilter').click()"/>Group<br/>
 					<div name="ifgroupchecked" id="ifgroupchecked">
 					</div>
-					<input type="checkbox" name="partner" id="partner"/>Partner<br/>
-					Date: <input type="date" name="selectDate" id="selectDate"/><br/>
-					From:<select name="from-hour" id="from-hour"></select><select name="from-minute" id="from-minute"></select> To: <select name="to-hour" id="to-hour"></select><select name="to-minute" id="to-minute"></select><br/>
+					<input type="checkbox" name="partner" id="partner" onkeydown="if (event.keyCode == 13) document.getElementById('applyfilter').click()"/>Partner<br/>
+					Date: <input type="date" name="selectDate" id="selectDate" onkeydown="if (event.keyCode == 13) document.getElementById('applyfilter').click()"/><br/>
+					From:<select name="from-hour" id="from-hour" onkeydown="if (event.keyCode == 13) document.getElementById('applyfilter').click()"></select>
+						<select name="from-minute" id="from-minute" onkeydown="if (event.keyCode == 13) document.getElementById('applyfilter').click()"></select> 
+					To: <select name="to-hour" id="to-hour" onkeydown="if (event.keyCode == 13) document.getElementById('applyfilter').click()"></select>
+						<select name="to-minute" id="to-minute" onkeydown="if (event.keyCode == 13) document.getElementById('applyfilter').click()"></select><br/>
 					<div data-name="Purpose">
 						<p>Purpose:</p>
-						<input type="checkbox" name="homework" id="homework"/>HomeWork</br>
-						<input type="checkbox" name="examstudy" id="examstudy"/>Exam Study</br>
-						<input type="checkbox" name="lecture_review" id="lecture_review"/>Lecture Review</br>
-						<input type="checkbox" name="notes" id="notes"/>Notes</br>
-						<input type="checkbox" name="other" id="other"/>Other</br>
+						<input type="checkbox" name="homework" id="homework" onkeydown="if (event.keyCode == 13) document.getElementById('applyfilter').click()"/>HomeWork</br>
+						<input type="checkbox" name="examstudy" id="examstudy" onkeydown="if (event.keyCode == 13) document.getElementById('applyfilter').click()"/>Exam Study</br>
+						<input type="checkbox" name="lecture_review" id="lecture_review" onkeydown="if (event.keyCode == 13) document.getElementById('applyfilter').click()"/>Lecture Review</br>
+						<input type="checkbox" name="notes" id="notes" onkeydown="if (event.keyCode == 13) document.getElementById('applyfilter').click()"/>Notes</br>
+						<input type="checkbox" name="other" id="other" onkeydown="if (event.keyCode == 13) document.getElementById('applyfilter').click()"/>Other</br>
 					</div> 
-					<input type="button" value="Apply Filters" onclick="applyfilter()"/>
+					<input type="button" value="Apply Filters" id="applyfilter" onclick="applyfilter()"/>
 				</div>
 				<div data-name="menu">
 					<p>Post Study Session</p>
@@ -41,8 +44,8 @@ table,td
 			</td>
 			<td data-name="main-body">
 				<div data-name="Search-bar">
-				<input type="text" placeholder="Search" name="main-search" id="main_search"/>
-				<input type="button" value="Search" onclick="addsearchlist()"><br/>
+				<input type="text" placeholder="Search" name="main-search" id="main_search" onkeydown="if (event.keyCode == 13) document.getElementById('addsearchlist').click()"/>
+				<input type="button" value="Search" onclick="addsearchlist()" id="addsearchlist"><br/>
 				</div>
 				<div data-name="selected-subjects" name="selected-subjects" id="selected_subjects">
 				</div>
