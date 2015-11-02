@@ -23,7 +23,7 @@ function init()
 	ss1.maxsize=5
 	studysession.push(ss1);
 	displaysearchlist();
-	searchresults();
+	applyfilter();
 	
 	
 	
@@ -53,7 +53,8 @@ function register()
 }
 function isdefault(group,minsize,maxsize,partner,fromhour,fromminute,tohour,tominute,homework,examstudy,lecture_review,notes,other)
 {
-	return !(group || minsize==0 || maxsize==0 || partner || fromhour==-1 || fromminute==-1 || tohour==-1 || tominute==-1 || homework || examstudy || lecture_review || notes || other);
+	//alert(group,minsize,maxsize,partner,fromhour,fromminute,tohour,tominute,homework,examstudy,lecture_review,notes,other);
+	return (group==false && minsize==0 && maxsize==0 && partner==false && fromhour==-1 && fromminute==-1 && tohour==-1 && tominute==-1 && homework==false && examstudy==false && lecture_review==false && notes==false && other==false && searchlist.length==0);
 }
 function applyfilter()
 {
@@ -109,10 +110,19 @@ function searchresults(group,minsize,maxsize,partner,fromhour,fromminute,tohour,
 {
 	default_mode=isdefault(group,minsize,maxsize,partner,fromhour,fromminute,tohour,tominute,homework,examstudy,lecture_review,notes,other)
 	alert(default_mode);
-	/*var temp="";
+	var temp="";
+	if(default_mode)
+	{
+	
 	for(var i=0;i<studysession.length;i++)
 		temp+="<div><h4>"+studysession[i].subject+"</h4>"+"<p>"+studysession[i].description+"</p></div>";
-	document.getElementById("results").innerHTML=temp;*/
+	document.getElementById("results").innerHTML=temp;
+	}
+	else
+	{
+		
+	}
+	
 }
 
 
