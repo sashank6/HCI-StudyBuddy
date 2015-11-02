@@ -90,6 +90,7 @@ function removesearchlist(f)
 {
 	searchlist.splice(f,1);
 	displaysearchlist();
+	applyfilter();
 }
 function displaysearchlist()
 {
@@ -102,9 +103,23 @@ function displaysearchlist()
 function addsearchlist()
 {
 	var sub=document.getElementById("main_search").value;
-	searchlist.push(sub);
+	searchlist.push(sub.toUpperCase());
 	displaysearchlist();
 	document.getElementById("main_search").value="";
+	applyfilter();
+}
+function filter_subjectresults()
+{
+	var refined=[]
+	for(var i=0;i<studysession.length;i++)
+	{
+		var x=searchlist.indexOf(studysession[i].subject);
+		if(x>-1)
+		{
+			refined.push(studysession[i]);
+		}
+	}
+	return refined;
 }
 function searchresults(group,minsize,maxsize,partner,fromhour,fromminute,tohour,tominute,homework,examstudy,lecture_review,notes,other)
 {
@@ -120,6 +135,10 @@ function searchresults(group,minsize,maxsize,partner,fromhour,fromminute,tohour,
 	}
 	else
 	{
+		var newsessions=filter_subjectresults();
+		for(var i=0;i<newsessions.length;i++)
+			temp+="<div><h4>"+newsessions[i].subject+"</h4>"+"<p>"+studysession[i].description+"</p></div>";
+		document.getElementById("results").innerHTML=temp;
 		
 	}
 	
