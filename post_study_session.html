@@ -12,9 +12,20 @@ table,td
 		<th></th><th></th><th></th>
 		<tr>
 			<td data-name="login-body">
-				
-				<div data-name="post_study_session">
-					<h5>You are in StudyBuddy</h5>
+				<div>
+					<h3>NahNah Kim</h3>
+					<h4>Washington University in St. Louis</h4>
+				</div>
+				<div data-name="menu">
+					</br>
+					<a href="post_study_session.html">Post Study Session</a>
+					<p>My Messages</p>
+					<a href="home.html">Home</a>
+				</div>
+			</td>
+			<td>
+			<div data-name="post_study_session">
+					
 					<select id="PS_course" onkeydown="if (event.keyCode == 13) document.getElementById('PS_post').click()"></select></br>
 					<select id="PS_type" onkeydown="if (event.keyCode == 13) document.getElementById('PS_post').click()"><option>partner</option><option>group</option></select></br>
 
@@ -33,8 +44,6 @@ table,td
 					<input type="button" value="Post Session" id ="PS_post" onclick="PS_post()"/>
 
 				</div>
-			</td>
-			
 			</td>
 		</tr>
 	</table>
