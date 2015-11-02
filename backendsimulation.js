@@ -21,6 +21,61 @@ function init()
 	ss1.group=true
 	ss1.minsize=2
 	ss1.maxsize=5
+	ss1.partner=false
+	ss1.fromhour=13
+	ss1.tohour=15
+	ss1.fromminute=23
+	ss1.tominute=29
+	ss1.homework=false
+	ss1.examstudy=true
+	ss1.lecture_review=true
+	ss1.notes=false
+	ss1.other=false
+	
+	ss2.subject="CSE511"
+	ss2.description="XDDDD";
+	ss2.group=false
+	ss2.minsize=1
+	ss2.maxsize=1
+	ss1.partner=true
+	ss2.fromhour=1
+	ss2.tohour=5
+	ss2.fromminute=59
+	ss2.tominute=00
+	ss2.homework=true
+	ss2.examstudy=true
+	ss2.lecture_review=false
+	ss2.notes=true
+	ss2.other=false
+	
+	ss3.subject="CSE556"
+	ss3.description="QQQQQ";
+	ss3.group=false
+	ss3.partner=true
+	ss3.fromhour=1
+	ss3.tohour=15
+	ss3.fromminute=23
+	ss3.tominute=01
+	ss3.homework=true
+	ss3.examstudy=false
+	ss3.lecture_review=false
+	ss3.notes=true
+	ss3.other=true
+	
+	ss4.subject="ESE444"
+	ss4.description="QQXD";
+	ss4.group=false
+	ss4.partner=false
+	ss4.fromhour=1
+	ss4.tohour=15
+	ss4.fromminute=23
+	ss4.tominute=01
+	ss4.homework=true
+	ss4.examstudy=false
+	ss4.lecture_review=false
+	ss4.notes=true
+	ss4.other=true
+	
 	studysession.push(ss1);
 	displaysearchlist();
 	applyfilter();
