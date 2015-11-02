@@ -38,7 +38,7 @@ function init()
 	ss2.group=false
 	ss2.minsize=1
 	ss2.maxsize=1
-	ss1.partner=true
+	ss2.partner=true
 	ss2.fromhour=1
 	ss2.tohour=5
 	ss2.fromminute=59
