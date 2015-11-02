@@ -300,7 +300,7 @@ function searchresults(group,minsize,maxsize,partner,fromhour,fromminute,tohour,
 		}
 		//alert(filsessions.length);
 		for(var i=0;i<filsessions.length;i++)
-			temp+="<div><h4>"+filsessions[i].subject+"</h4>"+"<p>"+studysession[i].description+"</p></div>";
+			temp+="<div><h4>"+filsessions[i].subject+"</h4>"+"<p>"+filsessions[i].description+"</p></div>";
 		document.getElementById("results").innerHTML=temp;
 			
 			}
