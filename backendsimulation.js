@@ -85,7 +85,7 @@ function applyfilter()
 	var notes=document.getElementById("notes").checked;
 	var other=document.getElementById("other").checked;
 	
-	
+	alert("Apply Filter");
 	searchresults(group,minsize,maxsize,partner,fromhour,fromminute,tohour,tominute,homework,examstudy,lecture_review,notes,other);
 	
 	
@@ -130,7 +130,7 @@ function filter_subjectresults()
 function searchresults(group,minsize,maxsize,partner,fromhour,fromminute,tohour,tominute,homework,examstudy,lecture_review,notes,other)
 {
 	default_mode=isdefault(group,minsize,maxsize,partner,fromhour,fromminute,tohour,tominute,homework,examstudy,lecture_review,notes,other)
-	alert(default_mode);
+	alert(group+""+minsize+""+maxsize+""+partner+""+fromhour+fromminute+tohour+tominute+homework+examstudy+lecture_review+notes+other);
 	var temp="";
 	if(default_mode)
 	{
@@ -141,13 +141,73 @@ function searchresults(group,minsize,maxsize,partner,fromhour,fromminute,tohour,
 	}
 	else
 	{
-		var newsessions=filter_subjectresults();
-		for(var i=0;i<newsessions.length;i++)
-			temp+="<div><h4>"+newsessions[i].subject+"</h4>"+"<p>"+studysession[i].description+"</p></div>";
-		document.getElementById("results").innerHTML=temp;
+		var newsessions=[];
+		if(searchlist.length >0)
+		newsessions=filter_subjectresults();
+		else
+			newsessions=studysession;
+			
+		var filsessions=[]; //group:false,minsize:0,maxsize:0,partner:false,fromhour:0,fromminute:0,tohour:0,tominute:0,homework:false,examstudy:false,lecture_review:false,notes:false,other:false,subject:"",description:""
 		
-	}
-	
+		for(var i=0;i<newsessions.length;i++)
+		{
+			var p;
+			if(group)
+			{
+			p=(newsessions[i].group==group && newsessions[i].minsize>=minsize && newsessions[i].maxsize<=maxsize) 
+			if(p)	
+			filsessions.push(newsessions[i]);
+			}
+			else
+			if(partner)
+			{
+				p=newsessions[i].partner==true;
+				if(p)
+				filsessions.push(newsessions[i]);	
+			}
+			else
+			if(homework)
+			{
+				p=newsessions[i].homework==true;
+				if(p)
+				filsessions.push(newsessions[i]);	
+			}
+			else
+			if(examstudy)
+			{
+				p=newsessions[i].examstudy==true;
+				if(p)
+				filsessions.push(newsessions[i]);	
+			}
+			else
+			if(lecture_review)
+			{
+				p=newsessions[i].lecture_review==true;
+				if(p)
+				filsessions.push(newsessions[i]);	
+				
+			}
+			else
+			if(notes)
+			{
+				p=newsessions[i].notes==true;
+				if(p)
+				filsessions.push(newsessions[i]);
+			}
+			else
+			if(newsessions[i].fromhour >=fromhour && newsessions[i].tohour <=tohour && newsessions[i].fromminute >=fromminute && newsessions[i].tominute<=tominute)
+			{
+				filsessions.push(newsessions[i]);
+			}
+		}
+		alert(filsessions.length);
+		for(var i=0;i<filsessions.length;i++)
+			temp+="<div><h4>"+filsessions[i].subject+"</h4>"+"<p>"+studysession[i].description+"</p></div>";
+		document.getElementById("results").innerHTML=temp;
+			
+			}
+		
+
 }
 
 
