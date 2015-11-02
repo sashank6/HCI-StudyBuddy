@@ -28,6 +28,12 @@ function init()
 	
 	
 }
+function init_post_session()
+{
+	var PS_course="<option> Select a Course </option>";
+	PS_course+="<option>"+"CSE 556 Human Computer Interaction"+"</option>";
+	document.getElementById("PS_course").innerHTML=PS_course;
+}
 function login()
 {
 	var username=document.getElementById("username").value;
@@ -155,4 +161,21 @@ function onchangegroup()
 	{
 		document.getElementById("ifgroupchecked").innerHTML="";
 	}
+}
+function PS_add_session()
+{
+	PS_add = false
+	if(document.getElementById("PS_add_session").click)
+	{
+		document.getElementById("PS_if_session_added").innerHTML="Start time: <input type=\"text\" id=\"PS_start\" onkeydown=\"if (event.keyCode == 13) document.getElementById('PS_post').click()\"/><br/>"+
+			"End time: <input type=\"text\" id=\"PS_end\" onkeydown=\"if (event.keyCode == 13) document.getElementById('PS_post').click()\"/><br/>"+
+			"Date: <input type=\"date\" name=\"selectDate\" id=\"PS_selectDate\" onkeydown=\"if (event.keyCode == 13) document.getElementById('PS_post').click()\"/><br/>"+
+			"Recurrence: <select id=\"PS_recurrence\" onkeydown=\"if (event.keyCode == 13) document.getElementById('PS_post').click()\"><option>once</option><option>weekly</option><option>monthly</option><option>yearly</option></select></br>"
+	}
+}
+function PS_post()
+{
+	
+	
+	
 }

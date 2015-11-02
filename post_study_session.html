@@ -1,0 +1,56 @@
+<html>
+<script src="backendsimulation.js"></script>
+<style>
+table,td
+{
+	border: 1px solid black;
+}
+</style>
+<body onload="init_post_session()"></br></br></br></br></br></br></br></br></br>
+	<h1>StudyBuddy</h1>
+	<table>
+		<th></th><th></th><th></th>
+		<tr>
+			<td data-name="login-body">
+				
+				<div data-name="post_study_session">
+					<h5>You are in StudyBuddy</h5>
+					<select id="PS_course" onkeydown="if (event.keyCode == 13) document.getElementById('PS_post').click()"></select></br>
+					<select id="PS_type" onkeydown="if (event.keyCode == 13) document.getElementById('PS_post').click()"><option>partner</option><option>group</option></select></br>
+
+					Start time: <input type="text" id="PS_start" onkeydown="if (event.keyCode == 13) document.getElementById('PS_post').click()"/><br/>
+					End time: <input type="text" id="PS_end" onkeydown="if (event.keyCode == 13) document.getElementById('PS_ost').click()"/><br/>
+					Date: <input type="date" name="selectDate" id="PS_selectDate" onkeydown="if (event.keyCode == 13) document.getElementById('PS_post').click()"/><br/>
+					Recurrence: <select id="PS_recurrence" onkeydown="if (event.keyCode == 13) document.getElementById('PS_post').click()"><option>once</option><option>weekly</option><option>monthly</option><option>yearly</option></select></br>
+					<input type="button" value="Add one more session" id ="PS_add_session" onclick="PS_add_session()"/></br>
+					<div name="PS_if_session_added" id="PS_if_session_added">
+					</div>
+					Level:</br>
+					<input type="checkbox" id="PS_level_graduate" onkeydown="if (event.keyCode == 13) document.getElementById('post').click()"/>Graduate</br>
+					<input type="checkbox" id="PS_level_undergraduate" onkeydown="if (event.keyCode == 13) document.getElementById('post').click()"/>Undergraduate</br>
+					<input type="checkbox" id="PS_level_unspecified" onkeydown="if (event.keyCode == 13) document.getElementById('post').click()"/>Unspecified</br>
+					
+					<input type="button" value="Post Session" id ="PS_post" onclick="PS_post()"/>
+
+				</div>
+			</td>
+			<td data-name="register-body">
+				<h3>Does not have an account?</h3>
+				<div data-name="Search-bar">
+				Email: <input type="text" name="email" id="email" onkeydown="if (event.keyCode == 13) document.getElementById('register').click()"//><br/>
+				Usename: <input type="text" name="username" id="username1" onkeydown="if (event.keyCode == 13) document.getElementById('register').click()"/><br/>
+				Password: <input type="password" name="password" id="password1" onkeydown="if (event.keyCode == 13) document.getElementById('register').click()"/><br/>
+				Confirm Password: <input type="password" name="confirmpassword" id="confirmpassword" onkeydown="if (event.keyCode == 13) document.getElementById('register').click()"/><br/>
+				<input type="button" value="Register" id ="register" onclick="register()"/><br/>
+				</div>
+				
+			</td>
+			<td data-name="dummy">
+			</td>
+		</tr>
+	</table>
+</body>
+
+
+
+</html>
