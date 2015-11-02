@@ -1,0 +1,47 @@
+<html>
+<script src="backendsimulation.js"></script>
+<style>
+table,td
+{
+	border: 1px solid black;
+}
+</style>
+<body onload="init_post_session()"></br></br></br></br></br></br></br></br></br>
+	<h1>StudyBuddy</h1>
+	<table>
+		<th></th><th></th><th></th>
+		<tr>
+			<td data-name="login-body">
+				<div>
+					<h3>NahNah Kim</h3>
+					<h4>Washington University in St. Louis</h4>
+				</div>
+				<div data-name="menu">
+					</br>
+					<a href="post_study_session.html">Post Study Session</a></br>
+					<a href="message.html">My Messages</a></br>
+					<a href="home.html">Home</a></br>
+				</div>
+			</td>
+			<td>
+			<h1>XD</h1>
+			</td>
+			<td>
+			<div data-name="post_study_session">
+					
+					
+					To: <input type="text" id="PS_start" onkeydown="if (event.keyCode == 13) document.getElementById('MS_send').click()"/><br/>
+					Subject: <input type="text" id="PS_end" onkeydown="if (event.keyCode == 13) document.getElementById('MS_send').click()"/><br/>
+					Message: </br>
+					<textarea name="paragraph_text" cols="50" rows="10" id="PS_note"></textarea></br>
+					<input type="button" value="Send Message" id ="MS_send" onclick="MS_send()"/>
+
+				</div>
+			</td>
+		</tr>
+	</table>
+</body>
+
+
+
+</html>

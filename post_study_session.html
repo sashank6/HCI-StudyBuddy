@@ -18,9 +18,9 @@ table,td
 				</div>
 				<div data-name="menu">
 					</br>
-					<a href="post_study_session.html">Post Study Session</a>
-					<p>My Messages</p>
-					<a href="home.html">Home</a>
+					<a href="post_study_session.html">Post Study Session</a></br>
+					<a href="message.html">My Messages</a></br>
+					<a href="home.html">Home</a></br>
 				</div>
 			</td>
 			<td>
@@ -30,7 +30,7 @@ table,td
 					<select id="PS_type" onkeydown="if (event.keyCode == 13) document.getElementById('PS_post').click()"><option>partner</option><option>group</option></select></br>
 
 					Start time: <input type="text" id="PS_start" onkeydown="if (event.keyCode == 13) document.getElementById('PS_post').click()"/><br/>
-					End time: <input type="text" id="PS_end" onkeydown="if (event.keyCode == 13) document.getElementById('PS_ost').click()"/><br/>
+					End time: <input type="text" id="PS_end" onkeydown="if (event.keyCode == 13) document.getElementById('PS_post').click()"/><br/>
 					Date: <input type="date" name="selectDate" id="PS_selectDate" onkeydown="if (event.keyCode == 13) document.getElementById('PS_post').click()"/><br/>
 					Recurrence: <select id="PS_recurrence" onkeydown="if (event.keyCode == 13) document.getElementById('PS_post').click()"><option>once</option><option>weekly</option><option>monthly</option><option>yearly</option></select></br>
 					<input type="button" value="Add one more session" id ="PS_add_session" onclick="PS_add_session()"/></br>
@@ -40,7 +40,8 @@ table,td
 					<input type="checkbox" id="PS_level_graduate" onkeydown="if (event.keyCode == 13) document.getElementById('post').click()"/>Graduate</br>
 					<input type="checkbox" id="PS_level_undergraduate" onkeydown="if (event.keyCode == 13) document.getElementById('post').click()"/>Undergraduate</br>
 					<input type="checkbox" id="PS_level_unspecified" onkeydown="if (event.keyCode == 13) document.getElementById('post').click()"/>Unspecified</br>
-					
+					Notes:</br>
+					<textarea name="paragraph_text" cols="50" rows="10" id="PS_note"></textarea></br>
 					<input type="button" value="Post Session" id ="PS_post" onclick="PS_post()"/>
 
 				</div>
