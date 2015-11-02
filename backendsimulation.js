@@ -119,7 +119,7 @@ function register()
 function isdefault(group,minsize,maxsize,partner,fromhour,fromminute,tohour,tominute,homework,examstudy,lecture_review,notes,other)
 {
 	//alert(group,minsize,maxsize,partner,fromhour,fromminute,tohour,tominute,homework,examstudy,lecture_review,notes,other);
-	return (group==false && minsize==0 && maxsize==0 && partner==false && fromhour==-1 && fromminute==-1 && tohour==-1 && tominute==-1 && homework==false && examstudy==false && lecture_review==false && notes==false && other==false && searchlist.length==0);
+	return (group==false && minsize==0 && maxsize==0 && partner==false && fromhour==-1 && fromminute==-1 && tohour==-1 && tominute==-1 && homework==false && examstudy==false && lecture_review==false && notes==false && other==false);
 }
 function applyfilter()
 {
@@ -190,8 +190,9 @@ function searchresults(group,minsize,maxsize,partner,fromhour,fromminute,tohour,
 {
 	default_mode=isdefault(group,minsize,maxsize,partner,fromhour,fromminute,tohour,tominute,homework,examstudy,lecture_review,notes,other)
 	//alert(group+""+minsize+""+maxsize+""+partner+""+fromhour+fromminute+tohour+tominute+homework+examstudy+lecture_review+notes+other);
+	default_course=searchlist.length==0;
 	var temp="";
-	if(default_mode)
+	if(default_mode && default_course)
 	{
 	
 	for(var i=0;i<studysession.length;i++)
@@ -207,7 +208,11 @@ function searchresults(group,minsize,maxsize,partner,fromhour,fromminute,tohour,
 			newsessions=studysession;
 			
 		var filsessions=[]; //group:false,minsize:0,maxsize:0,partner:false,fromhour:0,fromminute:0,tohour:0,tominute:0,homework:false,examstudy:false,lecture_review:false,notes:false,other:false,subject:"",description:""
-		
+		if(default_mode==true)
+		{
+			filsessions=newsessions;
+		}
+		else
 		for(var i=0;i<newsessions.length;i++)
 		{
 			var p;
@@ -298,6 +303,7 @@ function searchresults(group,minsize,maxsize,partner,fromhour,fromminute,tohour,
 				
 			}
 		}
+	
 		//alert(filsessions.length);
 		temp="";
 		for(var i=0;i<filsessions.length;i++)
