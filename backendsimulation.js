@@ -2,8 +2,8 @@ var studysession=[]
 var searchlist=[]
 function init()
 {
-	var hour_html="";
-	var minute_html="";
+	var hour_html="<option> </option>";
+	var minute_html="<option> </option>";
 	for(var i=0;i<24;i++)
 		hour_html+="<option>"+i+"</option>";
 	for(var i=0;i<60;i++)
@@ -51,6 +51,10 @@ function register()
 	if(password==confirmpassword)
 		window.location="verification.html";
 }
+function isdefault(group,minsize,maxsize,partner,fromhour,fromminute,tohour,tominute,homework,examstudy,lecture_review,notes,other)
+{
+	return !(group || minsize==0 || maxsize==0 || partner || fromhour==-1 || fromminute==-1 || tohour==-1 || tominute==-1 || homework || examstudy || lecture_review || notes || other);
+}
 function applyfilter()
 {
 	var group=false;
@@ -64,18 +68,18 @@ function applyfilter()
 	}
 	var partner=document.getElementById("partner").checked;
 	var date=document.getElementById("selectDate").checked;
-	var fromhour=document.getElementById("from-hour").selectedIndex;
-	var fromminute=document.getElementById("from-minute").selectedIndex;
-	var tohour=document.getElementById("to-hour").selectedIndex;
-	var tominute=document.getElementById("to-minute").selectedIndex;
+	var fromhour=document.getElementById("from-hour").selectedIndex-1;
+	var fromminute=document.getElementById("from-minute").selectedIndex-1;
+	var tohour=document.getElementById("to-hour").selectedIndex-1;
+	var tominute=document.getElementById("to-minute").selectedIndex-1;
 	var homework=document.getElementById("homework").checked;
 	var examstudy=document.getElementById("examstudy").checked;
 	var lecture_review=document.getElementById("lecture_review").checked;
 	var notes=document.getElementById("notes").checked;
 	var other=document.getElementById("other").checked;
-	alert(group+","+minsize+","+maxsize+","+partner+","+fromhour+","+fromminute+","+tohour+","+tominute+","+homework+","+examstudy+","+lecture_review+","+notes+","+other);
 	
-	searchresults();
+	
+	searchresults(group,minsize,maxsize,partner,fromhour,fromminute,tohour,tominute,homework,examstudy,lecture_review,notes,other);
 	
 	
 	
@@ -101,12 +105,14 @@ function addsearchlist()
 	displaysearchlist();
 	document.getElementById("main_search").value="";
 }
-function searchresults()
+function searchresults(group,minsize,maxsize,partner,fromhour,fromminute,tohour,tominute,homework,examstudy,lecture_review,notes,other)
 {
-	var temp="";
+	default_mode=isdefault(group,minsize,maxsize,partner,fromhour,fromminute,tohour,tominute,homework,examstudy,lecture_review,notes,other)
+	alert(default_mode);
+	/*var temp="";
 	for(var i=0;i<studysession.length;i++)
 		temp+="<div><h4>"+studysession[i].subject+"</h4>"+"<p>"+studysession[i].description+"</p></div>";
-	document.getElementById("results").innerHTML=temp;
+	document.getElementById("results").innerHTML=temp;*/
 }
 
 
