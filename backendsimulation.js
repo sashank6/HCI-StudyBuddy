@@ -16,6 +16,7 @@ function init()
 	var ss1=Object.create(post);
 	var ss2=Object.create(post);
 	var ss3=Object.create(post);
+	var ss4=Object.create(post);
 	ss1.subject="CSE541"
 	ss1.description="Some Description";
 	ss1.group=true
@@ -77,6 +78,9 @@ function init()
 	ss4.other=true
 	
 	studysession.push(ss1);
+	studysession.push(ss2);
+	studysession.push(ss3);
+	studysession.push(ss4);
 	displaysearchlist();
 	applyfilter();
 	
