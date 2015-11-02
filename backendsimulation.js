@@ -144,7 +144,7 @@ function applyfilter()
 	var notes=document.getElementById("notes").checked;
 	var other=document.getElementById("other").checked;
 	
-	alert("Apply Filter");
+	//alert("Apply Filter");
 	searchresults(group,minsize,maxsize,partner,fromhour,fromminute,tohour,tominute,homework,examstudy,lecture_review,notes,other);
 	
 	
@@ -189,7 +189,7 @@ function filter_subjectresults()
 function searchresults(group,minsize,maxsize,partner,fromhour,fromminute,tohour,tominute,homework,examstudy,lecture_review,notes,other)
 {
 	default_mode=isdefault(group,minsize,maxsize,partner,fromhour,fromminute,tohour,tominute,homework,examstudy,lecture_review,notes,other)
-	alert(group+""+minsize+""+maxsize+""+partner+""+fromhour+fromminute+tohour+tominute+homework+examstudy+lecture_review+notes+other);
+	//alert(group+""+minsize+""+maxsize+""+partner+""+fromhour+fromminute+tohour+tominute+homework+examstudy+lecture_review+notes+other);
 	var temp="";
 	if(default_mode)
 	{
