@@ -1,0 +1,73 @@
+<html>
+<script src="backendsimulation.js"></script>
+<link rel="stylesheet" href="NahNah_CSS/home.css" property='stylesheet'>
+<style>
+/*table,td
+{border: 1px solid black;}*/
+</style>
+<body onload="init()">
+<div class = logo>
+	<h1>StudyBuddy: Upcoming Sessions</h1></div>
+<br>
+	<table>
+		<th></th><th></th><th></th>
+		<tr>
+			<td data-name="left-column-body">
+				<div class = "identity">
+					<h3><img src="NahNah_CSS/female3.png" style="width:1.5em; height:1.5em; vertical-align:text-bottom;"/> NahNah Kim</h3>
+					<h4>Washington University in St. Louis</h4>
+				</div>
+				<br>
+				<br>
+				<div data-name="search-filters">
+					<div class = "narrowSearch"><h5>Narrow Search</h5></div>
+						<div id = "filters">
+							<input type="checkbox" name="group" onclick="onchangegroup()" id="group" onkeydown="if (event.keyCode == 13) document.getElementById('applyfilter').click()"/>Group<br/>
+						<div name="ifgroupchecked" id="ifgroupchecked">
+						</div>
+						<input type="checkbox" name="partner" id="partner" onkeydown="if (event.keyCode == 13) document.getElementById('applyfilter').click()"/>Partner<br/>
+						Date: <input type="date" name="selectDate" id="selectDate" onkeydown="if (event.keyCode == 13) document.getElementById('applyfilter').click()"/><br/>
+						From:<select name="from-hour" id="from-hour" onkeydown="if (event.keyCode == 13) document.getElementById('applyfilter').click()"></select>
+							<select name="from-minute" id="from-minute" onkeydown="if (event.keyCode == 13) document.getElementById('applyfilter').click()"></select> 
+						To: <select name="to-hour" id="to-hour" onkeydown="if (event.keyCode == 13) document.getElementById('applyfilter').click()"></select>
+							<select name="to-minute" id="to-minute" onkeydown="if (event.keyCode == 13) document.getElementById('applyfilter').click()"></select><br/>
+						<br>
+						<div data-name="Purpose">
+							<p style = "line-height:5%;text-decoration:underline;"/>Purpose:</p>
+							<input type="checkbox" name="homework" id="homework" onkeydown="if (event.keyCode == 13) document.getElementById('applyfilter').click()"/>HomeWork</br>
+							<input type="checkbox" name="examstudy" id="examstudy" onkeydown="if (event.keyCode == 13) document.getElementById('applyfilter').click()"/>Exam Study</br>
+							<input type="checkbox" name="lecture_review" id="lecture_review" onkeydown="if (event.keyCode == 13) document.getElementById('applyfilter').click()"/>Lecture Review</br>
+							<input type="checkbox" name="notes" id="notes" onkeydown="if (event.keyCode == 13) document.getElementById('applyfilter').click()"/>Notes</br>
+							<input type="checkbox" name="other" id="other" onkeydown="if (event.keyCode == 13) document.getElementById('applyfilter').click()"/>Other</br>
+						</div></div>
+						<div style="text-align:center;"><input type="button" value="Apply Filters" id="applyfilter" onclick="applyfilter()"/>
+					</div>
+						<br>
+				</div>
+				<div data-name="menu">
+					<!--</br>-->
+					<a href="post_study_session.html">Post Study Session</a></br>
+					<a href="message.html">My Messages</a></br>
+					<a href="home.html">Home</a></br>
+				</div>
+			</td>
+			<td data-name="main-body">
+				<div data-name="Search-bar">
+				<input type="text" style="text-align:justify; width:350px; height: 50px; font-size:13px; -webkit-appearance: none;" placeholder="  search for a study buddy by class (i.e. 'CSE556')" name="main-search" id="main_search" onkeydown="if (event.keyCode == 13) document.getElementById('addsearchlist').click()"/>
+				<input type="button" value="Search" onclick="addsearchlist()" id="addsearchlist"><br/>
+				</div>
+				<div data-name="selected-subjects" name="selected-subjects" id="selected_subjects">
+				</div>
+				<div data-name="search-results" name="results" id="results">
+				</div>
+																																																													
+			</td>
+			<td data-name="dummy">
+			</td>
+		</tr>
+	</table>
+</body>
+
+
+
+</html>
