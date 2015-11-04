@@ -1,8 +1,12 @@
 h1 {
-    font-style:normal;
+    margin-left:auto;
+    margin-right:auto;
 }
+
 h2{
     font-style:italic;
+
+
 }
 .center {
     margin: auto;
@@ -11,9 +15,10 @@ h2{
 }
 
 .margin_left{
-    margin: 0px 0px 10px;
-    width: 100%;
-    padding: 5px;
+    margin-left: auto;
+    margin-right:auto;
+    vertical-align:middle;
+  
 }
 
 .margin_right{
@@ -26,12 +31,13 @@ h2{
     -webkit-column-count: 2; /* Chrome, Safari, Opera */
     -moz-column-count: 2; /* Firefox */
     column-count: 2;
+    column-fill:auto;
 
     -webkit-column-gap: 40px; /* Chrome, Safari, Opera */
     -moz-column-gap: 40px; /* Firefox */
     column-gap: 40px;
 
-    -webkit-column-rule: 2px outset #ff00ff; /* Chrome, Safari, Opera */
-    -moz-column-rule: 2px outset #ff00ff; /* Firefox */
-    column-rule: 2px outset #ff00ff;
+    -webkit-column-rule: 2px outset ; /* Chrome, Safari, Opera */
+    -moz-column-rule: 2px outset ; /* Firefox */
+    column-rule: 2px outset;
 }
