@@ -1,43 +1,55 @@
 <html>
 <script src="backendsimulation.js"></script>
+<link href= "Yuwei_CSS/login.css" rel = "stylesheet">
+
 <style>
-table,td
-{
-	border: 1px solid black;
-}
-</style>
-<body></br></br></br></br></br></br></br></br></br>
-	<h1>StudyBuddy</h1>
-	<table>
-		<th></th><th></th><th></th>
-		<tr>
-			<td data-name="login-body">
-				
-				<div data-name="search-filters">
-					<h5>Welcome back to StudyBuddy</h5>
+    div{
+        width:650px;
+    }
 
-					Usename: <input type="text" name="username" id="username" onkeydown="if (event.keyCode == 13) document.getElementById('login').click()"/><br/>
-					Password: <input type="password" name="password" id="password" onkeydown="if (event.keyCode == 13) document.getElementById('login').click()"//><br/>
-					<input type="button" value="Login" id ="login" onclick="login()"/>
+ </style>
+<div class="center">
+    <body>
+        </br></br></br></br></br></br></br></br></br>
 
-				</div>
-			</td>
-			<td data-name="register-body">
-				<h3>Does not have an account?</h3>
-				<div data-name="Search-bar">
-				Email: <input type="text" name="email" id="email" onkeydown="if (event.keyCode == 13) document.getElementById('register').click()"//><br/>
-				Usename: <input type="text" name="username" id="username1" onkeydown="if (event.keyCode == 13) document.getElementById('register').click()"/><br/>
-				Password: <input type="password" name="password" id="password1" onkeydown="if (event.keyCode == 13) document.getElementById('register').click()"/><br/>
-				Confirm Password: <input type="password" name="confirmpassword" id="confirmpassword" onkeydown="if (event.keyCode == 13) document.getElementById('register').click()"/><br/>
-				<input type="button" value="Register" id ="register" onclick="register()"/><br/>
-				</div>
-				
-			</td>
-			<td data-name="dummy">
-			</td>
-		</tr>
-	</table>
+        <h1>StudyBuddy</h1>
+        <h2> Welcome back to StudyBuddy.</h2>
+
+
+    <div class="newspaper">
+        <tr>
+            <div class="margin_left">
+                <td data-name="login-body">
+
+                    <h3>Already have an account</h3>
+
+                    Usename: <input type="text" name="username" id="username" onkeydown="if (event.keyCode == 13) document.getElementById('login').click()" /><br />
+                    Password: <input type="password" name="password" id="password" onkeydown="if (event.keyCode == 13) document.getElementById('login').click()"//><br />
+                    <input type="button" value="Login" id="login" onclick="login()" />
+                    <p>
+                        This is stuff
+                    </p>
+                </td>
+                </div>
+                <div class="margin_left">
+                    <td data-name="register-body">
+                        <h3>Does not have an account?</h3>
+
+                        Email: <input type="text" name="email" id="email" onkeydown="if (event.keyCode == 13) document.getElementById('register').click()"//><br />
+                        Usename: <input type="text" name="username" id="username1" onkeydown="if (event.keyCode == 13) document.getElementById('register').click()" /><br />
+                        Password: <input type="password" name="password" id="password1" onkeydown="if (event.keyCode == 13) document.getElementById('register').click()" /><br />
+                        Confirm Password: <input type="password" name="confirmpassword" id="confirmpassword" onkeydown="if (event.keyCode == 13) document.getElementById('register').click()" /><br />
+                        <input type="button" value="Register" id="register" onclick="register()" /><br />
+
+                    </td>
+                </div>
+                <td data-name="dummy"></td>
+</tr>
+            
+	</div>
+</div>
 </body>
+
 
 
 

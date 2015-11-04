@@ -1,0 +1,37 @@
+h1 {
+    font-style:normal;
+}
+h2{
+    font-style:italic;
+}
+.center {
+    margin: auto;
+    width: 90%;
+    padding: 5px;
+}
+
+.margin_left{
+    margin: 0px 0px 10px;
+    width: 100%;
+    padding: 5px;
+}
+
+.margin_right{
+    margin:auto;
+    width:40px;
+    text-align:center;
+}
+
+.newspaper {
+    -webkit-column-count: 2; /* Chrome, Safari, Opera */
+    -moz-column-count: 2; /* Firefox */
+    column-count: 2;
+
+    -webkit-column-gap: 40px; /* Chrome, Safari, Opera */
+    -moz-column-gap: 40px; /* Firefox */
+    column-gap: 40px;
+
+    -webkit-column-rule: 2px outset #ff00ff; /* Chrome, Safari, Opera */
+    -moz-column-rule: 2px outset #ff00ff; /* Firefox */
+    column-rule: 2px outset #ff00ff;
+}
