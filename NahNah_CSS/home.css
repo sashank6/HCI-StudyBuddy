@@ -1,64 +1,40 @@
 
-div.logo{
-	font-family:Helvetica;
-	font-size: 20px;
-	margin: 15px;
-	font-weight:200;
-	line-height: 100%;
-}
-
-div.identity{
-	font-family:Helvetica;
-	font-size:15px;
-	font-weight:200;
-	margin: 15px;
-	line-height:5%;
-}
-
-[data-name="search-filters"]{
-	border:1px solid black;
-}
-
-div.narrowSearch{
-	font-family: Helvetica;
-	font-size: 17px;
-	margin: 15px;
-	text-align:center;
-	line-height:5%;
-}
-
 #filters{
-	font-family: Helvetica;
-	font-size: 12px;
-	margin: 5px;
-}
-
-[data-name="menu"]{
-	font-family:Helvetica;
-	font-weight:200;
-	font-size: 15px;
-	margin:15px;
-	line-height:200%;
+	border:1px groove;
+	padding: 10px 10px 10px 5px;
 }
 
 
-[data-name="Search-bar"] {
-padding:17px;padding-left:55px;
-/*width:400px;border:1px solid #f5f5f5;*/
-font-size:13px;color:gray;
+#Search-bar{
+padding:17px;
+padding-left:55px;
+/*width:450px;
+height:40px;
+border:1px solid #f5f5f5;*/
+-webkit-appearance: none;
+font-size:13px;
+color:gray;
 background-image:url('http://i47.tinypic.com/r02vbq.png');
 background-repeat:no-repeat;
 background-position:left center;
 outline:0;
+
+/*
+text-align:justify;
+width:350px;
+height: 50px;
+font-size:13px;*/
+webkit-appearance: none;
+
 }
 
 input[type="button"]  {
--webkit-border-radius: 28;
+ -webkit-border-radius: 28;
   -moz-border-radius: 28;
-  border-radius: 28px;
+  border-radius: 5px;
   font-family: Arial;
   color: #ffffff;
-  font-size: 17px;
+  font-size: 13px;
   background: #575d61;
   padding: 10px 20px 10px 20px;
   text-decoration: none;
@@ -70,22 +46,17 @@ input[type="button"]:hover {
 }
 
 
-/*[data-name="bar"]{
-	
-}
-
-*/
-
 body {
 	margin:0;
 	padding:0;
-	border:0;			/* This removes the border around the viewport in old versions of IE */
+	border:0;				/* This removes the border around the viewport in old versions of IE */
 	width:100%;
 	background:#fff;
 	min-width:600px;		/* Minimum width of layout - remove line if not required */
-					/* The min-width property does not work in old versions of Internet Explorer */
+							/* The min-width property does not work in old versions of Internet Explorer */
 	font-size:90%;
 }
+
 a {
 	color:#369;
 }
@@ -94,17 +65,48 @@ a:hover {
 	background:#369;
 	text-decoration:none;
 }
+
 h1, h2, h3 {
+	margin:.8em 0 .2em 0;
+	padding:0;
+	line-height: 50%
+}
+
+h2:hover{
+	text-decoration:underline;
+}
+
+
+
+h5{
+	margin:0;
+}
+
+h6{
+	font-size: 12px;
+	text-decoration:underline;
 	margin:.8em 0 .2em 0;
 	padding:0;
 }
 p {
-	margin:.4em 0 .8em 0;
+	margin:0;
+	/*margin:.4em 0 .8em 0;*/
 	padding:0;
+	font-family: Helvetica;
+	font-weight:200;
+	font-size:15px;
 }
-img {
+
+l{
+	margin:0;
+	padding:0;
+	font-family: Helvetica;
+	font-size: 15px;
+}
+
+/*img {
 	margin:10px 0 5px;
-}
+}*/
 #ads img {
 	display:block;
 	padding-top:10px;
@@ -113,8 +115,14 @@ img {
 /* Header styles */
 #header {
 	clear:both;
-	float:left;
 	width:100%;
+	height: 55px;
+	font-family:Helvetica;
+	font-size: 20px;
+	/*margin: 15px;*/
+	font-weight:200;
+	line-height: 100%;
+	padding: 10px 15px 10px 2px;
 }
 #header {
 	border-bottom:1px solid #000;
@@ -193,6 +201,9 @@ img {
 .col1,
 .col2,
 .col3 {
+	font-family:Helvetica;
+	font-size:15px;
+	font-weight:200;
 	float:left;
 	position:relative;
 	padding:0 0 1em 0;	/* no left and right padding on columns, we just make them narrower instead 

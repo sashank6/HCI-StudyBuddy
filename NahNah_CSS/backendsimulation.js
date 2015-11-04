@@ -18,7 +18,7 @@ function init()
 	var ss3=Object.create(post);
 	var ss4=Object.create(post);
 	ss1.subject="CSE541"
-	ss1.description="Some Description";
+	ss1.description="NahNah wants to work on homework (HW 3) at Urbauer 218 on Nov. 5, 2015 from 3-5pm";
 	ss1.group=true
 	ss1.minsize=2
 	ss1.maxsize=5
@@ -34,7 +34,7 @@ function init()
 	ss1.other=false
 	
 	ss2.subject="CSE511"
-	ss2.description="XDDDD";
+	ss2.description="Sashank wants to work on Homework (Lab 4) at Urbauer 214 on Nov. 5, 2015 from 4-6pm";
 	ss2.group=false
 	ss2.minsize=1
 	ss2.maxsize=1
@@ -50,7 +50,7 @@ function init()
 	ss2.other=false
 	
 	ss3.subject="CSE556"
-	ss3.description="QQQQQ";
+	ss3.description="Yuwei wants to study for the exam at Bauer Hall on Nov. 10, 2015 from 2-6pm";
 	ss3.group=false
 	ss3.partner=true
 	ss3.fromhour=1
@@ -64,7 +64,7 @@ function init()
 	ss3.other=true
 	
 	ss4.subject="ESE444"
-	ss4.description="QQXD";
+	ss4.description="Chelsea wants to share notes at Whitaker Hall on Nov. 3, 2015 from 1-2pm";
 	ss4.group=false
 	ss4.partner=false
 	ss4.fromhour=1
