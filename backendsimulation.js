@@ -478,10 +478,27 @@ function MS_inbox()
 	var MS_type={MS_subject:"Welcome to Study Buddy!",MS_outline:"Welcome to Study Buddy, this email will guide you through the popular features of StudyBuddy"}
 	var MS1=Object.create(MS_type);
 	var MS2=Object.create(MS_type);
+	var MS3=Object.create(MS_type);
+	var MS4=Object.create(MS_type);
+	var MS5=Object.create(MS_type);
 	
 	MS1.MS_subject = "QQ"
+	MS1.MS_outline = "XDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDD"
+	
+	MS3.MS_subject = "33333"
+	MS3.MS_outline = "XD333333333333DDDDDDDDDDDDDDDDDDDDD"
+	
+	MS4.MS_subject = "4444444"
+	MS4.MS_outline = "XDDDDDD444444444444DDDDDDDDDDDDDDDDDDDDDDDDD"
+	
+	MS5.MS_subject = "QQ5555"
+	MS5.MS_outline = "XDDDDDDDDDDDD5555D"
+	
 	MS_list.push(MS1)
 	MS_list.push(MS2)
+	MS_list.push(MS3)
+	MS_list.push(MS4)
+	MS_list.push(MS5)
 	
 	
 	//document.getElementById("MS_inbox").innerHTML = MS1.MS_subject + MS1.MS_outline
@@ -504,13 +521,23 @@ function MS_msgbox(msg_list)
 	document.getElementById("MS_inbox").innerHTML = MS_inbox_list
 }
 
-function MS_test()
+function MS_delete(i)
 {
-	alert("test")
+	MS_list.splice(i,1)
+	MS_msgbox(MS_list)
+	if (MS_list.length > 0)
+		if (i != MS_list.length)
+			MS_show_msg(i)
+		else
+			MS_show_msg(i-1)
+	else
+		document.getElementById("MS_detail").innerHTML = "No message in the box"
+	
 }
 
 function MS_show_msg(i)
 {
 
-	document.getElementById("MS_detail").innerHTML = "<text>"+MS_list[i].MS_subject+"</br></text><p>"+MS_list[i].MS_outline+"</p>"
+	document.getElementById("MS_detail").innerHTML = "<text>"+MS_list[i].MS_subject+"</br></text><p>"+MS_list[i].MS_outline+"</p>"+
+		"<input type=\"button\" value=\"Delete\" id=\"MS_delete\" onclick=\"MS_delete("+i+")\"></button>"
 }
