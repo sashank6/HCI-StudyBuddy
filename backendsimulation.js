@@ -12,6 +12,7 @@ var course_temp = course;
 
 //request session
 var request_session = [];
+var request_button = [];
 
 function init()
 {
@@ -224,8 +225,13 @@ function searchresults(group,minsize,maxsize,partner,fromhour,fromminute,tohour,
 	{
 	
 	for(var i=0;i<studysession.length;i++)
-		temp+="<div><h4>"+studysession[i].subject+"<button onclick=\"request("+i+")\">Join!</button>"+"</h4>"+"<p>"+studysession[i].description+"</p></div>";
+		//if (isInArray("</br><h4>"+studysession[i].subject+"</h4></br>"+studysession[i].description, request_session) == false)
+			//{alert("XD")}
+			//request_button.push("Join!")
+		//temp+="<div><h4>"+studysession[i].subject+"<button onclick=\"request("+i+")\">"+request_button[i]+"</button>"+"</h4>"+"<p>"+studysession[i].description+"</p></div>";
+		temp+="<div><h4>"+studysession[i].subject+"<button onclick=\"request("+i+")\">"+"Join!"+"</button>"+"</h4>"+"<p>"+studysession[i].description+"</p></div>";
 	document.getElementById("results").innerHTML=temp;
+	
 	}
 	else
 	{
@@ -345,10 +351,16 @@ function searchresults(group,minsize,maxsize,partner,fromhour,fromminute,tohour,
 
 function request(i)
 {
-	request_session.push("</br><h4>"+studysession[i].subject+"</h4></br>"+studysession[i].description)
+	if (isInArray("</br><h4>"+studysession[i].subject+"</h4></br>"+studysession[i].description, request_session))
+		alert("Already Joined!")
+	else
+		request_session.push("</br><h4>"+studysession[i].subject+"</h4></br>"+studysession[i].description)
 	document.getElementById("request_session").innerHTML = request_session;	
 }
 
+function isInArray(value, array) {
+  return array.indexOf(value) > -1;
+}
 
 function onchangegroup()
 {
