@@ -19,8 +19,8 @@ function init()
 	document.getElementById("to-hour").innerHTML=hour_html;
 	document.getElementById("from-minute").innerHTML=minute_html;
 	document.getElementById("to-minute").innerHTML=minute_html;
-	PF_name();
-	PF_university();
+	PF_name(false);
+	PF_university(false);
 	var post={group:false,minsize:0,maxsize:0,partner:false,fromhour:0,fromminute:0,tohour:0,tominute:0,homework:false,examstudy:false,lecture_review:false,notes:false,other:false,subject:"",description:""}
 	var ss1=Object.create(post);
 	var ss2=Object.create(post);
@@ -374,27 +374,42 @@ var course = [];
 	
 }
 
-function PF_name()
+function PF_name(write)
 {
-	document.getElementById("PF_name").innerHTML = name;		
+	if (write)
+		document.getElementById("PF_name").innerHTML = name;		
+	else
+		document.getElementById("PF_name").innerHTML = name;		
 }
 
-function PF_university()
+function PF_university(write)
 {
-	document.getElementById("PF_university").innerHTML = university;		
+	if (write)
+		document.getElementById("PF_university").innerHTML = university;		
+	else
+		document.getElementById("PF_university").innerHTML = university;		
 }
 
-function PF_email()
+function PF_email(write)
 {
-	document.getElementById("PF_email").innerHTML = email;	
+	if (write)
+		document.getElementById("PF_email").innerHTML = email;	
+	else
+		document.getElementById("PF_email").innerHTML = email;	
 }
 
-function PF_major()
+function PF_major(write)
 {
-	document.getElementById("PF_major").innerHTML = major;	
+	if (write)
+		document.getElementById("PF_major").innerHTML = major;	
+	else
+		document.getElementById("PF_major").innerHTML = major;	
 }
 
-function PF_course()
+function PF_course(write)
 {
-	document.getElementById("PF_course").innerHTML = course;	
+	if (write)
+		document.getElementById("PF_course").innerHTML = course;	
+	else
+		document.getElementById("PF_course").innerHTML = course;	
 }
