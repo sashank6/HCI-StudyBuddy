@@ -5,7 +5,12 @@ function init()
 	var hour_html="<option> </option>";
 	var minute_html="<option> </option>";
 	for(var i=0;i<24;i++)
-		hour_html+="<option>"+i+"</option>";
+		if (i < 12)
+			hour_html+="<option>"+i+"am</option>";
+		else if (i == 12)
+			hour_html+="<option>"+i+"pm</option>";
+		else
+			hour_html+="<option>"+(i-12)+"pm</option>";
 	for(var i=0;i<60;i++)
 		minute_html+="<option>"+i+"</option>"
 	document.getElementById("from-hour").innerHTML=hour_html;
