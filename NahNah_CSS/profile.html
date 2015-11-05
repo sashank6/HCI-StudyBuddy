@@ -1,0 +1,45 @@
+<html>
+<script src="backendsimulation1.js"></script>
+<style>
+table,td
+{
+	border: 1px solid black;
+}
+</style>
+<body onload="PF_init()">
+	<h1>Welcome to StudyBuddy!</h1>
+	<div id="MyEdit">
+		
+	</div>
+	<table>
+		<th></th><th></th><th></th>
+		<tr>
+			<td data-name="left-column-body">
+				<div>
+					<br/>
+					<h3>Name: <input type="text" id="PF_name" onkeydown="if (event.keyCode == 13) document.getElementById('PF_save').click()"/><br/></h3>
+					<h4>Univeristy: <input type="text" id="PF_university" onkeydown="if (event.keyCode == 13) document.getElementById('PF_save').click()"/><br/></h4>
+					<h4>Major: <input type="text" id="PF_major" onkeydown="if (event.keyCode == 13) document.getElementById('PF_save').click()"/><br/></h4>
+					<h4>Email: <input type="text" id="PF_email" onkeydown="if (event.keyCode == 13) document.getElementById('PF_save').click()"/><br/></h4>
+				
+					<input type="button" value="Apply Changes" id="PF_save" onclick="PF_save()"/>
+				</div>
+				<div data-name="menu">
+					<a href="post_study_session.html">Post Study Session</a></br>
+					<a href="message.html">My Messages</a></br>
+					<a href="home.html">Home</a></br>
+				</div>
+			</td>
+			<td data-name="main-body">
+			
+				
+			</td>
+			<td data-name="dummy">
+			</td>
+		</tr>
+	</table>
+</body>
+
+
+
+</html>

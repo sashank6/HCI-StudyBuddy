@@ -72,11 +72,13 @@ h1, h2, h3 {
 	line-height: 50%
 }
 
-h2:hover{
-	text-decoration:underline;
+h3{
+	font-size: 20px;
 }
 
-
+h4{
+	line-height:100%;	
+}
 
 h5{
 	margin:0;
