@@ -472,22 +472,30 @@ function MS_new()
 
 function MS_inbox()
 {
-	var MS_type={MS_subject:"XD",MS_outline:"XDDD"}
+	var MS_type={MS_subject:"Welcome to Study Buddy!",MS_outline:"Welcome to Study Buddy, this email will guide you through the popular features of StudyBuddy"}
 	var MS1=Object.create(MS_type);
+	var MS2=Object.create(MS_type);
 	var MS_list = []
 	MS1.MS_subject = "QQ"
 	MS_list.push(MS1)
+	MS_list.push(MS2)
 	
-	alert(MS1.MS_outline)
+	
 	//document.getElementById("MS_inbox").innerHTML = MS1.MS_subject + MS1.MS_outline
-	MS_msgbox(MS1)
-	
+	MS_msgbox(MS_list)
+
 	
 }
-function MS_msgbox(msg)
+function MS_msgbox(msg_list)
 {
+	var MS_inbox_list =""
+	for (var i = 0; i < msg_list.length; i++)
+	{
+		msg_list[0].MS_outline = msg_list[0].MS_outline.substring(0, 45)+"..."
 	
-	document.getElementById("MS_inbox").innerHTML = "<style>div.transbox{border: 1px solid black;opacity:0.6;}"+
-		"div.transbox p{margin: 5%;font-weight: bold;}</style><div class=\"background\"><div class=\"transbox\">"+
-		"<text>"+msg.MS_subject+"</br></text><p>"+msg.MS_outline+"</p></div></div>"
+		 MS_inbox_list += "<style>div.transbox{border: 1px solid black;opacity:0.6;}"+
+			"div.transbox p{margin: 5%;font-weight: bold;}</style><div class=\"background\"><div class=\"transbox\">"+
+			"<text>"+msg_list[i].MS_subject+"</br></text><p>"+msg_list[0].MS_outline+"</p></div></div>"
+	}
+	document.getElementById("MS_inbox").innerHTML = MS_inbox_list
 }
