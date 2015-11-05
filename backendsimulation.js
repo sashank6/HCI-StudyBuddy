@@ -1,5 +1,7 @@
 var studysession=[]
 var searchlist=[]
+var default_data = true
+
 function init()
 {
 	var hour_html="<option> </option>";
@@ -17,6 +19,8 @@ function init()
 	document.getElementById("to-hour").innerHTML=hour_html;
 	document.getElementById("from-minute").innerHTML=minute_html;
 	document.getElementById("to-minute").innerHTML=minute_html;
+	PF_name();
+	PF_university();
 	var post={group:false,minsize:0,maxsize:0,partner:false,fromhour:0,fromminute:0,tohour:0,tominute:0,homework:false,examstudy:false,lecture_review:false,notes:false,other:false,subject:"",description:""}
 	var ss1=Object.create(post);
 	var ss2=Object.create(post);
@@ -354,4 +358,43 @@ function PS_post()
 	
 	
 	
+}
+
+var name = "NahNah Kim"
+var university = "Washington University in St. Louis"
+var email = "kim@wustl.edu";
+var major = "engineeing";
+var course = [];
+	function load_data()
+{
+	PF_name();
+	PF_university();
+	
+	
+	
+}
+
+function PF_name()
+{
+	document.getElementById("PF_name").innerHTML = name;		
+}
+
+function PF_university()
+{
+	document.getElementById("PF_university").innerHTML = university;		
+}
+
+function PF_email()
+{
+	document.getElementById("PF_email").innerHTML = email;	
+}
+
+function PF_major()
+{
+	document.getElementById("PF_major").innerHTML = major;	
+}
+
+function PF_course()
+{
+	document.getElementById("PF_course").innerHTML = course;	
 }
