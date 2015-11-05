@@ -224,7 +224,7 @@ function searchresults(group,minsize,maxsize,partner,fromhour,fromminute,tohour,
 			//{alert("XD")}
 			//request_button.push("Join!")
 		//temp+="<div><h4>"+studysession[i].subject+"<button onclick=\"request("+i+")\">"+request_button[i]+"</button>"+"</h4>"+"<p>"+studysession[i].description+"</p></div>";
-		temp+="<div><h4>"+studysession[i].subject+"<button onclick=\"request("+i+")\">"+"Join!"+"</button>"+"</h4>"+"<p>"+studysession[i].description+"</p></div>";
+		temp+="<div><h4>"+studysession[i].subject+"</h4>"+"<p>"+studysession[i].description+"<button onclick=\"request("+i+")\">"+"Join!"+"</button>"+"</p></div>";
 	document.getElementById("results").innerHTML=temp;
 	
 	}
