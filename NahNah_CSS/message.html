@@ -1,48 +1,75 @@
 <html>
-<script src="backendsimulation.js"></script>
-<style>
+<script src="backendsimulation2.js"></script>
+<link rel="stylesheet" href="message.css" property='stylesheet'>
+<!--<style>
 table,td
 {
 	border: 1px solid black;
 }
-</style>
-<body onload="init_message_session()"></br></br></br></br></br></br></br></br></br>
-	<h1>StudyBuddy</h1>
-	<table>
-		<th></th><th></th><th></th>
-		<tr>
-			<td data-name="login-body">
-				<div>
-					<h3>NahNah Kim</h3>
-					<h4>Washington University in St. Louis</h4>
-				</div>
-				<div data-name="menu">
-					</br>
-					<a href="post_study_session.html">Post Study Session</a></br>
-					<a href="message.html">My Messages</a></br>
-					<a href="home.html">Home</a></br>
-				</div>
-			</td>
-			<td>
-			<div data-name="message_box" id="message_box">
-			<h3>No message in the box</h3>
-			</div>
-			</td>
-			<td>
-
-			<div data-name="post_message">
-					
-					
-					To: <input type="text" id="PS_start" onkeydown="if (event.keyCode == 13) document.getElementById('MS_send').click()"/><br/>
-					Subject: <input type="text" id="PS_end" onkeydown="if (event.keyCode == 13) document.getElementById('MS_send').click()"/><br/>
-					Message: </br>
-					<textarea name="paragraph_text" cols="50" rows="10" id="PS_note"></textarea></br>
+</style>-->
+<body onload="init_message_session()">
+	<div id = header><h1>My StudyBuddy: My Messages</h1></div>
+	<div class = "colmask threecol">
+		<div class="colmid">
+			<div class="colleft">
+				<div class = "col1">
+					<!--inbox-->
+					<div data-name="message_box" id="message_box">
+					<h3>No message in the box</h3>
+					</div>
+					<br>
+					<br>
+					<!--Compose message-->
+					<div data-name="post_message">
+					<h3>Compose message</h3>
+					<h4>To:<input type="text" id="PS_start" onkeydown="if (event.keyCode == 13) document.getElementById('MS_send').click()"/></h4>
+					<h4>Subject: <input type="text" id="PS_end" onkeydown="if (event.keyCode == 13) document.getElementById('MS_send').click()"/></h4>
+					<h4>Message: </h4>
+					<textarea name="paragraph_text" style = "width:100%" rows:100 id="PS_note"></textarea></br>
 					<input type="button" value="Send Message" id ="MS_send" onclick="MS_send()"/>
-
+					</div>
 				</div>
-			</td>
-		</tr>
-	</table>
+			<div class = col2>
+					<h3><img src="female3.png" style="width:1.5em; height:1.5em; vertical-align:text-bottom;"/><a href="profile.html"><span id="PF_name"></span></a></h3>
+					<h3><a href="profile.html"><span id="PF_university"></span></a></h3>
+					<br>
+					<br>
+				<div class="menu">
+					<h3><a href="home.html">Home (Search)</a></br></h3>
+					<h3><a href="message.html">My Messages</a></h3>
+					<h3><a href="post_study_session.html">Post Study Session</a></h3>
+				</div>
+			</div>
+	<div class="col3">
+				<!-- Column 3 start -->
+				<!--TODO-->
+				<h3>My Scheduled Sessions</h3>
+				<p style="text-decoration:underline">ITALIAN 101 with Giulio</p>
+				<p>Date: November 2, Thursday</p>
+				<p>Time: 1-3pm</p>
+				<p>Location: Olin library cafe</p>
+				<br>
+				<p style="text-decoration:underline">CSE 503 with group</p>
+				<p>Date: November 5, Sunday</p>
+				<p>Time: 2-6pm</p>
+				<p>Location: Urbauer 214</p>
+				<br>
+				<h3>My Posted Sessions</h3>
+				<p style="text-decoration:underline">FED JUR with a group (3-5 people)</p>
+				<p>Date: November 10, Friday</p>
+				<p>Time: 3-5pm</p>
+				<p>Meets: Once every week</p>
+				<p>Location: AB Hall 309</p>
+				<br>
+				<h3>My Requested Sessions</h3>
+				<p><span id="request_session"></span>
+				</p>
+				<br>
+			</div>
+		</div>
+	</div>
+</body>
+<div id="footer"></div>
 </body>
 
 
