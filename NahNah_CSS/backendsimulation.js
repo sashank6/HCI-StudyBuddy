@@ -161,7 +161,7 @@ function displaysearchlist()
 {
 	var temp="";
 	for(var i=0;i<searchlist.length;i++)
-		temp+="<span><span onclick=\"removesearchlist("+i+")\">X</span>"+searchlist[i]+"</span>";
+		temp+="<span><span id=\"close\"onclick=\"removesearchlist("+i+")\">X</span>"+searchlist[i]+"</span>";
 	document.getElementById("selected_subjects").innerHTML=temp;
 		
 }
@@ -196,7 +196,7 @@ function searchresults(group,minsize,maxsize,partner,fromhour,fromminute,tohour,
 	{
 	
 	for(var i=0;i<studysession.length;i++)
-		temp+="<div><h4>"+studysession[i].subject+"</h4>"+"<p>"+studysession[i].description+"</p></div>";
+		temp+="<div postid=\"i\"><h4>"+studysession[i].subject+"</h4>"+"<p>"+studysession[i].description+"</p><br/><input id=\"request_button\" type=\"button\" value=\"Request to Join\"></div><hr/>";
 	document.getElementById("results").innerHTML=temp;
 	}
 	else
