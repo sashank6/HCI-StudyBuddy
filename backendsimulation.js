@@ -2,6 +2,17 @@ var studysession=[]
 var searchlist=[]
 var default_data = true
 
+//profile global
+var name = "Cheng Lin"
+var university = "Washington University in St. Louis"
+var email = "clin3@wustl.edu";
+var major = "engineeing";
+var course = ["CSE511","</br>CSE541","</br>CSE556"];
+var course_temp = course;
+
+//request session
+var request_session = [];
+
 function init()
 {
 	var hour_html="<option> </option>";
@@ -213,7 +224,7 @@ function searchresults(group,minsize,maxsize,partner,fromhour,fromminute,tohour,
 	{
 	
 	for(var i=0;i<studysession.length;i++)
-		temp+="<div><h4>"+studysession[i].subject+"</h4>"+"<p>"+studysession[i].description+"</p></div>";
+		temp+="<div><h4>"+studysession[i].subject+"<button onclick=\"request("+i+")\">Join!</button>"+"</h4>"+"<p>"+studysession[i].description+"</p></div>";
 	document.getElementById("results").innerHTML=temp;
 	}
 	else
@@ -332,6 +343,12 @@ function searchresults(group,minsize,maxsize,partner,fromhour,fromminute,tohour,
 
 }
 
+function request(i)
+{
+	request_session.push("</br><h4>"+studysession[i].subject+"</h4></br>"+studysession[i].description)
+	document.getElementById("request_session").innerHTML = request_session;	
+}
+
 
 function onchangegroup()
 {
@@ -362,12 +379,6 @@ function PS_post()
 	
 }
 
-var name = "Cheng Lin"
-var university = "Washington University in St. Louis"
-var email = "clin3@wustl.edu";
-var major = "engineeing";
-var course = ["CSE511","</br>CSE541","</br>CSE556"];
-var course_temp = course;
 
 function PF_init()
 {
