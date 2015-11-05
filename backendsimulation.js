@@ -366,7 +366,7 @@ var name = "Cheng Lin"
 var university = "Washington University in St. Louis"
 var email = "clin3@wustl.edu";
 var major = "engineeing";
-var course = [];
+var course = ["CSE511","</br>CSE541","</br>CSE556"];
 var course_temp = course;
 
 function PF_init()
@@ -384,18 +384,15 @@ function PF_save()
 	PF_email(true);
 	PF_major(true);
 	PF_course(true);
-	alert(name+"\n"+university+"\n"+major+"\n"+email+"\n"+course+"\n"+course_temp);
+	//alert(name+"\n"+university+"\n"+major+"\n"+email+"\n"+course+"\n"+course_temp);
 }
 
 function PF_addcourse()
 {
-	course_temp.push(document.getElementById("coursename").value)
+	course_temp.push("</br>"+document.getElementById("coursename").value)
+	document.getElementById("PF_course").innerHTML = course_temp;	
+	
 }
-function PF_test()
-{
-	alert (name);
-}
-
 function PF_name(write)
 {
 	if (write)
@@ -411,6 +408,7 @@ function PF_university(write)
 		university = document.getElementById("PF_university").value
 	else
 		document.getElementById("PF_university").innerHTML = university;		
+		document.getElementById("PF_university").defaultValue = university;		
 }
 
 function PF_email(write)
@@ -419,6 +417,7 @@ function PF_email(write)
 		email = document.getElementById("PF_email").value
 	else
 		document.getElementById("PF_email").innerHTML = email;	
+		document.getElementById("PF_email").defaultValue = email;	
 }
 
 function PF_major(write)
@@ -427,12 +426,14 @@ function PF_major(write)
 		major = document.getElementById("PF_major").value
 	else
 		document.getElementById("PF_major").innerHTML = major;	
+		document.getElementById("PF_major").defaultValue = major;	
 }
 
 function PF_course(write)
 {
 	if (write)
 		course = course_temp
-	else
-		document.getElementById("PF_course").innerHTML = course;	
+	//else
+	//	document.getElementById("PF_course").innerHTML = course_temp;	
+	document.getElementById("PF_course").innerHTML = course;			
 }

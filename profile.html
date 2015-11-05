@@ -9,7 +9,7 @@ table,td
 <body onload="PF_init()">
 	<h1>StudyBuddy</h1>
 	<div id="MyEdit">
-		This text will change
+		
 	</div>
 	<table>
 		<th></th><th></th><th></th>
@@ -17,22 +17,22 @@ table,td
 			<td data-name="left-column-body">
 				<div>
 					<br/>
-					<h3>Name: <input type="text" id="PF_name" onkeydown="document.getElementById('PF_save').click()"/><br/></h3>
-					<h4>Univeristy: <input type="text" id="PF_university" onkeydown="document.getElementById('PF_save').click()"/><br/></h4>
-					<h4>major: <input type="text" id="PF_major" onkeydown="document.getElementById('PF_save').click()"/><br/></h4>
-					<h4>Email: <input type="text" id="PF_email" onkeydown="document.getElementById('PF_save').click()"/><br/></h4>
+					<h3>Name: <input type="text" id="PF_name" onkeydown="if (event.keyCode == 13) document.getElementById('PF_save').click()"/><br/></h3>
+					<h4>Univeristy: <input type="text" id="PF_university" onkeydown="if (event.keyCode == 13) document.getElementById('PF_save').click()"/><br/></h4>
+					<h4>major: <input type="text" id="PF_major" onkeydown="if (event.keyCode == 13) document.getElementById('PF_save').click()"/><br/></h4>
+					<h4>Email: <input type="text" id="PF_email" onkeydown="if (event.keyCode == 13) document.getElementById('PF_save').click()"/><br/></h4>
 				</div>
 				<div data-name="search-filters">
 					<h3>Course:</h3> <span id="PF_course"></span></h4>
 					
-					<h6><ul>CSE 556</ul><ul>CSE 541T</ul><ul>CSE 511A</ul></h6>
-					<h3>Add Course: <input type="text" name="coursename" id="coursename"/><br/></h3>
-					<input type="button" value="Add Course" onclick="PF_addcourse()"/>
+					
+					<h3>Add Course: <input type="text" name="coursename" id="coursename" onkeydown="if (event.keyCode == 13) document.getElementById('PF_addcourse').click()"/><br/></h3>
+					<input type="button" value="Add Course" id="PF_addcourse" onclick="PF_addcourse()"/>
 					
 					<div name="ifgroupchecked" id="ifgroupchecked">
 					</div>
 					
-					<input type="button" value="Apply Changes" onclick="PF_save()"/>
+					<input type="button" value="Apply Changes" id="PF_save" onclick="PF_save()"/>
 				</div>
 				<div data-name="menu">
 					<a href="post_study_session.html">Post Study Session</a></br>
