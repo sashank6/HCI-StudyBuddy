@@ -465,12 +465,20 @@ function MS_new()
 {
 
 	//alert("XD")
-	document.getElementById("MS_detail").innerHTML = "To: <input type=\"text\" id=\"PS_start\" onkeydown=\"if (event.keyCode == 13) document.getElementById('MS_send').click()\"/><br/>"+
-					"Subject: <input type=\"text\" id=\"PS_end\" onkeydown=\"if (event.keyCode == 13) document.getElementById('MS_send').click()\"/><br/>"+
+	document.getElementById("MS_detail").innerHTML = "To: <input type=\"text\" id=\"MS_to\" onkeydown=\"if (event.keyCode == 13) document.getElementById('MS_send').click()\"/><br/>"+
+					"Subject: <input type=\"text\" id=\"MS_subject\" onkeydown=\"if (event.keyCode == 13) document.getElementById('MS_send').click()\"/><br/>"+
 					"Message: </br>"+
-					"<textarea name=\"paragraph_text\" cols=\"50\" rows=\"10\" id=\"PS_note\"></textarea></br>"+
+					"<textarea name=\"paragraph_text\" cols=\"50\" rows=\"10\" id=\"MS_message\"></textarea></br>"+
 					"<input type=\"button\" value=\"Send Message\" id =\"MS_send\" onclick=\"MS_send()\"/>"
 					
+}
+
+function MS_send()
+{
+	document.getElementById("MS_to").value = ""
+	document.getElementById("MS_subject").value = ""
+	document.getElementById("MS_message").value = ""
+	alert("Message sent!")
 }
 
 function MS_inbox()
