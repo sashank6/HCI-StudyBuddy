@@ -1,33 +1,7 @@
 
-#filters{
-	border:1px groove;
-	padding: 10px 10px 10px 5px;
+#MyEdit{
+    text-align:justify;
 }
-
-
-#Search-bar{
-padding:17px;
-padding-left:55px;
-/*width:450px;
-height:40px;
-border:1px solid #f5f5f5;*/
--webkit-appearance: none;
-font-size:13px;
-color:gray;
-background-image:url('http://i47.tinypic.com/r02vbq.png');
-background-repeat:no-repeat;
-background-position:left center;
-outline:0;
-
-/*
-text-align:justify;
-width:350px;
-height: 50px;
-font-size:13px;*/
--webkit-appearance: none;
-
-}
-
 input[type="button"]  {
  -webkit-border-radius: 28;
   -moz-border-radius: 28;
@@ -38,6 +12,7 @@ input[type="button"]  {
   background: #575d61;
   padding: 10px 20px 10px 20px;
   text-decoration: none;
+  
 }
 
 input[type="button"]:hover {

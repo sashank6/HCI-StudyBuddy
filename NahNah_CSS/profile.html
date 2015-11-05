@@ -1,45 +1,68 @@
 <html>
-<script src="backendsimulation1.js"></script>
-<style>
-table,td
+<script src="backendsimulation2.js"></script>
+<link rel="stylesheet" href="profile.css" property='stylesheet'>
+<!--<style>
+/*table,td
 {
 	border: 1px solid black;
-}
-</style>
+}*/
+</style>-->
 <body onload="PF_init()">
-	<h1>Welcome to StudyBuddy!</h1>
-	<div id="MyEdit">
-		
-	</div>
-	<table>
-		<th></th><th></th><th></th>
-		<tr>
-			<td data-name="left-column-body">
-				<div>
-					<br/>
-					<h3>Name: <input type="text" id="PF_name" onkeydown="if (event.keyCode == 13) document.getElementById('PF_save').click()"/><br/></h3>
-					<h4>Univeristy: <input type="text" id="PF_university" onkeydown="if (event.keyCode == 13) document.getElementById('PF_save').click()"/><br/></h4>
-					<h4>Major: <input type="text" id="PF_major" onkeydown="if (event.keyCode == 13) document.getElementById('PF_save').click()"/><br/></h4>
-					<h4>Email: <input type="text" id="PF_email" onkeydown="if (event.keyCode == 13) document.getElementById('PF_save').click()"/><br/></h4>
-				
-					<input type="button" value="Apply Changes" id="PF_save" onclick="PF_save()"/>
+	<div id = header><h1>My StudyBuddy: My Profile</h1></div>
+	<div class = "colmask threecol">
+		<div class="colmid">
+			<div class="colleft">
+				<div class = "col1">
+					<div id="MyEdit">
+					<h3>People call me (i.e. your name): <input type="text" id="PF_name" onkeydown="if (event.keyCode == 13) document.getElementById('PF_save').click()"/><br/></h3>
+					<h3>My University: <input type="text" id="PF_university" onkeydown="if (event.keyCode == 13) document.getElementById('PF_save').click()"/><br/></h3>
+					<h3>My Major: <input type="text" id="PF_major" onkeydown="if (event.keyCode == 13) document.getElementById('PF_save').click()"/><br/></h3>
+					<h3>My ".edu" Email: <input type="text" id="PF_email" onkeydown="if (event.keyCode == 13) document.getElementById('PF_save').click()"/><br/></h3>
+				<br>
+					<input type="button" style = " display: block; margin:0 auto;" value="Apply Changes" id="PF_save" onclick="PF_save()"/>
 				</div>
+				</div>
+					<div class = "col2">
+					<h3><img src="female3.png" style="width:1.5em; height:1.5em; vertical-align:text-bottom;"/><a href = #PF_name>Cheng Lin</a></h3>
+					<h3><a href = #PF_university>Wash U. in St. Louis</a></h3>
+					<br>
+					<br>
 				<div data-name="menu">
-					<a href="post_study_session.html">Post Study Session</a></br>
-					<a href="message.html">My Messages</a></br>
-					<a href="home.html">Home</a></br>
+				<div class = "menu">
+					<h3><a href="home.html">Home (Search)</a></br></h3>
+					<h3><a href="message.html">My Messages</a></h3>
+					<h3><a href="post_study_session.html">Post Study Session</a></h3>
 				</div>
-			</td>
-			<td data-name="main-body">
-			
-				
-			</td>
-			<td data-name="dummy">
-			</td>
-		</tr>
-	</table>
+				</div>
+					</div>
+<div class="col3">
+				<!-- Column 3 start -->
+				<!--TODO-->
+				<h3>My Scheduled Sessions</h3>
+				<p style="text-decoration:underline">ITALIAN 101 with Giulio</p>
+				<p>Date: November 2, Thursday</p>
+				<p>Time: 1-3pm</p>
+				<p>Location: Olin library cafe</p>
+				<br>
+				<p style="text-decoration:underline">CSE 503 with group</p>
+				<p>Date: November 5, Sunday</p>
+				<p>Time: 2-6pm</p>
+				<p>Location: Urbauer 214</p>
+				<br>
+				<h3>My Posted Sessions</h3>
+				<p style="text-decoration:underline">FED JUR with a group (3-5 people)</p>
+				<p>Date: November 10, Friday</p>
+				<p>Time: 3-5pm</p>
+				<p>Meets: Once every week</p>
+				<p>Location: AB Hall 309</p>
+				<br>
+				<h3>My Requested Sessions</h3>
+				<p><span id="request_session"></span>
+				</p>
+				<br>
+			</div>
+		</div>
+	</div>
 </body>
-
-
-
+<div id="footer"></div>
 </html>
