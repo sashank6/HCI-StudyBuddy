@@ -113,9 +113,17 @@ function init_post_session()
 }
 function init_message_session()
 {
-	var PS_course="<option> Select a Course </option>";
-	PS_course+="<option>"+"CSE 556 Human Computer Interaction"+"</option>";
-	document.getElementById("PS_course").innerHTML=PS_course;
+	PF_name(false);
+	PF_university(false);
+	MS_inbox();
+}
+function init_profile()
+{
+	PF_name(false);
+	PF_university(false);
+	PF_email(false);
+	PF_major(false);
+//	PF_course(false);
 }
 function login()
 {
@@ -387,14 +395,6 @@ function PS_post()
 }
 
 
-function PF_init()
-{
-	PF_name(false);
-	PF_university(false);
-	PF_email(false);
-	PF_major(false);
-//	PF_course(false);
-}
 function PF_save()
 {
 	PF_name(true);
@@ -455,3 +455,39 @@ function PF_major(write)
 	//	document.getElementById("PF_course").innerHTML = course_temp;	
 	document.getElementById("PF_course").innerHTML = course;			
 }*/
+
+
+
+function MS_new()
+{
+
+	//alert("XD")
+	document.getElementById("MS_detail").innerHTML = "To: <input type=\"text\" id=\"PS_start\" onkeydown=\"if (event.keyCode == 13) document.getElementById('MS_send').click()\"/><br/>"+
+					"Subject: <input type=\"text\" id=\"PS_end\" onkeydown=\"if (event.keyCode == 13) document.getElementById('MS_send').click()\"/><br/>"+
+					"Message: </br>"+
+					"<textarea name=\"paragraph_text\" cols=\"50\" rows=\"10\" id=\"PS_note\"></textarea></br>"+
+					"<input type=\"button\" value=\"Send Message\" id =\"MS_send\" onclick=\"MS_send()\"/>"
+					
+}
+
+function MS_inbox()
+{
+	var MS_type={MS_subject:"XD",MS_outline:"XDDD"}
+	var MS1=Object.create(MS_type);
+	var MS_list = []
+	MS1.MS_subject = "QQ"
+	MS_list.push(MS1)
+	
+	alert(MS1.MS_outline)
+	//document.getElementById("MS_inbox").innerHTML = MS1.MS_subject + MS1.MS_outline
+	MS_msgbox(MS1)
+	
+	
+}
+function MS_msgbox(msg)
+{
+	
+	document.getElementById("MS_inbox").innerHTML = "<style>div.transbox{border: 1px solid black;opacity:0.6;}"+
+		"div.transbox p{margin: 5%;font-weight: bold;}</style><div class=\"background\"><div class=\"transbox\">"+
+		"<text>"+msg.MS_subject+"</br></text><p>"+msg.MS_outline+"</p></div></div>"
+}
