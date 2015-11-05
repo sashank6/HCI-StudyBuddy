@@ -14,6 +14,9 @@ var major = "engineeing";
 var request_session = [];
 var request_button = [];
 
+//message
+var MS_list = [];
+
 function init()
 {
 	var hour_html="<option> </option>";
@@ -475,7 +478,7 @@ function MS_inbox()
 	var MS_type={MS_subject:"Welcome to Study Buddy!",MS_outline:"Welcome to Study Buddy, this email will guide you through the popular features of StudyBuddy"}
 	var MS1=Object.create(MS_type);
 	var MS2=Object.create(MS_type);
-	var MS_list = []
+	
 	MS1.MS_subject = "QQ"
 	MS_list.push(MS1)
 	MS_list.push(MS2)
@@ -491,11 +494,23 @@ function MS_msgbox(msg_list)
 	var MS_inbox_list =""
 	for (var i = 0; i < msg_list.length; i++)
 	{
-		msg_list[0].MS_outline = msg_list[0].MS_outline.substring(0, 45)+"..."
+		
 	
 		 MS_inbox_list += "<style>div.transbox{border: 1px solid black;opacity:0.6;}"+
-			"div.transbox p{margin: 5%;font-weight: bold;}</style><div class=\"background\"><div class=\"transbox\">"+
-			"<text>"+msg_list[i].MS_subject+"</br></text><p>"+msg_list[0].MS_outline+"</p></div></div>"
+			"div.transbox p{margin: 5%;font-weight: bold;}</style><div class=\"background\"><div class=\"transbox\" onclick=\"MS_show_msg("+i+")\">"+
+			"<text>"+msg_list[i].MS_subject+"</br></text>"+
+			"<p>"+msg_list[i].MS_outline.substring(0, 45)+"..."+"</p></div></div>"
 	}
 	document.getElementById("MS_inbox").innerHTML = MS_inbox_list
+}
+
+function MS_test()
+{
+	alert("test")
+}
+
+function MS_show_msg(i)
+{
+
+	document.getElementById("MS_detail").innerHTML = "<text>"+MS_list[i].MS_subject+"</br></text><p>"+MS_list[i].MS_outline+"</p>"
 }
