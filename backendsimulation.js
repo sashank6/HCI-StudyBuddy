@@ -20,7 +20,9 @@ function init()
 	document.getElementById("from-minute").innerHTML=minute_html;
 	document.getElementById("to-minute").innerHTML=minute_html;
 	PF_name(false);
+	//document.getElementById("PF_name").innerHTML = name;		
 	PF_university(false);
+	//document.getElementById("PF_university").innerHTML = university;		
 	var post={group:false,minsize:0,maxsize:0,partner:false,fromhour:0,fromminute:0,tohour:0,tominute:0,homework:false,examstudy:false,lecture_review:false,notes:false,other:false,subject:"",description:""}
 	var ss1=Object.create(post);
 	var ss2=Object.create(post);
@@ -360,32 +362,53 @@ function PS_post()
 	
 }
 
-var name = "NahNah Kim"
+var name = "Cheng Lin"
 var university = "Washington University in St. Louis"
-var email = "kim@wustl.edu";
+var email = "clin3@wustl.edu";
 var major = "engineeing";
 var course = [];
-	function load_data()
+var course_temp = course;
+
+function PF_init()
 {
-	PF_name();
-	PF_university();
-	
-	
-	
+	PF_name(false);
+	PF_university(false);
+	PF_email(false);
+	PF_major(false);
+	PF_course(false);
+}
+function PF_save()
+{
+	PF_name(true);
+	PF_university(true);
+	PF_email(true);
+	PF_major(true);
+	PF_course(true);
+	alert(name+"\n"+university+"\n"+major+"\n"+email+"\n"+course+"\n"+course_temp);
+}
+
+function PF_addcourse()
+{
+	course_temp.push(document.getElementById("coursename").value)
+}
+function PF_test()
+{
+	alert (name);
 }
 
 function PF_name(write)
 {
 	if (write)
-		document.getElementById("PF_name").innerHTML = name;		
+		name = document.getElementById("PF_name").value
 	else
-		document.getElementById("PF_name").innerHTML = name;		
+		document.getElementById("PF_name").innerHTML = name;
+		document.getElementById("PF_name").defaultValue = name;
 }
 
 function PF_university(write)
 {
 	if (write)
-		document.getElementById("PF_university").innerHTML = university;		
+		university = document.getElementById("PF_university").value
 	else
 		document.getElementById("PF_university").innerHTML = university;		
 }
@@ -393,7 +416,7 @@ function PF_university(write)
 function PF_email(write)
 {
 	if (write)
-		document.getElementById("PF_email").innerHTML = email;	
+		email = document.getElementById("PF_email").value
 	else
 		document.getElementById("PF_email").innerHTML = email;	
 }
@@ -401,7 +424,7 @@ function PF_email(write)
 function PF_major(write)
 {
 	if (write)
-		document.getElementById("PF_major").innerHTML = major;	
+		major = document.getElementById("PF_major").value
 	else
 		document.getElementById("PF_major").innerHTML = major;	
 }
@@ -409,7 +432,7 @@ function PF_major(write)
 function PF_course(write)
 {
 	if (write)
-		document.getElementById("PF_course").innerHTML = course;	
+		course = course_temp
 	else
 		document.getElementById("PF_course").innerHTML = course;	
 }
