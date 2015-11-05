@@ -93,6 +93,12 @@ function init_post_session()
 	PS_course+="<option>"+"CSE 556 Human Computer Interaction"+"</option>";
 	document.getElementById("PS_course").innerHTML=PS_course;
 }
+function init_message_session()
+{
+	var PS_course="<option> Select a Course </option>";
+	PS_course+="<option>"+"CSE 556 Human Computer Interaction"+"</option>";
+	document.getElementById("PS_course").innerHTML=PS_course;
+}
 function login()
 {
 	var username=document.getElementById("username").value;
