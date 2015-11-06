@@ -1,6 +1,8 @@
 
 #MyEdit{
-    text-align:justify;
+    margin:auto;
+    width:140px;
+    text-align:center;
 }
 input[type="button"]  {
  -webkit-border-radius: 28;

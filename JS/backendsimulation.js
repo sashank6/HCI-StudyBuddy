@@ -4,7 +4,7 @@ var default_data = true
 var post={group:false,minsize:0,maxsize:0,partner:false,fromhour:0,fromminute:0,tohour:0,tominute:0,homework:false,examstudy:false,lecture_review:false,notes:false,other:false,subject:"",description:"",place:"",recurrence:0,username:""}
 //profile global
 var name = "Cheng Lin"
-var university = "Washington University in St. Louis"
+var university = "Wash. U. in St. Louis"
 var email = "clin3@wustl.edu";
 var major = "engineeing";
 //var course = ["CSE511","</br>CSE541","</br>CSE556"];
