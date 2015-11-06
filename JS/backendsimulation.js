@@ -16,7 +16,7 @@ var request_button = [];
 var usernamecok;
 //message
 var MS_list = [];
-
+var filsessions=[];
 function init()
 {
 	var usrverif=document.cookie;
@@ -136,8 +136,9 @@ function myscheduledsessions()
 	}
 }
 
-function requestsessions()
+function requestsessions(obj)
 {
+	alert(obj);
 	
 }
 
@@ -256,13 +257,13 @@ function searchresults(group,minsize,maxsize,partner,fromhour,fromminute,tohour,
 	var temp="";
 	if(default_mode && default_course)
 	{
-	
-	for(var i=0;i<studysession.length;i++)
+		filsessions=studysession;
+	for(var i=0;i<filsessions.length;i++)
 		//if (isInArray("</br><h4>"+studysession[i].subject+"</h4></br>"+studysession[i].description, request_session) == false)
 			//{alert("XD")}
 			//request_button.push("Join!")
 		//temp+="<div><h4>"+studysession[i].subject+"<button onclick=\"request("+i+")\">"+request_button[i]+"</button>"+"</h4>"+"<p>"+studysession[i].description+"</p></div>";
-		temp+="<div><h4>"+studysession[i].subject+"</h4>"+"<p>"+studysession[i].description+"<button onclick=\"request("+i+")\">"+"Request to join"+"</button>"+"</p></div>";
+		temp+="<div><h4>"+studysession[i].subject+"</h4>"+"<p>"+filsessions[i].description+"<button onclick=\"requestsessions("+i+")\">"+"Request to join"+"</button>"+"</p></div>";
 	document.getElementById("results").innerHTML=temp;
 	
 	}
@@ -274,7 +275,7 @@ function searchresults(group,minsize,maxsize,partner,fromhour,fromminute,tohour,
 		else
 			newsessions=studysession;
 			
-		var filsessions=[]; //group:false,minsize:0,maxsize:0,partner:false,fromhour:0,fromminute:0,tohour:0,tominute:0,homework:false,examstudy:false,lecture_review:false,notes:false,other:false,subject:"",description:""
+		 //group:false,minsize:0,maxsize:0,partner:false,fromhour:0,fromminute:0,tohour:0,tominute:0,homework:false,examstudy:false,lecture_review:false,notes:false,other:false,subject:"",description:""
 		if(default_mode==true)
 		{
 			filsessions=newsessions;
@@ -383,14 +384,14 @@ function searchresults(group,minsize,maxsize,partner,fromhour,fromminute,tohour,
 
 }
 
-function request(i)
+/*function request(i)
 {
 	if (isInArray("</br><h4>"+studysession[i].subject+"</h4></br>"+studysession[i].description, request_session))
 		alert("Already Joined!")
 	else
 		request_session.push("</br><h4>"+studysession[i].subject+"</h4></br>"+studysession[i].description)
 	document.getElementById("request_session").innerHTML = request_session;	
-}
+}*/
 
 function isInArray(value, array) {
   return array.indexOf(value) > -1;
