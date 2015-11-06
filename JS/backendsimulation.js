@@ -20,8 +20,6 @@ var filsessions=[];
 function init()
 {
 	var usrverif=document.cookie;
-	if(usrverif=="")
-		window.location="login.html";
 	var temparray=usrverif.split("=");
 	usernamecok=temparray[1];
 	name=usernamecok;
