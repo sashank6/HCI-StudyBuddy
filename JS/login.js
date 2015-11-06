@@ -1,3 +1,24 @@
+function loginverify()
+{
+	var username=document.getElementById("username").value;
+	var password=document.getElementById("password").value;
+	if(username=="sashank" && password=="hci")
+	{
+		
+	}
+}
+function usernamevalidate(username)
+{
+	var pattern=/^([a-zA-Z0-9]){4,10}$/;
+	return pattern.test(username);
+}
+function passwordvalidate(password)
+{
+	var pattern=/^[a-zA-Z0-9]{6,8}$/;
+	return pattern.test(password);
+}
+
+
 function init()
 {
 	var hour_html="";
