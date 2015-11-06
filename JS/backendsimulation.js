@@ -13,12 +13,18 @@ var major = "engineeing";
 //request session
 var request_session = [];
 var request_button = [];
-
+var usernamecok;
 //message
 var MS_list = [];
 
 function init()
 {
+	var usrverif=document.cookie;
+	if(usrverif=="")
+		window.location="login.html";
+	var temparray=usrverif.split("=");
+	usernamecok=temparray[1];
+	
 	var hour_html="<option> </option>";
 	var minute_html="<option> </option>";
 	for(var i=1;i<=12;i++)
