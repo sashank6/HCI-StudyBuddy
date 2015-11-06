@@ -1,7 +1,6 @@
 <html>
 <head>
 <script src="JS/backendsimulation.js"></script>
-<script src="JS/datastructures.js"></script>
 <script src="JS/login.js"></script>
 <link href= "CSS/login.css" rel = "stylesheet" />
 <link href ="CSS/home.css" rel =" stylesheet" />
@@ -11,6 +10,8 @@
 
  </style>
 </head>
+
+
 <body>
     <div class="center">
 
@@ -28,14 +29,14 @@
                         <td >
 
                             <h3>Already have an account?</h3>
-							<h2>Welcome Back! Please Sign In:</h2>
+							<h2>Welcome Back!</h2> <h2>Please Sign In:</h2>
 							<p id="errormessage" style="color:red"></p>
                             <br />
                             Username:
-                            <input type="text" name="username" id="username" onkeydown="if (event.keyCode == 13) document.getElementById('login').click()" />
+                            <input type="text" name="username" placeholder="4-10 digits" id="username" onkeydown="if (event.keyCode == 13) document.getElementById('login').click()" />
                             <br />
                             <br />Password:
-                            <input type="password" name="password" id="password" onkeydown="if (event.keyCode == 13) document.getElementById('login').click()" />
+                            <input type="password" name="password" placeholder="6-8 digits" id="password" onkeydown="if (event.keyCode == 13) document.getElementById('login').click()" />
                             <br />
                             <br />
                             <input type="button" value="Login" id="login" onclick="loginverify()" />
@@ -60,18 +61,18 @@
                 <br />
                 <table style="width:60%;">
                     <tr>
-                        <td align="right">".edu" Email:</td>
+                        <td align="right">Email:</td>
                         <td>
-                            <input type="text" name="email" id="email" onkeydown="if (event.keyCode == 13) document.getElementById('register').click()" />
+                            <input type="text" name="email" placeholder=".edu email" id="email" onkeydown="if (event.keyCode == 13) document.getElementById('register').click()" />
                             
                         </td>
                         
                     </tr>
                     
                     <tr>
-                        <td align="right">Username:</td>
+                        <td align="right">Usename:</td>
                         <td>
-                            <input type="text" name="username" id="username1" onkeydown="if (event.keyCode == 13) document.getElementById('register').click()" />
+                            <input type="text" name="username" placeholder="4-10 digits" id="username1" onkeydown="if (event.keyCode == 13) document.getElementById('register').click()" />
                             
                         </td>
                         
@@ -80,13 +81,13 @@
                     <tr>
                         <td align="right"> Password:</td>
                         <td>
-                            <input type="password" name="password" id="password1" onkeydown="if (event.keyCode == 13) document.getElementById('register').click()" /><br />
+                            <input type="password" name="password" placeholder="6-8 digits" id="password1" onkeydown="if (event.keyCode == 13) document.getElementById('register').click()" /><br />
                             
                         </td>
                     </tr>
                     <tr>
                         <td align="right">Confirm Password:</td>
-                        <td><input type="password" name="confirmpassword" id="confirmpassword" onkeydown="if (event.keyCode == 13) document.getElementById('register').click()" /><br />
+                        <td><input type="password" name="confirmpassword" placeholder="6-8 digits" id="confirmpassword" onkeydown="if (event.keyCode == 13) document.getElementById('register').click()" /><br />
                     </tr>
                 </table>
                 <br />

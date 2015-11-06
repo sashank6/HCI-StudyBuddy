@@ -1,17 +1,23 @@
 <html>
-<script src="backendsimulation.js"></script>
-<style>
-table,td
-{
-	border: 1px solid black;
-}
-</style>
-<body onload="init()"></br></br></br></br></br></br></br></br></br>
-	<h1>StudyBuddy</h1>
-	
-	Please enter your verification code: <input type="text" name="verification" id="verification" onkeydown="if (event.keyCode == 13) document.getElementById('verify').click()"/><br/>
-	<input type="button" onclick="verification()" value="Start StudyBuddy" id="verify"/> <!--modify to our home page-->
+<head>
+    <script src="backendsimulation.js"></script>
+    <link href="CSS/login.css" rel="stylesheet" />
+    <link href="CSS/home.css" rel=" stylesheet" />
+    <style>
+        table, td {
+            border: 1px solid black;
+        }
+    </style>
+</head>
 
+<body onload="init()">
+    <div class="verification">
+        <h1>StudyBuddy</h1>
+        <br />
+ 
+        Please enter your verification code in your email: <input type="text" name="verification" placeholder="Type your verification code" id="verification" onkeydown="if (event.keyCode == 13) document.getElementById('verify').click()" /><br />
+        <input type="button" onclick="verification()" value="Start StudyBuddy" id="verify" /> <!--modify to our home page-->
+    </div>
 </body>
 
 

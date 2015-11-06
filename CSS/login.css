@@ -37,3 +37,8 @@ h2{
     -moz-column-rule: 2px outset ; /* Firefox */
     column-rule: 2px outset;
 }
+
+.verification{
+	margin:5%;
+	padding:100px;
+}
