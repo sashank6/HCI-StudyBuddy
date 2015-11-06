@@ -7,15 +7,20 @@ function loginverify()
 	if(username=="sashank" && password=="hci556a")
 	{
 		document.cookie="username=sashank";
+		window.location="home.html";
 	}
 	else
 	{
 		/*throw error username or password invalid*/
+		
+		document.getElementById("errormessage").innerHTML="Username or password is invalid";
 	}
 	}
 	else
 	{
 		/*throw error incorrect password format*/
+		
+		document.getElementById("errormessage").innerHTML="Username or password is invalid";
 	}
 }
 function usernamevalidate(username)

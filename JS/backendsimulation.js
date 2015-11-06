@@ -128,13 +128,6 @@ function init_profile()
 	PF_major(false);
 //	PF_course(false);
 }
-function login()
-{
-	var username=document.getElementById("username").value;
-	var password=document.getElementById("password").value;
-	if(username=="sashank" && password=="hci")
-		window.location="home.html";
-}
 function verification()
 {
 	

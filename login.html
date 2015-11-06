@@ -1,6 +1,7 @@
 <html>
 <head>
 <script src="JS/backendsimulation.js"></script>
+<script src="JS/login.js"></script>
 <link href= "CSS/login.css" rel = "stylesheet" />
 <link href ="CSS/home.css" rel =" stylesheet" />
 
@@ -26,6 +27,7 @@
                         <td >
 
                             <h3>Already have an account</h3>
+							<p id="errormessage" style="color:red"></p>
                             <br />
                             Usename:
                             <input type="text" name="username" id="username" onkeydown="if (event.keyCode == 13) document.getElementById('login').click()" />
