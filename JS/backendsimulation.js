@@ -111,9 +111,23 @@ function init()
 	studysession.push(ss4);
 	displaysearchlist();
 	applyfilter();
+	myscheduledsessions();
 	
 	
 	
+}
+function myscheduledsessions()
+{
+	var myscheduled=localStorage.getItem(usernamecok+"_1");
+	if(myscheduled==null)
+	{
+		
+		document.getElementById("myscheduledsessions").innerHTML="<p> You do not have any sessions scheduled </p>";
+	}
+	else
+	{
+		
+	}
 }
 function init_post_session()
 {
