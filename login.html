@@ -15,8 +15,14 @@
 <body>
     <div class="center">
 
+<<<<<<< Updated upstream
         <h1>My StudyBuddy: your web solution for study sessions</h1>
        <h2> Use StudyBuddy to easily schedule group or partner study session.</h2>
+=======
+
+        <h1>My StudyBuddy: schedule group study sessions</h1>
+       <h2> Use StudyBuddy to easily schedule group or partner study sessions</h2>
+>>>>>>> Stashed changes
         <br />
         <br>
 
@@ -28,7 +34,7 @@
                         <td >
 
                             <h3>Already have an account?</h3>
-							<h2>Welcome Back!</h2> <h2>Please Sign In:</h2>
+							<h2>Welcome Back! Please Sign In:</h2>
 							<p id="errormessage" style="color:red"></p>
                             <br />
                             Username:
@@ -36,6 +42,13 @@
                             <br />
                             <br />Password:
                             <input type="password" name="password" placeholder="6-8 characters" id="password" onkeydown="if (event.keyCode == 13) document.getElementById('login').click()" />
+                            <br> <td align="left" style="font-family: Helvetica;"/>
+							 Username:
+                            <input type="text" name="username" placeholder="4-10 digits" id="username" onkeydown="if (event.keyCode == 13) document.getElementById('login').click()" />
+                            <br /> <style="font-family: Helvetica;"/>
+							<br>
+                            Password:
+                            <input type="password" name="password" placeholder="6-8 digits" id="password" onkeydown="if (event.keyCode == 13) document.getElementById('login').click()" />
                             <br />
                             <br />
                             <input type="button" value="Login" id="login" onclick="loginverify()" />
@@ -60,7 +73,7 @@
                 <br />
                 <table style="width:60%;">
                     <tr>
-                        <td align="right">Email:</td>
+                        <td align="right" style="font-family: Helvetica;">Email:</td>
                         <td>
                             <input type="text" name="email" placeholder=".edu email" id="email" onkeydown="if (event.keyCode == 13) document.getElementById('register').click()" />
                             
@@ -69,7 +82,7 @@
                     </tr>
                     
                     <tr>
-                        <td align="right">Usename:</td>
+                        <td align="right" style="font-family: Helvetica;">Username:</td>
                         <td>
                             <input type="text" name="username" placeholder="4-10 characters" id="username1" onkeydown="if (event.keyCode == 13) document.getElementById('register').click()" />
                             
@@ -78,7 +91,7 @@
                     </tr>
                     
                     <tr>
-                        <td align="right"> Password:</td>
+                        <td align="right" style="font-family: Helvetica;"> Password:</td>
                         <td>
                             <input type="password" name="password" placeholder="6-8 characters" id="password1" onkeydown="if (event.keyCode == 13) document.getElementById('register').click()" /><br />
                             
@@ -87,6 +100,9 @@
                     <tr>
                         <td align="right">Confirm Password:</td>
                         <td><input type="password" name="confirmpassword" placeholder="type your password again" id="confirmpassword" onkeydown="if (event.keyCode == 13) document.getElementById('register').click()" /><br />
+=======
+                        <td align="right" style="font-family: Helvetica;">Confirm Password:</td>
+                        <td><input type="password" name="confirmpassword" placeholder="6-8 digits" id="confirmpassword" onkeydown="if (event.keyCode == 13) document.getElementById('register').click()" /><br />
                     </tr>
                 </table>
                 <br />

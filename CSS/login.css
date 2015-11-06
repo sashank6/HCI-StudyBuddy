@@ -1,8 +1,13 @@
 h1{
+    font-family: Helvetica;
     font-size:40px;
 }
 h2{
     font-style:italic;
+}
+
+h3{
+    font-family: Helvetica;
 }
 .center {
     margin: auto;
