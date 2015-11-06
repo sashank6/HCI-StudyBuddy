@@ -2,9 +2,20 @@ function loginverify()
 {
 	var username=document.getElementById("username").value;
 	var password=document.getElementById("password").value;
-	if(username=="sashank" && password=="hci")
+	if(usernamevalidate(username)&&passwordvalidate(password))
+	{	
+	if(username=="sashank" && password=="hci556a")
 	{
-		
+		document.cookie="username=sashank";
+	}
+	else
+	{
+		/*throw error username or password invalid*/
+	}
+	}
+	else
+	{
+		/*throw error incorrect password format*/
 	}
 }
 function usernamevalidate(username)
