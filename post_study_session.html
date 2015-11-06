@@ -1,55 +1,109 @@
-<html>
-<script src="backendsimulation.js"></script>
-<style>
-table,td
-{
-	border: 1px solid black;
-}
-</style>
-<body onload="init_post_session()"></br></br></br></br></br></br></br></br></br>
-	<h1>StudyBuddy</h1>
-	<table>
-		<th></th><th></th><th></th>
-		<tr>
-			<td data-name="login-body">
-				<div>
-					<h3>NahNah Kim</h3>
-					<h4>Washington University in St. Louis</h4>
-				</div>
-				<div data-name="menu">
-					</br>
-					<a href="post_study_session.html">Post Study Session</a></br>
-					<a href="message.html">My Messages</a></br>
-					<a href="home.html">Home</a></br>
-				</div>
-			</td>
-			<td>
-			<div data-name="post_study_session">
-					
-					<select id="PS_course" onkeydown="if (event.keyCode == 13) document.getElementById('PS_post').click()"></select></br>
-					<select id="PS_type" onkeydown="if (event.keyCode == 13) document.getElementById('PS_post').click()"><option>partner</option><option>group</option></select></br>
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Post Study Session</title>
+    <!-- <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" /> -->
+    <link rel="stylesheet" type="text/css" href="home.css" media="screen" />
+    <script src="GeoJavaScript.js" type="text/javascript"></script>
+    <script src="backendsimulation.js" type="text/javascript"></script>
+    <link href="datePicrSrc/datepickr.css" rel="stylesheet" type="text/css" />
+    <script src="datePicrSrc/datepickr.js" type="text/javascript"></script>
+</head>
+<body>
+    <div id="header">
+        <h1>My StudyBuddy:Post Study Session</h1>
+    </div>
+    <div class="colmask threecol" >
+        <div class="colmid">
+            <div class="colleft">
+                <div class="col1">
+                    <!-- Column 1 start -->
 
-					Start time: <input type="text" id="PS_start" onkeydown="if (event.keyCode == 13) document.getElementById('PS_post').click()"/><br/>
-					End time: <input type="text" id="PS_end" onkeydown="if (event.keyCode == 13) document.getElementById('PS_post').click()"/><br/>
-					Date: <input type="date" name="selectDate" id="PS_selectDate" onkeydown="if (event.keyCode == 13) document.getElementById('PS_post').click()"/><br/>
-					Recurrence: <select id="PS_recurrence" onkeydown="if (event.keyCode == 13) document.getElementById('PS_post').click()"><option>once</option><option>weekly</option><option>monthly</option><option>yearly</option></select></br>
-					<input type="button" value="Add one more session" id ="PS_add_session" onclick="PS_add_session()"/></br>
-					<div name="PS_if_session_added" id="PS_if_session_added">
-					</div>
-					Level:</br>
-					<input type="checkbox" id="PS_level_graduate" onkeydown="if (event.keyCode == 13) document.getElementById('post').click()"/>Graduate</br>
-					<input type="checkbox" id="PS_level_undergraduate" onkeydown="if (event.keyCode == 13) document.getElementById('post').click()"/>Undergraduate</br>
-					<input type="checkbox" id="PS_level_unspecified" onkeydown="if (event.keyCode == 13) document.getElementById('post').click()"/>Unspecified</br>
-					Notes:</br>
-					<textarea name="paragraph_text" cols="50" rows="10" id="PS_note"></textarea></br>
-					<input type="button" value="Post Session" id ="PS_post" onclick="PS_post()"/>
+                    <form name="DemoForm" action="post_study_session.html" >
+                    <br /><br />
+                    <fieldset >
+                       <legend style="font-weight:bold;font-size:large;" >Criteria for Session:</legend>
+                       
+                        <!--TODO: Put Date Picker Here: -->
 
-				</div>
-			</td>
-		</tr>
-	</table>
+                     <p><input id="datepickr" placeholder="Select session date" /></p>
+                           <script type="text/javascript">
+                               datepickr('#datepickr')
+                            </script>
+                      
+                       <input type="checkbox" name="graduate" value="Grad" />&nbsp Graduate <br />
+                       <input type="checkbox" name="undergraduate"value="Undergrad" />&nbsp Undergraduate<br />
+                       <input type="checkbox" name="unspecified"value="Unspecified" />&nbsp Unspecified<br />
+
+                       <hr />
+                       <div id="filterGrpTypeDiv">
+                       <h4 style="font-weight:bold;">Select Study Group or Partner</h4> 
+                       <ul class="radio">
+                            <li><input type="radio" name="RadioGroup"  value="Study Group" /><label for="group">Group</label></li>
+                            <li><input type="radio" name="RadioGroup"  value="Study Partner" checked="checked" /><label for="partner">Partner</label></li> 
+                            <li><input type="radio" name="RadioGroup"  value="visagoth" /><label for="visagoth">Visagoth</label></li> 
+                       </ul>
+                       </div>
+                       <hr />
+                       <table>
+                       <tr><th style="font-weight:bold;">Freq. of Meeting</th><th style="font-weight:bold;">Notes:</th></tr>
+                       <tr><td><div id="selectOccDiv">                      
+                       <select name='selectOccurance' id='selectOccurance'>
+                            <option value=''>-- Select --</option>
+                            <option value="1">Once</option>
+                            <option value="2">Monthly</option>
+                            <option value="3">Daily</option>
+                            <option value="3">Daily (M-F)</option>
+                      </select>                      
+                      </div></td><td><textarea rows="10;" cols="30" name="notes" ></textarea></td></tr>
+                       </table>
+
+                      <br />
+                      <div>
+                      <input type="button" name="ClickButton"  value="POST" style="display:block;" onclick="Identify()"/>&nbsp&nbsp
+                      <input type="button" name="ClickEnablePost"  style="display:none;" value="Post Another Session?" onclick="EnableClickButton()"  />
+                      </div>
+                          <!---<input id="Submit2" type="submit" value="submit" onclick="Identify()" /> -->
+                    </fieldset>
+                    </form>
+                </div>
+
+                <div class="col2">
+                    <!-- Column 2start -->
+                    <h2><img src="female3.png" style="width:1.5em; height:1.5em; vertical-align:text-bottom;" alt="silloette"/>NahNah Kim</h2>
+					<h3>Wash. U. in St. Louis</h3>
+					<br />
+
+                    <hr />
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer 
+                    quis tellus vel nulla pellentesque maximus id laoreet justo. Aenean 
+                    sapien eros, rutrum ac augue sed, lobortis dapibus magna. Maecenas 
+                    nec venenatis lectus. Fusce tristique vel mi in maximus. Nulla mollis 
+                    convallis laoreet. Nam sodales urna a pharetra cursus. Curabitur 
+                    elementum id orci eget rutrum. Nunc cursus sem eget turpis tincidunt, 
+                    in condimentum mauris condimentum. Mauris a aliquam libero, non aliquet mi. 
+                    Donec quis ipsum ornare, mattis enim sed, consequat sem. Class aptent 
+                    taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. 
+                    Mauris consequat cursus aliquam. Phasellus tempus, erat in bibendum dapibus, 
+                    mi justo semper lectus, fringilla tristique tortor risus quis augue. 
+                    </p>
+                </div>
+
+                <div class="col3">
+                    <!-- Column 3 start -->
+                    <h4 style="font-weight:bold;">My Sessions:</h4>
+
+                    <h4 style="font-weight:bold;">My Posted Sessions:</h4>
+                     <div id="divOput" >
+                     </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="footer">
+       <div style="text-align:center;">
+         <h2>FOOTER</h2>
+       </div>
+    </div>
 </body>
-
-
-
 </html>
