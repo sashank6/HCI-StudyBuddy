@@ -24,6 +24,7 @@ function init()
 		window.location="login.html";
 	var temparray=usrverif.split("=");
 	usernamecok=temparray[1];
+	name=usernamecok;
 	
 	var hour_html="<option> </option>";
 	var minute_html="<option> </option>";
