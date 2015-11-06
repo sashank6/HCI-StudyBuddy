@@ -126,9 +126,22 @@ function myscheduledsessions()
 	}
 	else
 	{
+		var temp="";
+		for(int i=0;i<myscheduled.length;i++)
+		{
+			
+			
+		}
 		
 	}
 }
+
+function requestsessions()
+{
+	
+}
+
+
 function init_post_session()
 {
 	var PS_course="<option> Select a Course </option>";
