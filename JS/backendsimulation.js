@@ -169,7 +169,7 @@ function displayrequest_sessions()
 		var temp="";
 		for(var i=0;i<request_sessions.length;i++)
 		{
-			temp+=request_sessions[i].description;
+			temp+="<div><p>"+request_sessions[i].subject+" with "+request_sessions[i].username+"</p></div>";
 		}
 		document.getElementById("requestedsessions").innerHTML=temp;
 	}
