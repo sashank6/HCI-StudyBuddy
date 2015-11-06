@@ -19,6 +19,7 @@ var MS_list = [];
 var filsessions=[];
 function init()
 {
+	
 	var usrverif=document.cookie;
 	if(usrverif=="")
 		window.location="login.html";
@@ -112,6 +113,7 @@ function init()
 	displaysearchlist();
 	applyfilter();
 	myscheduledsessions();
+	displayrequest_sessions();
 	
 	
 	
@@ -136,10 +138,37 @@ function myscheduledsessions()
 	}
 }
 
-function requestsessions(obj)
+function requestsessions(i)
 {
-	alert(obj);
+	var request_sessions=localStorage.getItem(usernamecok+"_3");
+	if(request_sessions==null)
+	{
+		request_sessions=[];
+		request_sessions.push(filsessions[i]);
+	}
+	else
+		request_sessions.push(filsessions[i]);
+	alert(JSON.stringify(request_sessions));
+	//localStorage.setItem(usernamecok+"_3",request_sessions);
+	displayrequest_sessions();
 	
+}
+function displayrequest_sessions()
+{
+	var request_sessions=localStorage.getItem(usernamecok+"_3");
+	if(request_sessions==null)
+	{
+		document.getElementById("requestedsessions").innerHTML="You didn't request any sessions";
+	}
+	else
+	{
+		var temp="";
+		for(var i=0;i<request_sessions.length;i++)
+		{
+			alert(request_sessions[i].description);
+		}
+		document.getElementById("requestedsessions").innerHTML=temp;
+	}
 }
 
 
