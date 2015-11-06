@@ -147,9 +147,12 @@ function requestsessions(i)
 		request_sessions.push(filsessions[i]);
 	}
 	else
+	{
+		request_sessions=JSON.parse(request_sessions);
 		request_sessions.push(filsessions[i]);
-	alert(JSON.stringify(request_sessions));
-	//localStorage.setItem(usernamecok+"_3",request_sessions);
+	}
+	var t=JSON.stringify(request_sessions);
+	localStorage.setItem(usernamecok+"_3",t);
 	displayrequest_sessions();
 	
 }
@@ -162,10 +165,11 @@ function displayrequest_sessions()
 	}
 	else
 	{
+		request_sessions=JSON.parse(request_sessions);
 		var temp="";
 		for(var i=0;i<request_sessions.length;i++)
 		{
-			alert(request_sessions[i].description);
+			temp+=request_sessions[i].description;
 		}
 		document.getElementById("requestedsessions").innerHTML=temp;
 	}
