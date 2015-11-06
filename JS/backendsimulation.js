@@ -127,7 +127,7 @@ function myscheduledsessions()
 	else
 	{
 		var temp="";
-		for(int i=0;i<myscheduled.length;i++)
+		for(var i=0;i<myscheduled.length;i++)
 		{
 			
 			
