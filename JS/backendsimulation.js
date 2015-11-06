@@ -196,7 +196,7 @@ function displaysearchlist()
 {
 	var temp="";
 	for(var i=0;i<searchlist.length;i++)
-		temp+="<span><span onclick=\"removesearchlist("+i+")\">X</span>"+searchlist[i]+"</span>";
+		temp+="<span class =\"box\"><span class=\"cross\" onclick=\"removesearchlist("+i+")\">X </span>"+searchlist[i]+"</span>";
 	document.getElementById("selected_subjects").innerHTML=temp;
 		
 }

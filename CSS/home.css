@@ -4,6 +4,28 @@
 	padding: 10px 10px 10px 5px;
 }
 
+.cross{
+ -webkit-border-radius: 10;
+  -moz-border-radius: 10;
+  border-radius: 5px;
+  font-family: Arial;
+  color: #ffffff;
+  font-size: 10px;
+  background: #575d61;
+  padding: 1px 5px 1px 5px;
+  text-decoration: none;
+}
+
+.cross:hover{
+	background: #3cb0fd;
+  text-decoration: none;
+}
+
+.box{
+border:0.5px dashed;
+padding:5px 5px 5px 5px;
+margin:0 auto;
+}
 
 #Search-bar{
 padding:17px;
