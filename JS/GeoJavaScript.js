@@ -52,8 +52,10 @@
         return;
     }
 
+
+    var fromHr = document.DemoForm.FromHr.value.length
 //   alert("Before time validation!");
-//    if (document.DemoForm.FromHr.value == "" ||
+//    if (document.DemoForm.FromHr.value.length == ||
 //        document.DemoForm.FromMin.value == "" ||
 //        documnet.DemoForm.ToHr.value    == "" ||
 //        document.DemoForm.ToMin.value == "") 
