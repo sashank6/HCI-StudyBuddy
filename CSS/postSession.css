@@ -1,0 +1,57 @@
+﻿
+#filterGrpTypeDiv {
+ float:left;
+ width:190px;
+}
+#groupMinMaxDiv {
+ float:left;
+ width:190px;
+}
+
+#selectOccDiv {
+ float:left;
+ width:190px;
+}
+
+#clearDiv {
+ clear:both;
+}
+
+/* For course and date*/
+
+#courseDiv {
+ float:left;
+ width:350px;
+}
+
+#dateDiv {
+ float:left;
+ width:250px;
+}
+
+#clearDiv-1 {
+ clear:both;
+}
+
+/* For time and other criteria*/
+#timeDiv
+{
+ float:left;
+ width:50%;  
+}
+
+#checkDiv
+{
+ float:left;
+ width:25%;  
+}
+
+#checkDiv-2
+{
+ float:left;
+ width:25%;
+}
+#clearDiv-2 {
+ clear:both;
+}
+
