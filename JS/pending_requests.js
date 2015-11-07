@@ -6,6 +6,7 @@ function init_pending_requests()
 		window.location="login.html";
 	var temparray=usrverif.split("=");
 	usernamecok=temparray[1];
+	display_pendingrequests();
 }
 
 
@@ -16,6 +17,7 @@ function display_pendingrequests()
 	var temp="";
 	if(pending_requests==null)
 	{
-		
+		temp="<p>You do not have any requests pending!</p>";
 	}
+	document.getElementById("request_info").innerHTML=temp;
 }
