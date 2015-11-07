@@ -131,7 +131,7 @@ function myscheduledsessions()
 		var temp="";
 		for(var i=0;i<myscheduled.length;i++)
 		{
-			
+		    temp += "<div><p><u>" + myscheduled[i].subject + " with " + myscheduled[i].username + "</u></p><p> Location: " + myscheduled[i].place + "</p><p> Date: " + "Need to be implement" + "</p><p> Time: " + "Need to be implement" + "</p><p> Recurrence: " + myscheduled[i].recurrence + "</p></div>";
 			
 		}
 		
@@ -169,7 +169,7 @@ function displayrequest_sessions()
 		var temp="";
 		for(var i=0;i<request_sessions.length;i++)
 		{
-			temp+="<div><p>"+request_sessions[i].subject+" with "+request_sessions[i].username+"</p></div>";
+		    temp += "<div><p><u>" + request_sessions[i].subject + " with " + request_sessions[i].username + "</u></p><p> Location: " + request_sessions[i].place + "</p><p> Date: " + "Need to be implement" + "</p><p> Time: " + "Need to be implement" + "</p><p> Recurrence: " + request_sessions[i].recurrence + "</p></div>";
 		}
 		document.getElementById("requestedsessions").innerHTML=temp;
 	}
