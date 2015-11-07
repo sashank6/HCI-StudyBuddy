@@ -31,17 +31,17 @@ function requestsessions(i)
      ssPost.recurrence     = document.DemoForm.value;
      ssPost.username       = usernamecok;
 
-    var request_sessions = localStorage.getItem(usernamecok + "_2");
-    if (request_sessions == null) {
-        request_sessions = [];
-        request_sessions.push(filsessions[i]);
+    var post_sessions = localStorage.getItem(usernamecok + "_2");
+    if (post_sessions == null) {
+        post_sessions = [];
+        post_sessions.push(filsessions[i]);
     }
     else {
-        request_sessions = JSON.parse(request_sessions);
-        request_sessions.push(filsessions[i]);
+        post_sessions = JSON.parse(post_sessions);
+        post_sessions.push(filsessions[i]);
     }
-    var t = JSON.stringify(request_sessions);
+    var t = JSON.stringify(post_sessions);
     localStorage.setItem(usernamecok + "_2", t);
-    displayrequest_sessions();
+    displaypost_sessions();
 
 }
