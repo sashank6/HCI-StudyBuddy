@@ -2,6 +2,8 @@ function loginverify()
 {
 	var username=document.getElementById("username").value;
 	var password=document.getElementById("password").value;
+	alert (username);
+	
 	if(usernamevalidate(username)&&passwordvalidate(password))
 	{	
 	if(username=="sashank" && password=="hci556a")

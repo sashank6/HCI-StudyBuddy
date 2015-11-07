@@ -19,7 +19,10 @@ var MS_list = [];
 var filsessions=[];
 function init()
 {
+	
 	var usrverif=document.cookie;
+	if(usrverif=="")
+		window.location="login.html";
 	var temparray=usrverif.split("=");
 	usernamecok=temparray[1];
 	name=usernamecok;
@@ -110,6 +113,7 @@ function init()
 	displaysearchlist();
 	applyfilter();
 	myscheduledsessions();
+	displayrequest_sessions();
 	
 	
 	
@@ -134,10 +138,41 @@ function myscheduledsessions()
 	}
 }
 
-function requestsessions(obj)
+function requestsessions(i)
 {
-	alert(obj);
+	var request_sessions=localStorage.getItem(usernamecok+"_3");
+	if(request_sessions==null)
+	{
+		request_sessions=[];
+		request_sessions.push(filsessions[i]);
+	}
+	else
+	{
+		request_sessions=JSON.parse(request_sessions);
+		request_sessions.push(filsessions[i]);
+	}
+	var t=JSON.stringify(request_sessions);
+	localStorage.setItem(usernamecok+"_3",t);
+	displayrequest_sessions();
 	
+}
+function displayrequest_sessions()
+{
+	var request_sessions=localStorage.getItem(usernamecok+"_3");
+	if(request_sessions==null)
+	{
+		document.getElementById("requestedsessions").innerHTML="You didn't request any sessions";
+	}
+	else
+	{
+		request_sessions=JSON.parse(request_sessions);
+		var temp="";
+		for(var i=0;i<request_sessions.length;i++)
+		{
+			temp+="<div><p>"+request_sessions[i].subject+" with "+request_sessions[i].username+"</p></div>";
+		}
+		document.getElementById("requestedsessions").innerHTML=temp;
+	}
 }
 
 
@@ -261,7 +296,7 @@ function searchresults(group,minsize,maxsize,partner,fromhour,fromminute,tohour,
 			//{alert("XD")}
 			//request_button.push("Join!")
 		//temp+="<div><h4>"+studysession[i].subject+"<button onclick=\"request("+i+")\">"+request_button[i]+"</button>"+"</h4>"+"<p>"+studysession[i].description+"</p></div>";
-		temp+="<div><h4>"+studysession[i].subject+"</h4>"+"<p>"+filsessions[i].description+"<button onclick=\"requestsessions("+i+")\">"+"Request to join"+"</button>"+"</p></div>";
+		temp+="<div><h4>"+filsessions[i].subject+"</h4>"+"<p>"+filsessions[i].description+"<button onclick=\"requestsessions("+i+")\">"+"Request to join"+"</button>"+"</p></div>";
 	document.getElementById("results").innerHTML=temp;
 	
 	}
@@ -374,7 +409,7 @@ function searchresults(group,minsize,maxsize,partner,fromhour,fromminute,tohour,
 		temp="";
 		for(var i=0;i<filsessions.length;i++)
 			if(filsessions[i].username!=usernamecok)
-			temp+="<div><h4>"+filsessions[i].subject+"</h4>"+"<p>"+filsessions[i].description+"</p></div>";
+			temp+="<div><h4>"+filsessions[i].subject+"</h4>"+"<p>"+filsessions[i].description+"<button onclick=\"requestsessions("+i+")\">"+"Request to join"+"</button>"+"</p></div>";
 		document.getElementById("results").innerHTML=temp;
 			
 			}

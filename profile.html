@@ -1,6 +1,7 @@
 <html>
 <script src="JS/backendsimulation.js"></script>
 <script src="JS/datastructures.js"></script>
+<script src="JS/profile.js"></script>
 <link rel="stylesheet" href="CSS/profile.css" property='stylesheet'>
 <!--<style>
 /*table,td
@@ -8,7 +9,7 @@
 	border: 1px solid black;
 }*/
 </style>-->
-<body onload="PF_init()">
+<body onload="init_profile()">
 	<div id = header><h1>My StudyBuddy: My Profile</h1></div>
 	<div class = "colmask threecol">
 		<div class="colmid">
@@ -31,7 +32,7 @@
 				<div data-name="menu">
 				<div class = "menu">
 					<h3><a href="home.html">Home (Search)</a></br></h3>
-					<h3><a href="message.html">Pending Requests</a></h3>
+					<h3><a href="pendingRequests.html">Pending Requests</a></h3>
 					<h3><a href="post_study_session.html">Post Study Session</a></h3>
 				</div>
 				</div>
@@ -40,23 +41,9 @@
 				<!-- Column 3 start -->
 				<!--TODO-->
 				<h3>My Scheduled Sessions</h3>
-				<p style="text-decoration:underline">ITALIAN 101 with Giulio</p>
-				<p>Date: November 2, Thursday</p>
-				<p>Time: 1-3pm</p>
-				<p>Location: Olin library cafe</p>
-				<br>
-				<p style="text-decoration:underline">CSE 503 with group</p>
-				<p>Date: November 5, Sunday</p>
-				<p>Time: 2-6pm</p>
-				<p>Location: Urbauer 214</p>
-				<br>
-				<h3>My Posted Sessions</h3>
-				<p style="text-decoration:underline">FED JUR with a group (3-5 people)</p>
-				<p>Date: November 10, Friday</p>
-				<p>Time: 3-5pm</p>
-				<p>Meets: Once every week</p>
-				<p>Location: AB Hall 309</p>
-				<br>
+					<div id="myscheduledsessions">
+				
+					</div>
 				<h3>My Requested Sessions</h3>
 				<p><span id="request_session"></span>
 				</p>
