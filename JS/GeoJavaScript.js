@@ -4,13 +4,11 @@
     var GroupSize;
     var strPrintOut;
 
-    
-    //Validation:
-    if (document.DemoForm.subject.value.toString() == "") 
-    {
 
-        alert("You must type a course name!");
-        return;
+    //Go to validation function:
+    if (postStudySessionValidation() == false) 
+    {
+        return false;
     }
 
     //Group or Partner
@@ -44,26 +42,7 @@
             }
            break;
         }
-    }
-
-    if (document.getElementById('datepickr').value.toString() == "") {
-
-        alert("You must select a date!");
-        return;
-    }
-
-
-    var fromHr = document.DemoForm.FromHr.value.length
-//   alert("Before time validation!");
-//    if (document.DemoForm.FromHr.value.length == ||
-//        document.DemoForm.FromMin.value == "" ||
-//        documnet.DemoForm.ToHr.value    == "" ||
-//        document.DemoForm.ToMin.value == "") 
-//        {
-//            alert("Your time range is invalid: please select a numeric time range!");
-//            //return;
-//        }
-// alert("Got past time validation!");
+   }
 
     //Find selected text in FromAmPm ddl:
     var e = document.DemoForm.FromAmPm;
@@ -76,6 +55,7 @@
     //DEBUG: uncomment to debug.
     // alert(strFromAmPm);
 
+    //Creating a block of html and text to display the new entry:
     strPrintOut = "<div style=\"background-color:#FFFF66;\"> <p style=\"font-weight:bold;font-size:small;\">" + document.DemoForm.subject.value.toString() + "</p>" +
     "<p style=\"font-weight:bold;font-size:small;\">" + document.getElementById('datepickr').value.toString() + "</p>" +
     "<p style=\"font-weight:bold;font-size:small;\"> FROM: " + document.DemoForm.FromHr.value.toString() + ":" + document.DemoForm.FromMin.value.toString() +
@@ -158,6 +138,61 @@
   function makeGroupDivInvisible() {
 
       document.getElementById('groupMinMaxDiv').style.display = "none";
+
+  }
+
+  function postStudySessionValidation() 
+  {
+
+      //Subject validation:
+      if (document.DemoForm.subject.value.toString() == "") {
+
+          alert("You must type a course name!");
+          return false;
+      }
+
+      //Date validation:
+      if (document.getElementById('datepickr').value.toString() == "") {
+
+          alert("You must select a date!");
+          return false;
+      }
+
+      //Time Validation:
+      var frmHrVal = document.DemoForm.FromHr.value.trim();
+      var frmMinVal = document.DemoForm.FromMin.value.trim();
+      var toHrVal = document.DemoForm.ToHr.value.trim();
+      var toMinVal = document.DemoForm.ToMin.value.trim();
+
+      if (frmHrVal == "") {
+          alert('Please enter a valid hour value 1-12 for your "\From Time\".');
+          return false;
+      }
+
+      if (frmMinVal == "") {
+          alert('Please enter a valid minutes value 0-59 for your \"From Time\".');
+          return false;
+      }
+
+      if (toHrVal == "") {
+          alert('Please enter a valid hour value 1-12 for your "\To Time\".');
+          return false;
+      }
+
+      if (toMinVal == "") {
+          alert('Please enter a valid minutes value 0-59 for your \"To Time\".');
+          return false;
+      }
+
+      // Occurance Validation (Anything but "--Select--"):
+      //Find selected text in selectOccurance ddl:
+       var e = document.DemoForm.selectOccurance;
+       var strFreq = e.options[e.selectedIndex].text;
+       if (strFreq == "-- Select --")
+     {
+         alert('Please enter a valid session frequency or occurance; Monthly, Weekly,Daily, Daily (M-F), or Once');
+         return false;
+     }
 
   }
 
