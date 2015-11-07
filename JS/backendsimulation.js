@@ -215,7 +215,7 @@ function register()
 function isdefault(group,minsize,maxsize,partner,fromhour,fromminute,tohour,tominute,homework,examstudy,lecture_review,notes,other)
 {
 	//alert(group,minsize,maxsize,partner,fromhour,fromminute,tohour,tominute,homework,examstudy,lecture_review,notes,other);
-	return (group==false && minsize==0 && maxsize==0 && partner==false && fromhour==-1 && fromminute==-1 && tohour==-1 && tominute==-1 && homework==false && examstudy==false && lecture_review==false && notes==false && other==false);
+	return (group==false && minsize==0 && maxsize==0 && partner==false && fromhour==0 && fromminute==-1 && tohour==0 && tominute==-1 && homework==false && examstudy==false && lecture_review==false && notes==false && other==false);
 }
 function applyfilter()
 {
@@ -230,9 +230,9 @@ function applyfilter()
 	}
 	var partner=document.getElementById("partner").checked;
 	var date=document.getElementById("selectDate").checked;
-	var fromhour=document.getElementById("from-hour").selectedIndex-1;
+	var fromhour=document.getElementById("from-hour").selectedIndex;
 	var fromminute=document.getElementById("from-minute").selectedIndex-1;
-	var tohour=document.getElementById("to-hour").selectedIndex-1;
+	var tohour=document.getElementById("to-hour").selectedIndex;
 	var tominute=document.getElementById("to-minute").selectedIndex-1;
 	var homework=document.getElementById("homework").checked;
 	var examstudy=document.getElementById("examstudy").checked;
@@ -247,10 +247,11 @@ function applyfilter()
 	    }
 	}
 	if (toap == 1) {
-	    if (toap < 12) {
-	        toap += 12;
+	    if (tohour < 12) {
+	        tohour += 12;
 	    }
 	}
+	
 	//alert("Apply Filter");
 	searchresults(group,minsize,maxsize,partner,fromhour,fromminute,tohour,tominute,homework,examstudy,lecture_review,notes,other);
 	
