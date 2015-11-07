@@ -239,7 +239,9 @@ function applyfilter()
 	var lecture_review=document.getElementById("lecture_review").checked;
 	var notes=document.getElementById("notes").checked;
 	var other=document.getElementById("other").checked;
-	
+	var fromap = document.getElementById("from-hour-ap").selectedIndex - 1;
+	var toap = document.getElementById("to-hour-ap").selectedIndex - 1;
+    
 	//alert("Apply Filter");
 	searchresults(group,minsize,maxsize,partner,fromhour,fromminute,tohour,tominute,homework,examstudy,lecture_review,notes,other);
 	
