@@ -239,9 +239,18 @@ function applyfilter()
 	var lecture_review=document.getElementById("lecture_review").checked;
 	var notes=document.getElementById("notes").checked;
 	var other=document.getElementById("other").checked;
-	var fromap = document.getElementById("from-hour-ap").selectedIndex - 1;
-	var toap = document.getElementById("to-hour-ap").selectedIndex - 1;
-    
+	var fromap = document.getElementById("from-hour-ap").selectedIndex;
+	var toap = document.getElementById("to-hour-ap").selectedIndex;
+	if (fromap == 1) {
+	    if (fromhour < 12) {
+	        fromhour += 12;
+	    }
+	}
+	if (toap == 1) {
+	    if (toap < 12) {
+	        toap += 12;
+	    }
+	}
 	//alert("Apply Filter");
 	searchresults(group,minsize,maxsize,partner,fromhour,fromminute,tohour,tominute,homework,examstudy,lecture_review,notes,other);
 	
