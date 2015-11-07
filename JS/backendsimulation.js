@@ -131,7 +131,7 @@ function myscheduledsessions()
 		var temp="";
 		for(var i=0;i<myscheduled.length;i++)
 		{
-			
+		    temp += "<div><p><u>" + myscheduled[i].subject + " with " + myscheduled[i].username + "</u></p><p> Location: " + myscheduled[i].place + "</p><p> Date: " + "Need to be implement" + "</p><p> Time: " + "Need to be implement" + "</p><p> Recurrence: " + myscheduled[i].recurrence + "</p></div>";
 			
 		}
 		
@@ -169,7 +169,7 @@ function displayrequest_sessions()
 		var temp="";
 		for(var i=0;i<request_sessions.length;i++)
 		{
-			temp+="<div><p>"+request_sessions[i].subject+" with "+request_sessions[i].username+"</p></div>";
+		    temp += "<div><p><u>" + request_sessions[i].subject + " with " + request_sessions[i].username + "</u></p><p> Location: " + request_sessions[i].place + "</p><p> Date: " + "Need to be implement" + "</p><p> Time: " + request_sessions[i].fromhour + request_sessions[i].fromminute + "</p><p> Recurrence: " + request_sessions[i].recurrence + "</p></div>";
 		}
 		document.getElementById("requestedsessions").innerHTML=temp;
 	}
@@ -239,7 +239,9 @@ function applyfilter()
 	var lecture_review=document.getElementById("lecture_review").checked;
 	var notes=document.getElementById("notes").checked;
 	var other=document.getElementById("other").checked;
-	
+	var fromap = document.getElementById("from-hour-ap").selectedIndex - 1;
+	var toap = document.getElementById("to-hour-ap").selectedIndex - 1;
+    
 	//alert("Apply Filter");
 	searchresults(group,minsize,maxsize,partner,fromhour,fromminute,tohour,tominute,homework,examstudy,lecture_review,notes,other);
 	
@@ -314,8 +316,12 @@ function searchresults(group,minsize,maxsize,partner,fromhour,fromminute,tohour,
 			filsessions=newsessions;
 		}
 		else
-		for(var i=0;i<newsessions.length;i++)
+			if(default_mode==false)	
 		{
+			filsessions=[];
+			for(var i=0;i<newsessions.length;i++)
+		{
+			//alert();
 			var p;
 			if(group)
 			{
@@ -403,12 +409,14 @@ function searchresults(group,minsize,maxsize,partner,fromhour,fromminute,tohour,
 				}
 				
 			}
+			
 		}
+			}
 	
 		//alert(filsessions.length);
 		temp="";
 		for(var i=0;i<filsessions.length;i++)
-			if(filsessions[i].username!=usernamecok)
+			if(usernamecok!=filsessions[i].username)
 			temp+="<div><h4>"+filsessions[i].subject+"</h4>"+"<p>"+filsessions[i].description+"<button onclick=\"requestsessions("+i+")\">"+"Request to join"+"</button>"+"</p></div>";
 		document.getElementById("results").innerHTML=temp;
 			
