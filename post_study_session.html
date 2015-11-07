@@ -22,17 +22,31 @@
 
                     <form name="DemoForm" action="post_study_session.html" >
                     <br /><br />
-                    <fieldset >
+                    <fieldset>
                        <legend style="font-weight:bold;font-size:large;" >Criteria for Session:</legend>
                        
-                        <!--TODO: Put Date Picker Here: -->
-
-                     <p style="font-weight:bold;">Date:<input id="datepickr" placeholder="Select session date" /></p>
-                           <script type="text/javascript">
-                               datepickr('#datepickr')
-                            </script>
-                      
-                       <input type="checkbox" name="homework" value="homework" />&nbsp Study Homework <br />
+                 <!--TODO: Put Date Picker Here: -->
+                 <table style="width:100%">
+                 <tr><td style="width:30%">
+                 <p style="font-weight:bold;">Date:&nbsp<input id="datepickr" placeholder="Select session date" /></p>
+                    <script type="text/javascript">
+                       datepickr('#datepickr')
+                    </script>
+                 </td>
+                 <td style="width:70%">
+                   <p style="font-weight:bold;">Time:&nbsp From:&nbsp<input type="text" name="FromHr" style=width:5%; />:<input type="text" name="FromHr" style=width:5%; />
+                          <select name='FromAmPm' id='FromAmPm' style="width:45px;">
+                            <option value="1">AM</option>
+                            <option value="2">PM</option>
+                          </select>&nbsp To: &nbsp<input type="text" name="ToHr"style="width:5%;" />:<input type="text" name="ToMin"style="width:5%;" />
+                          <select name='ToAmPm' id='ToAmPm' style="width:45px;">
+                            <option value="1">AM</option>
+                            <option value="2">PM</option>
+                          </select></p>
+                 </td></tr>
+                 </table>
+                      <br />
+                       <input type="checkbox" name="homework" value="Homework" />&nbsp Study Homework <br />
                        <input type="checkbox" name="lecture_review"value="Lecture Review" />&nbsp Lecture Review<br />
                        <input type="checkbox" name="examstudy"value="Exam Study" />&nbsp Study for Exam<br />
 
@@ -42,7 +56,6 @@
                        <ul class="radio">
                             <li><input type="radio" name="RadioGroup"  value="Study Group" /><label for="group">Group</label></li>
                             <li><input type="radio" name="RadioGroup"  value="Study Partner" checked="checked" /><label for="partner">Partner</label></li> 
-                            <li><input type="radio" name="RadioGroup"  value="visagoth" /><label for="visagoth">Visagoth</label></li> 
                        </ul>
                        </div>
                        <hr />
@@ -54,7 +67,7 @@
                             <option value="1">Once</option>
                             <option value="2">Monthly</option>
                             <option value="3">Daily</option>
-                            <option value="3">Daily (M-F)</option>
+                            <option value="4">Daily (M-F)</option>
                       </select>                      
                       </div></td><td style="border-left: 1px solid #000000;"><div style="text-align:center"><textarea rows="10;" cols="30" name="notes" ></textarea></div></td></tr>
                       </table>

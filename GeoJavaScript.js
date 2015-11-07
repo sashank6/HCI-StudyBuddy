@@ -10,7 +10,7 @@
         if (document.DemoForm.RadioGroup[i].checked) 
         {
             SelectedValue = document.DemoForm.RadioGroup[i].value;
-            alert("Radio Button: "+SelectedValue);
+           // alert("Radio Button: "+SelectedValue);
             break;
         }
     }
@@ -22,7 +22,7 @@
     }
 
     strPrintOut = "<div style=\"background-color:#FFFF66;\"><p style=\"font-weight:bold;font-size:small;\">"+ document.getElementById('datepickr').value.toString() +"; @ 4:30PM: </p><ul><li>";
-    alert("DATE WORKS:" + document.getElementById('datepickr').value.toString());
+    //alert("DATE WORKS:" + document.getElementById('datepickr').value.toString());
    
     if (document.DemoForm.homework.checked == true)
       {
@@ -46,7 +46,7 @@
        var strFreq = e.options[e.selectedIndex].text;
        strPrintOut += strFreq + "</li><li>";
 
-       alert(strPrintOut);
+       //alert(strPrintOut);
        strPrintOut += SelectedValue + "</li></ul><br/></div><hr/>";
        document.getElementById("divOput").innerHTML += strPrintOut;
 
