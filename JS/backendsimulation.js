@@ -118,6 +118,23 @@ function init()
 	
 	
 }
+function convert_time(fhour,fminute,thour,tminute)
+{
+	var temp="";
+	if(fhour>12)
+		temp+=parseInt(fhour-12)+":"+fminute+"pm";
+	else
+		temp+=fhour+":"+fminute+"am";
+	temp+="-"
+	if(thour>12)
+		temp+=parseInt(thour-12)+":"+tminute+"pm";
+	else
+		temp+=thour+":"+tminute+"am";
+	return temp;
+	
+	
+		
+}
 function myscheduledsessions()
 {
 	var myscheduled=localStorage.getItem(usernamecok+"_1");
@@ -294,6 +311,22 @@ function filter_subjectresults()
 	}
 	return refined;
 }
+function displayobjectdata(obj,i)
+{
+	//alert(obj.subject);
+	
+	var data="";
+	data+="<h2"+obj.subject+"</h2>";
+	data+="<p>User: "+obj.username+"</p>"
+	data+="<p>Date: Not Implemented</p>";
+	data+="<p>Time: "+convert_time(obj.fromhour,obj.fromminute,obj.tohour,obj.tominute)+"</p>";
+	data+="<p>Location:"+obj.place+"</p>";
+	data+="<button onclick=\"requestsessions("+i+")\">"+"Request to join"+"</button>";
+	data+="<hr/>"
+	
+	return data;
+	
+}
 function searchresults(group,minsize,maxsize,partner,fromhour,fromminute,tohour,tominute,homework,examstudy,lecture_review,notes,other)
 {
 	default_mode=isdefault(group,minsize,maxsize,partner,fromhour,fromminute,tohour,tominute,homework,examstudy,lecture_review,notes,other)
@@ -308,7 +341,7 @@ function searchresults(group,minsize,maxsize,partner,fromhour,fromminute,tohour,
 			//{alert("XD")}
 			//request_button.push("Join!")
 		//temp+="<div><h4>"+studysession[i].subject+"<button onclick=\"request("+i+")\">"+request_button[i]+"</button>"+"</h4>"+"<p>"+studysession[i].description+"</p></div>";
-		temp+="<div><h4>"+filsessions[i].subject+"</h4>"+"<p>"+filsessions[i].description+"<button onclick=\"requestsessions("+i+")\">"+"Request to join"+"</button>"+"</p></div>";
+		temp+="<div>"+displayobjectdata(filsessions[i],i)+"</div>";
 	document.getElementById("results").innerHTML=temp;
 	
 	}
@@ -443,6 +476,8 @@ function searchresults(group,minsize,maxsize,partner,fromhour,fromminute,tohour,
 		request_session.push("</br><h4>"+studysession[i].subject+"</h4></br>"+studysession[i].description)
 	document.getElementById("request_session").innerHTML = request_session;	
 }*/
+
+
 
 function isInArray(value, array) {
   return array.indexOf(value) > -1;
