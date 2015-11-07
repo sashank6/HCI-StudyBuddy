@@ -171,6 +171,23 @@ function requestsessions(i)
 	var t=JSON.stringify(request_sessions);
 	localStorage.setItem(usernamecok+"_3",t);
 	displayrequest_sessions();
+	var end_user=filsessions[i].username;
+	var requests_enduser=localStorage.getItem(end_user+"_9");
+	newobject=Object.create(request);
+	newobject.username=filsessions[i].usernamecok;
+	newobject.post=filsessions[i];
+	if(requests_enduser==null)
+	{
+		requests_enduser=[];
+		requests_enduser.push(newobject);
+	}
+	else
+	{
+		requests_enduser=JSON.parse(requests_enduser);
+		requests_enduser.push(newobject);
+	}
+	t=JSON.stringify(requests_enduser);
+	localStorage.setItem(end_user+"_9",requests_enduser);
 	
 }
 function displayrequest_sessions()
