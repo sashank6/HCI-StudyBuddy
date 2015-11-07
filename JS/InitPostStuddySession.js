@@ -5,6 +5,8 @@
     var temparray = usrverif.split("=");
     usernamecok = temparray[1];
     name = usernamecok;
+	alert(name);
+	document.getElementById("username_display_post").innerHTML=usernamecok;
 }
 
 
