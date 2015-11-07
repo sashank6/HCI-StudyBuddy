@@ -408,8 +408,7 @@ function searchresults(group,minsize,maxsize,partner,fromhour,fromminute,tohour,
 		//alert(filsessions.length);
 		temp="";
 		for(var i=0;i<filsessions.length;i++)
-			if(filsessions[i].username!=usernamecok)
-			temp+="<div><h4>"+filsessions[i].subject+"</h4>"+"<p>"+filsessions[i].description+"<button onclick=\"requestsessions("+i+")\">"+"Request to join"+"</button>"+"</p></div>";
+			temp+="<div><h4>"+filsessions[i].subject+"</h4>"+"<p>"+filsessions[i].description+"</p></div>";
 		document.getElementById("results").innerHTML=temp;
 			
 			}
