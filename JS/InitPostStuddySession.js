@@ -12,23 +12,24 @@ function requestsessions(i)
  {
      var ssPost = Object.create(post);
 
-     ssPost.group = 
-     ssPost.minsize=
-     ssPost.maxsizepartner=
-     ssPost.fromhour=
-     ssPost.fromminute=
-     ssPost.tohour=
-     ssPost.tominute=
-     ssPost.homework=
-     ssPost.examstudy=
-     ssPost.lecture_review=
-     ssPost.notes=
-     ssPost.other=
-     ssPost.subject=
-     ssPost.description=
-     ssPost.place=
-     ssPost.recurrence=
-     ssPost.username=
+     ssPost.group          = document.DemoForm.value;
+     ssPost.minsize        = document.DemoForm.value;
+     ssPost.maxsize        = document.DemoForm.value;
+     ssPost.partner        = document.DemoForm.value;
+     ssPost.fromhour       = document.DemoForm.value;
+     ssPost.fromminute     = document.DemoForm.value;
+     ssPost.tohour         = document.DemoForm.value;
+     ssPost.tominute       = document.DemoForm.value;
+     ssPost.homework       = document.DemoForm.value;
+     ssPost.examstudy      = document.DemoForm.value;
+     ssPost.lecture_review = document.DemoForm.value;
+     ssPost.notes          = document.DemoForm.value;
+     ssPost.other          = document.DemoForm.value;
+     ssPost.subject        = document.DemoForm.value;
+     ssPost.description    = document.DemoForm.value;
+     ssPost.place          = document.DemoForm.value;
+     ssPost.recurrence     = document.DemoForm.value;
+     ssPost.username       = usernamecok;
 
     var request_sessions = localStorage.getItem(usernamecok + "_2");
     if (request_sessions == null) {
