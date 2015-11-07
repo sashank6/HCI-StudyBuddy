@@ -27,14 +27,14 @@
                        
                         <!--TODO: Put Date Picker Here: -->
 
-                     <p><input id="datepickr" placeholder="Select session date" /></p>
+                     <p style="font-weight:bold;">Date:<input id="datepickr" placeholder="Select session date" /></p>
                            <script type="text/javascript">
                                datepickr('#datepickr')
                             </script>
                       
-                       <input type="checkbox" name="graduate" value="Grad" />&nbsp Graduate <br />
-                       <input type="checkbox" name="undergraduate"value="Undergrad" />&nbsp Undergraduate<br />
-                       <input type="checkbox" name="unspecified"value="Unspecified" />&nbsp Unspecified<br />
+                       <input type="checkbox" name="homework" value="homework" />&nbsp Study Homework <br />
+                       <input type="checkbox" name="lecture_review"value="Lecture Review" />&nbsp Lecture Review<br />
+                       <input type="checkbox" name="examstudy"value="Exam Study" />&nbsp Study for Exam<br />
 
                        <hr />
                        <div id="filterGrpTypeDiv">
@@ -46,9 +46,9 @@
                        </ul>
                        </div>
                        <hr />
-                       <table>
-                       <tr><th style="font-weight:bold;">Freq. of Meeting</th><th style="font-weight:bold;">Notes:</th></tr>
-                       <tr><td><div id="selectOccDiv">                      
+                       <table style="width:100%;vertical-align:top;" >
+                       <tr><th style="font-weight:bold;">Freq. of Meeting</th><th style="font-weight:bold;border-left: 1px solid #000000;">Notes:</th></tr>
+                       <tr><td style="vertical-align:top;text-align:center;"><div id="selectOccDiv">                      
                        <select name='selectOccurance' id='selectOccurance'>
                             <option value=''>-- Select --</option>
                             <option value="1">Once</option>
@@ -56,8 +56,8 @@
                             <option value="3">Daily</option>
                             <option value="3">Daily (M-F)</option>
                       </select>                      
-                      </div></td><td><textarea rows="10;" cols="30" name="notes" ></textarea></td></tr>
-                       </table>
+                      </div></td><td style="border-left: 1px solid #000000;"><div style="text-align:center"><textarea rows="10;" cols="30" name="notes" ></textarea></div></td></tr>
+                      </table>
 
                       <br />
                       <div>
