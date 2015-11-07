@@ -26,7 +26,7 @@ function init()
 	var temparray=usrverif.split("=");
 	usernamecok=temparray[1];
 	name=usernamecok;
-	
+	//localStorage.clear();
 	var hour_html="<option> </option>";
 	var minute_html="<option> </option>";
 	for(var i=1;i<=12;i++)
@@ -61,6 +61,7 @@ function init()
 	ss1.lecture_review=true
 	ss1.notes=false
 	ss1.other=false
+	ss1.username="buddy";
 	
 	ss2.subject="CSE511"
 	ss2.description="XDDDD";
@@ -157,6 +158,7 @@ function myscheduledsessions()
 
 function requestsessions(i)
 {
+	
 	var request_sessions=localStorage.getItem(usernamecok+"_3");
 	if(request_sessions==null)
 	{
@@ -174,7 +176,7 @@ function requestsessions(i)
 	var end_user=filsessions[i].username;
 	var requests_enduser=localStorage.getItem(end_user+"_9");
 	newobject=Object.create(request);
-	newobject.username=filsessions[i].usernamecok;
+	newobject.username=usernamecok;
 	newobject.post=filsessions[i];
 	if(requests_enduser==null)
 	{
@@ -187,7 +189,9 @@ function requestsessions(i)
 		requests_enduser.push(newobject);
 	}
 	t=JSON.stringify(requests_enduser);
-	localStorage.setItem(end_user+"_9",requests_enduser);
+	alert(end_user);
+	alert(t);
+	localStorage.setItem(end_user+"_9",t);
 	
 }
 function displayrequest_sessions()
