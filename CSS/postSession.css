@@ -5,12 +5,17 @@
 }
 #groupMinMaxDiv {
  float:left;
- width:190px;
+ width:170px;
 }
 
 #selectOccDiv {
  float:left;
- width:190px;
+ width:150px;
+}
+
+#notesDiv {
+ float:left;
+ width:170px;
 }
 
 #clearDiv {

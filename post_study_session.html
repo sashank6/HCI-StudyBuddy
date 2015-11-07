@@ -13,7 +13,7 @@
 </head>
 <body onload="PostStudySession_Init()">
     <div id="header">
-        <h1>My StudyBuddy:Post Study Session <img src="images/BattlingBear.jpg" style="width:1.2em; height:1.2em; vertical-align:text-top;" alt="da' bear" /> </h1>
+        <h1>My StudyBuddy: Post Study Session <img src="images/BattlingBear.jpg" style="width:1.2em; height:1.2em; vertical-align:text-top;" alt="da' bear" /> </h1>
         
     </div>
     <div class="colmask threecol" >
@@ -27,7 +27,7 @@
                     <fieldset>
                        <legend style="font-weight:bold;font-size:large;" >Criteria for Session:</legend>
                        <div id="outerGrp-1">
-                       <div id="courseDiv">
+                       <div id="courseDiv" >
                           <p style="font-weight:bold;">Course:&nbsp<input type=text name="subject" maxlength="35" style="width:200px;" placeholder="Course ID (number) and name." /></p>
                        </div>
                        <div id="dateDiv">
@@ -41,7 +41,8 @@
                        </div>
                        <br />
                        <div id="outerDiv-2">
-                       <div id="timeDiv">
+                       <div id="timeDiv" style="width:55%;">
+                        <p style="font-weight:bold;">Location: &nbsp<input type="text" name="sessionlocation" placeholder="Study session location" /></p><br />
                          <p style="font-weight:bold;">Time:&nbsp From:&nbsp<input type="text" name="FromHr" style=width:5%; maxlength="2" placeholder="hh" />:<input type="text" name="FromMin" style=width:7%;  maxlength="2" placeholder="mm" />
                              <select name='FromAmPm' id='FromAmPm' style="width:45px;">
                                <option value="1">AM</option>
@@ -53,12 +54,12 @@
                             </select>
                         </p>                      
                        </div>
-                       <div id="checkDiv">
+                       <div id="checkDiv" style="width:25%;">
                        <input type="checkbox" name="homework" value="Homework" />&nbsp Study Homework <br />
                        <input type="checkbox" name="lecture_review"value="Lecture Review" />&nbsp Lecture Review<br />
                        <input type="checkbox" name="examstudy"value="Exam Study" />&nbsp Study for Exam<br />
                        </div>
-                       <div id="checkDiv-2">
+                       <div id="checkDiv-2" style="width:20%;">
                        <input type="checkbox" name="notes" value="Notes" />&nbsp Compare Notes <br />
                        <input type="checkbox" name="other"value="Other..." />&nbsp Other<br />
                        </div>
@@ -87,7 +88,12 @@
                             <option value="3">Weekly</option>
                             <option value="4">Daily</option>
                             <option value="5">Daily (M-F)</option>
-                      </select>                      
+                      </select>          
+                      </div>
+                      <div id="notesDiv">
+                      <h4 style="font-weight:bold;">Notes</h4> 
+                      <textarea rows="5" cols="10" maxlength="100" placeholder="Type in info..">
+                      </textarea>
                       </div>
                        <div id="clearDiv"></div>
                        </div>
