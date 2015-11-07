@@ -2,13 +2,11 @@ function loginverify()
 {
 	var username=document.getElementById("username").value;
 	var password=document.getElementById("password").value;
-	alert (username);
-	
 	if(usernamevalidate(username)&&passwordvalidate(password))
 	{	
-	if(username=="sashank" && password=="hci556a")
+	if((username=="sashank" && password=="hci556a")||(username=="buddy" && password=="hci556a"))
 	{
-		document.cookie="username=sashank";
+		document.cookie="username="+username;
 		window.location="home.html";
 	}
 	else

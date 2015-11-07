@@ -26,7 +26,7 @@ function init()
 	var temparray=usrverif.split("=");
 	usernamecok=temparray[1];
 	name=usernamecok;
-	
+	//localStorage.clear();
 	var hour_html="<option> </option>";
 	var minute_html="<option> </option>";
 	for(var i=1;i<=12;i++)
@@ -61,6 +61,7 @@ function init()
 	ss1.lecture_review=true
 	ss1.notes=false
 	ss1.other=false
+	ss1.username="buddy";
 	
 	ss2.subject="CSE511"
 	ss2.description="XDDDD";
@@ -148,7 +149,7 @@ function myscheduledsessions()
 		var temp="";
 		for(var i=0;i<myscheduled.length;i++)
 		{
-		    temp += "<div><p><u>" + myscheduled[i].subject + " with " + myscheduled[i].username + "</u></p><p> Location: " + myscheduled[i].place + "</p><p> Date: " + "Need to be implement" + "</p><p> Time: " + "Need to be implement" + "</p><p> Recurrence: " + myscheduled[i].recurrence + "</p></div>";
+		    temp += "<div><p><u>" + myscheduled[i].subject + " with " + myscheduled[i].username + "</u></p><p> Location: " + myscheduled[i].place + "</p><p> Date: " + myscheduled[i].date + "</p><p> Time: " + myscheduled[i].fromhour+":"+myscheduled[i].fromminute +"-"+ myscheduled[i].tohour +myscheduled[i].tominute + "</p><p> Recurrence: " + myscheduled[i].recurrence + "</p></div>";
 			
 		}
 		
@@ -157,6 +158,7 @@ function myscheduledsessions()
 
 function requestsessions(i)
 {
+	
 	var request_sessions=localStorage.getItem(usernamecok+"_3");
 	if(request_sessions==null)
 	{
@@ -171,6 +173,25 @@ function requestsessions(i)
 	var t=JSON.stringify(request_sessions);
 	localStorage.setItem(usernamecok+"_3",t);
 	displayrequest_sessions();
+	var end_user=filsessions[i].username;
+	var requests_enduser=localStorage.getItem(end_user+"_9");
+	newobject=Object.create(request);
+	newobject.username=usernamecok;
+	newobject.post=filsessions[i];
+	if(requests_enduser==null)
+	{
+		requests_enduser=[];
+		requests_enduser.push(newobject);
+	}
+	else
+	{
+		requests_enduser=JSON.parse(requests_enduser);
+		requests_enduser.push(newobject);
+	}
+	t=JSON.stringify(requests_enduser);
+	alert(end_user);
+	alert(t);
+	localStorage.setItem(end_user+"_9",t);
 	
 }
 function displayrequest_sessions()
@@ -186,7 +207,7 @@ function displayrequest_sessions()
 		var temp="";
 		for(var i=0;i<request_sessions.length;i++)
 		{
-		    temp += "<div><p><u>" + request_sessions[i].subject + " with " + request_sessions[i].username + "</u></p><p> Location: " + request_sessions[i].place + "</p><p> Date: " + "Need to be implement" + "</p><p> Time: " + request_sessions[i].fromhour + request_sessions[i].fromminute + "</p><p> Recurrence: " + request_sessions[i].recurrence + "</p></div>";
+		    temp += "<div><p><u>" + request_sessions[i].subject + " with " + request_sessions[i].username + "</u></p><p> Location: " + request_sessions[i].place + "</p><p> Date: " + request_sessions[i].date + "</p><p> Time: " + request_sessions[i].fromhour +":"+ request_sessions[i].fromminute + "-" + request_sessions[i].tohour +":"+ request_sessions[i].tominute + "</p><p> Recurrence: " + request_sessions[i].recurrence + "</p></div>";
 		}
 		document.getElementById("requestedsessions").innerHTML=temp;
 	}
