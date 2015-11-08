@@ -105,6 +105,6 @@ function PR_delete(i)
 {
 	
 	pending_requests.splice(i,1)
-	localStorage.setItem(usernamecok+"_9",pending_requests);
+	//localStorage.setItem(usernamecok+"_9",pending_requests);
 	display_pendingrequests()
 }
