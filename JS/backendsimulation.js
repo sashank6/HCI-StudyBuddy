@@ -83,7 +83,7 @@ function init()
 	ss2.lecture_review=false
 	ss2.notes=true
 	ss2.other=false
-	ss2.username = "sashank";
+	ss2.username = "Jim";
 	ss2.recurrence = 1;
 	
 	ss3.subject="CSE556"
@@ -99,7 +99,7 @@ function init()
 	ss3.lecture_review=false
 	ss3.notes=true
 	ss3.other = true
-	ss3.username = "Cheng";
+	ss3.username = "lawl";
 	ss3.recurrence = 1;
 	
 	ss4.subject="ESE444"
@@ -115,7 +115,7 @@ function init()
 	ss4.lecture_review=false
 	ss4.notes=true
 	ss4.other = true
-	ss4.username = "Nahnah";
+	ss4.username = "Sarah";
 	ss4.recurrence = 3;
 	
 	studysession.push(ss1);
@@ -790,13 +790,13 @@ function MS_show_msg(i)
 function user_link(username)
 {
     if (username == "buddy")
-        var result = str.link("***user profile page***");       //where is the user profile link? I couldn't find it
-    else if (username == "sashank")
-        var result = str.link("***sashank profile page***");
-    else if (username == "Cheng")
-        var result = str.link("***Cheng profile page***");
-    else if (username == "Nahnah")
-        var result = str.link("***Nahnah profile page***");
+        var result = str.link("profile_Bob.html");       //where is the user profile link? I couldn't find it
+    else if (username == "Jim")
+        var result = str.link("profile_Jim.html");
+    else if (username == "lawl")
+        var result = str.link("profile_lawl.html");
+    else if (username == "Sarah")
+        var result = str.link("profile_Sarah.html");
     else if (username == "George")
         var result = str.link("***George profile page***");
     document.getElementById("user_profile").innerHTML = result;
