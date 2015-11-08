@@ -2,7 +2,7 @@
 #MyEdit{
     margin:auto;
     width:440px;
-    text-align:right;
+    /*text-align:right;*/
 }
 input[type="button"]  {
  -webkit-border-radius: 28;

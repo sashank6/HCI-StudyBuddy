@@ -1,7 +1,8 @@
 var studysession=[]
 var searchlist=[]
 var default_data = true
-var post={group:false,minsize:0,maxsize:0,partner:false,fromhour:0,fromminute:0,tohour:0,tominute:0,homework:false,examstudy:false,lecture_review:false,notes:false,other:false,subject:"",description:"",place:"",recurrence:0,username:""}
+var post={group:false,minsize:0,maxsize:0,partner:false,fromhour:0,fromminute:0,tohour:0,tominute:0,homework:false,examstudy:false,startminute:0,endminute:0,lecture_review:false,notes:false,other:false,subject:"",description:"",place:"",recurrence:0,username:"",comments:""};
+var request={username:"",post:null}
 //profile global
 var name = "Cheng Lin"
 var university = "Wash. U. in St. Louis"
@@ -32,6 +33,7 @@ function init()
 	for(var i=1;i<=12;i++)
 		hour_html+="<option>"+i+"</option>";
 	for(var i=0;i<60;i++)
+		//if (i < 10) minute_html+="<option>0"+i+"</option>"
 		minute_html+="<option>"+i+"</option>"
 	document.getElementById("from-hour").innerHTML=hour_html;
 	document.getElementById("to-hour").innerHTML=hour_html;
@@ -62,6 +64,8 @@ function init()
 	ss1.notes=false
 	ss1.other=false
 	ss1.username="buddy";
+	ss1.startminute=803;
+	ss1.endminute=910;
 	
 	ss2.subject="CSE511"
 	ss2.description="XDDDD";
@@ -72,12 +76,13 @@ function init()
 	ss2.fromhour=1
 	ss2.tohour=5
 	ss2.fromminute=59
-	ss2.tominute=00
+	ss2.tominute=0
 	ss2.homework=true
 	ss2.examstudy=true
 	ss2.lecture_review=false
 	ss2.notes=true
 	ss2.other=false
+	ss2.username="sashank";
 	
 	ss3.subject="CSE556"
 	ss3.description="QQQQQ";
@@ -86,7 +91,7 @@ function init()
 	ss3.fromhour=1
 	ss3.tohour=15
 	ss3.fromminute=23
-	ss3.tominute=01
+	ss3.tominute=1
 	ss3.homework=true
 	ss3.examstudy=false
 	ss3.lecture_review=false
@@ -100,7 +105,7 @@ function init()
 	ss4.fromhour=1
 	ss4.tohour=15
 	ss4.fromminute=23
-	ss4.tominute=01
+	ss4.tominute=1
 	ss4.homework=true
 	ss4.examstudy=false
 	ss4.lecture_review=false
@@ -122,6 +127,8 @@ function init()
 function convert_time(fhour,fminute,thour,tminute)
 {
 	var temp="";
+	if (fminute < 10) fminute = "0"+fminute
+	if (tminute < 10) tminute = "0"+tminute
 	if(fhour>12)
 		temp+=parseInt(fhour-12)+":"+fminute+"pm";
 	else
@@ -135,6 +142,21 @@ function convert_time(fhour,fminute,thour,tminute)
 	
 	
 		
+}
+function invalidate_cookie()
+{
+	deleteAllCookies();
+	window.location="login.html";
+}
+function deleteAllCookies() {
+    var cookies = document.cookie.split(";");
+
+    for (var i = 0; i < cookies.length; i++) {
+    	var cookie = cookies[i];
+    	var eqPos = cookie.indexOf("=");
+    	var name = eqPos > -1 ? cookie.substr(0, eqPos) : cookie;
+    	document.cookie = name + "=;expires=Thu, 01 Jan 1970 00:00:00 GMT";
+    }
 }
 function myscheduledsessions()
 {
@@ -192,6 +214,7 @@ function requestsessions(i)
 	alert(end_user);
 	alert(t);
 	localStorage.setItem(end_user+"_9",t);
+	applyfilter();
 	
 }
 function displayrequest_sessions()
@@ -250,10 +273,10 @@ function register()
 	if(password==confirmpassword)
 		window.location="verification.html";
 }
-function isdefault(group,minsize,maxsize,partner,fromhour,fromminute,tohour,tominute,homework,examstudy,lecture_review,notes,other)
+function isdefault(group,minsize,maxsize,partner,startminute,endminute,homework,examstudy,lecture_review,notes,other)
 {
 	//alert(group,minsize,maxsize,partner,fromhour,fromminute,tohour,tominute,homework,examstudy,lecture_review,notes,other);
-	return (group==false && minsize==0 && maxsize==0 && partner==false && fromhour==0 && fromminute==-1 && tohour==0 && tominute==-1 && homework==false && examstudy==false && lecture_review==false && notes==false && other==false);
+	return (group==false && minsize==0 && maxsize==0 && partner==false && startminute==0&&endminute==0 && homework==false && examstudy==false && lecture_review==false && notes==false && other==false);
 }
 function applyfilter()
 {
@@ -289,9 +312,16 @@ function applyfilter()
 	        tohour += 12;
 	    }
 	}
+	if(fromminute==-1)
+		fromminute++;
+	if(tominute==-1)
+		tominute++;
 	
+	var startminute=fromhour*60+fromminute;
+	var endminute=tohour*60+tominute;
+	alert(startminute);
 	//alert("Apply Filter");
-	searchresults(group,minsize,maxsize,partner,fromhour,fromminute,tohour,tominute,homework,examstudy,lecture_review,notes,other);
+	searchresults(group,minsize,maxsize,partner,startminute,endminute,homework,examstudy,lecture_review,notes,other);
 	
 	
 	
@@ -337,21 +367,49 @@ function displayobjectdata(obj,i)
 	//alert(obj.subject);
 	
 	var data="";
-	data+="<h2"+obj.subject+"</h2>";
+	data+="<h2>"+obj.subject+"</h2>";
+	data+="<p> Subject:"+obj.description+"</p>";
 	data+="<p>User: "+obj.username+"</p>"
 	data+="<p>Date: Not Implemented</p>";
 	data+="<p>Time: "+convert_time(obj.fromhour,obj.fromminute,obj.tohour,obj.tominute)+"</p>";
 	data+="<p>Location:"+obj.place+"</p>";
-	data+="<button onclick=\"requestsessions("+i+")\">"+"Request to join"+"</button>";
+	if (isInRequestSession(obj))
+		data+="<button> waiting for approval</button>";
+	else
+		data+="<button onclick=\"requestsessions("+i+")\">"+"Request to join"+"</button>";
 	data+="<hr/>"
+	
 	
 	return data;
 	
 }
-function searchresults(group,minsize,maxsize,partner,fromhour,fromminute,tohour,tominute,homework,examstudy,lecture_review,notes,other)
+
+
+function isInRequestSession(obj)
 {
-	default_mode=isdefault(group,minsize,maxsize,partner,fromhour,fromminute,tohour,tominute,homework,examstudy,lecture_review,notes,other)
+	request_string = localStorage.getItem(usernamecok+"_3")
+	request_list = JSON.parse(request_string)
+	for (i = 0; i < request_list.length; i++)
+	{
+		//may still need to and location, recurrence, etc if those conditions are added into filter
+		if (request_list[i].subject == obj.subject && request_list[i].fromhour == obj.fromhour && request_list[i].fromminute == obj.fromminute)
+			if (request_list[i].tohour == obj.tohour && request_list[i].tominute == obj.tominute)
+				return true
+	
+	}
+	return false	
+	
+	
+}
+
+//function searchresults(group,minsize,maxsize,partner,fromhour,fromminute,tohour,tominute,homework,examstudy,lecture_review,notes,other)
+
+function searchresults(group,minsize,maxsize,partner,startminute,endminute,homework,examstudy,lecture_review,notes,other)
+
+{
+	default_mode=isdefault(group,minsize,maxsize,partner,startminute,endminute,homework,examstudy,lecture_review,notes,other)
 	//alert(group+""+minsize+""+maxsize+""+partner+""+fromhour+fromminute+tohour+tominute+homework+examstudy+lecture_review+notes+other);
+	alert(default_mode);
 	default_course=searchlist.length==0;
 	var temp="";
 	if(default_mode && default_course)
@@ -362,6 +420,7 @@ function searchresults(group,minsize,maxsize,partner,fromhour,fromminute,tohour,
 			//{alert("XD")}
 			//request_button.push("Join!")
 		//temp+="<div><h4>"+studysession[i].subject+"<button onclick=\"request("+i+")\">"+request_button[i]+"</button>"+"</h4>"+"<p>"+studysession[i].description+"</p></div>";
+		if(usernamecok!=filsessions[i].username)
 		temp+="<div>"+displayobjectdata(filsessions[i],i)+"</div>";
 	document.getElementById("results").innerHTML=temp;
 	
@@ -456,7 +515,7 @@ function searchresults(group,minsize,maxsize,partner,fromhour,fromminute,tohour,
 				
 			}
 			
-			if(newsessions[i].fromhour >=fromhour && newsessions[i].tohour <=tohour && newsessions[i].fromminute >=fromminute && newsessions[i].tominute<=tominute)
+			if(newsessions[i].startminute>=startminute&&newsessions[i].endminute<=endminute)
 			{
 				filsessions.push(newsessions[i]);
 				//alert("time"+i);
@@ -481,7 +540,7 @@ function searchresults(group,minsize,maxsize,partner,fromhour,fromminute,tohour,
 		temp="";
 		for(var i=0;i<filsessions.length;i++)
 			if(usernamecok!=filsessions[i].username)
-			temp+="<div><h4>"+filsessions[i].subject+"</h4>"+"<p>"+filsessions[i].description+"<button onclick=\"requestsessions("+i+")\">"+"Request to join"+"</button>"+"</p></div>";
+			temp+="<div>"+displayobjectdata(filsessions[i],i)+"</div>";
 		document.getElementById("results").innerHTML=temp;
 			
 			}
