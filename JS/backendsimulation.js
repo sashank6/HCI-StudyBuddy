@@ -279,10 +279,10 @@ function register()
 	if(password==confirmpassword)
 		window.location="verification.html";
 }
-function isdefault(group,minsize,maxsize,partner,startminute,endminute,homework,examstudy,lecture_review,notes,other)
+function isdefault(group,minsize,maxsize,partner,startminute,endminute,homework,examstudy,lecture_review,notes,other,recur_index)
 {
 	//alert(group,minsize,maxsize,partner,fromhour,fromminute,tohour,tominute,homework,examstudy,lecture_review,notes,other);
-	return (group==false && minsize==0 && maxsize==0 && partner==false && startminute==0&&endminute==0 && homework==false && examstudy==false && lecture_review==false && notes==false && other==false);
+	return (group==false && minsize==0 && maxsize==0 && partner==false && startminute==0&&endminute==0 && homework==false && examstudy==false && lecture_review==false && notes==false && other==false && recur_index==0);
 }
 function applyfilter()
 {
@@ -325,9 +325,10 @@ function applyfilter()
 	
 	var startminute=fromhour*60+fromminute;
 	var endminute=tohour*60+tominute;
-	alert(startminute);
+	var recur_index=document.getElementById("recur_select").selectedIndex;
+	alert(recur_index);
 	//alert("Apply Filter");
-	searchresults(group,minsize,maxsize,partner,startminute,endminute,homework,examstudy,lecture_review,notes,other);
+	searchresults(group,minsize,maxsize,partner,startminute,endminute,homework,examstudy,lecture_review,notes,other,recur_index);
 	
 	
 	
@@ -548,8 +549,8 @@ function searchresults(group,minsize,maxsize,partner,startminute,endminute,homew
 				
 			}
 
-			if (recurrence) {
-			    p = newsessions[i].recurrence == true;
+			if (recurrence>0) {
+			    p = (newsessions[i].recurrence == recurrence);
 			    if (p) {
 			        filsessions.push(newsessions[i]);
 			        continue;
