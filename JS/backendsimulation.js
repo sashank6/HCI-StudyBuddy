@@ -26,7 +26,7 @@ function init()
 	var temparray=usrverif.split("=");
 	usernamecok=temparray[1];
 	name=usernamecok;
-	
+	//localStorage.clear();
 	var hour_html="<option> </option>";
 	var minute_html="<option> </option>";
 	for(var i=1;i<=12;i++)
@@ -62,6 +62,7 @@ function init()
 	ss1.lecture_review=true
 	ss1.notes=false
 	ss1.other=false
+	ss1.username="buddy";
 	
 	ss2.subject="CSE511"
 	ss2.description="XDDDD";
@@ -78,6 +79,7 @@ function init()
 	ss2.lecture_review=false
 	ss2.notes=true
 	ss2.other=false
+	ss2.username="sashank";
 	
 	ss3.subject="CSE556"
 	ss3.description="QQQQQ";
@@ -119,21 +121,6 @@ function init()
 	
 	
 }
-function invalidate_cookie()
-{
-	deleteAllCookies();
-	window.location="login.html";
-}
-function deleteAllCookies() {
-    var cookies = document.cookie.split(";");
-
-    for (var i = 0; i < cookies.length; i++) {
-    	var cookie = cookies[i];
-    	var eqPos = cookie.indexOf("=");
-    	var name = eqPos > -1 ? cookie.substr(0, eqPos) : cookie;
-    	document.cookie = name + "=;expires=Thu, 01 Jan 1970 00:00:00 GMT";
-    }
-}
 function convert_time(fhour,fminute,thour,tminute)
 {
 	var temp="";
@@ -173,6 +160,7 @@ function myscheduledsessions()
 
 function requestsessions(i)
 {
+	
 	var request_sessions=localStorage.getItem(usernamecok+"_3");
 	if(request_sessions==null)
 	{
@@ -190,7 +178,7 @@ function requestsessions(i)
 	var end_user=filsessions[i].username;
 	var requests_enduser=localStorage.getItem(end_user+"_9");
 	newobject=Object.create(request);
-	newobject.username=filsessions[i].usernamecok;
+	newobject.username=usernamecok;
 	newobject.post=filsessions[i];
 	if(requests_enduser==null)
 	{
@@ -203,7 +191,9 @@ function requestsessions(i)
 		requests_enduser.push(newobject);
 	}
 	t=JSON.stringify(requests_enduser);
-	localStorage.setItem(end_user+"_9",requests_enduser);
+	alert(end_user);
+	alert(t);
+	localStorage.setItem(end_user+"_9",t);
 	
 }
 function displayrequest_sessions()
@@ -349,7 +339,8 @@ function displayobjectdata(obj,i)
 	//alert(obj.subject);
 	
 	var data="";
-	data+="<h2"+obj.subject+"</h2>";
+	data+="<h2>"+obj.subject+"</h2>";
+	data+="<p> Subject:"+obj.description+"</p>";
 	data+="<p>User: "+obj.username+"</p>"
 	data+="<p>Date: Not Implemented</p>";
 	data+="<p>Time: "+convert_time(obj.fromhour,obj.fromminute,obj.tohour,obj.tominute)+"</p>";
@@ -374,6 +365,7 @@ function searchresults(group,minsize,maxsize,partner,fromhour,fromminute,tohour,
 			//{alert("XD")}
 			//request_button.push("Join!")
 		//temp+="<div><h4>"+studysession[i].subject+"<button onclick=\"request("+i+")\">"+request_button[i]+"</button>"+"</h4>"+"<p>"+studysession[i].description+"</p></div>";
+		if(usernamecok!=filsessions[i].username)
 		temp+="<div>"+displayobjectdata(filsessions[i],i)+"</div>";
 	document.getElementById("results").innerHTML=temp;
 	
@@ -493,7 +485,7 @@ function searchresults(group,minsize,maxsize,partner,fromhour,fromminute,tohour,
 		temp="";
 		for(var i=0;i<filsessions.length;i++)
 			if(usernamecok!=filsessions[i].username)
-			temp+="<div><h4>"+filsessions[i].subject+"</h4>"+"<p>"+filsessions[i].description+"<button onclick=\"requestsessions("+i+")\">"+"Request to join"+"</button>"+"</p></div>";
+			temp+="<div>"+displayobjectdata(filsessions[i],i)+"</div>";
 		document.getElementById("results").innerHTML=temp;
 			
 			}
