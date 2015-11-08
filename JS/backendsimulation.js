@@ -753,5 +753,9 @@ function user_link(selected)
         var result = str.link("***sashank profile page***");
     else if (selected == "user_Cheng")
         var result = str.link("***Cheng profile page***");
+    else if (selected == "user_Nahnah")
+        var result = str.link("***Nahnah profile page***");
+    else if (selected == "user_George")
+        var result = str.link("***George profile page***");
     document.getElementById("user_profile").innerHTML = result;
 }
