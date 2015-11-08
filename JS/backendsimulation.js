@@ -66,7 +66,8 @@ function init()
 	ss1.username="buddy";
 	ss1.startminute=803;
 	ss1.endminute=910;
-	
+	ss1.recurrence = 0;
+
 	ss2.subject="CSE511"
 	ss2.description="XDDDD";
 	ss2.group=false
@@ -82,10 +83,11 @@ function init()
 	ss2.lecture_review=false
 	ss2.notes=true
 	ss2.other=false
-	ss2.username="sashank";
+	ss2.username = "sashank";
+	ss2.recurrence = 1;
 	
 	ss3.subject="CSE556"
-	ss3.description="QQQQQ";
+	ss3.description="Should this being created after they selected sth in post study seesion";
 	ss3.group=false
 	ss3.partner=true
 	ss3.fromhour=1
@@ -96,7 +98,9 @@ function init()
 	ss3.examstudy=false
 	ss3.lecture_review=false
 	ss3.notes=true
-	ss3.other=true
+	ss3.other = true
+	ss3.username = "Cheng";
+	ss3.recurrence = 1;
 	
 	ss4.subject="ESE444"
 	ss4.description="QQXD";
@@ -110,7 +114,9 @@ function init()
 	ss4.examstudy=false
 	ss4.lecture_review=false
 	ss4.notes=true
-	ss4.other=true
+	ss4.other = true
+	ss4.username = "Nahnah";
+	ss4.recurrence = 3;
 	
 	studysession.push(ss1);
 	studysession.push(ss2);
@@ -369,10 +375,11 @@ function displayobjectdata(obj,i)
 	var data="";
 	data+="<h2>"+obj.subject+"</h2>";
 	data+="<p> Subject:"+obj.description+"</p>";
-	data+="<p>User: "+obj.username+"</p>"
+	data+="<p>User: "+obj.username+"</p>"           //where can we get the info of username?
 	data+="<p>Date: Not Implemented</p>";
 	data+="<p>Time: "+convert_time(obj.fromhour,obj.fromminute,obj.tohour,obj.tominute)+"</p>";
-	data+="<p>Location:"+obj.place+"</p>";
+	data += "<p>Location:" + obj.place + "</p>";
+	data += "<p>Recurrence:" + obj.recurrence + "</p>";
 	if (isInRequestSession(obj))
 		data+="<button> waiting for approval</button>";
 	else
@@ -745,17 +752,17 @@ function MS_show_msg(i)
 		"<input type=\"button\" value=\"Delete\" id=\"MS_delete\" onclick=\"MS_delete("+i+")\"></button>"
 }
 
-function user_link(selected)
+function user_link(username)
 {
-    if (selected == "user_buddy")
+    if (username == "buddy")
         var result = str.link("***user profile page***");       //where is the user profile link? I couldn't find it
-    else if (selected == "user_sashank")
+    else if (username == "sashank")
         var result = str.link("***sashank profile page***");
-    else if (selected == "user_Cheng")
+    else if (username == "uCheng")
         var result = str.link("***Cheng profile page***");
-    else if (selected == "user_Nahnah")
+    else if (username == "Nahnah")
         var result = str.link("***Nahnah profile page***");
-    else if (selected == "user_George")
+    else if (username == "George")
         var result = str.link("***George profile page***");
     document.getElementById("user_profile").innerHTML = result;
 }
