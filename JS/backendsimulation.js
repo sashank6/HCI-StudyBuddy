@@ -88,7 +88,11 @@ function init()
 	ss2.recurrence = 1;
 	
 	ss3.subject="CSE556"
+<<<<<<< HEAD
 	ss3.description="Human Computer Interaction";
+=======
+	ss3.description="Human CI";
+>>>>>>> origin/master
 	ss3.group=false
 	ss3.partner=true
 	ss3.fromhour=1
@@ -280,10 +284,10 @@ function register()
 	if(password==confirmpassword)
 		window.location="verification.html";
 }
-function isdefault(group,minsize,maxsize,partner,startminute,endminute,homework,examstudy,lecture_review,notes,other)
+function isdefault(group,minsize,maxsize,partner,startminute,endminute,homework,examstudy,lecture_review,notes,other,recur_index)
 {
 	//alert(group,minsize,maxsize,partner,fromhour,fromminute,tohour,tominute,homework,examstudy,lecture_review,notes,other);
-	return (group==false && minsize==0 && maxsize==0 && partner==false && startminute==0&&endminute==0 && homework==false && examstudy==false && lecture_review==false && notes==false && other==false);
+	return (group==false && minsize==0 && maxsize==0 && partner==false && startminute==0&&endminute==0 && homework==false && examstudy==false && lecture_review==false && notes==false && other==false && recur_index==0);
 }
 function applyfilter()
 {
@@ -326,9 +330,10 @@ function applyfilter()
 	
 	var startminute=fromhour*60+fromminute;
 	var endminute=tohour*60+tominute;
-	alert(startminute);
+	var recur_index=document.getElementById("recur_select").selectedIndex;
+	alert(recur_index);
 	//alert("Apply Filter");
-	searchresults(group,minsize,maxsize,partner,startminute,endminute,homework,examstudy,lecture_review,notes,other);
+	searchresults(group,minsize,maxsize,partner,startminute,endminute,homework,examstudy,lecture_review,notes,other,recur_index);
 	
 	
 	
@@ -374,13 +379,31 @@ function displayobjectdata(obj,i)
 	//alert(obj.subject);
 	
 	var data="";
-	data+="<h2>"+obj.subject+"</h2>";
-	data+="<p> Subject:"+obj.description+"</p>";
+	data+="<h2>"+obj.subject+"-"+obj.description+"</h2>";
+	
 	data+="<p>User: "+obj.username+"</p>"           //where can we get the info of username?
 	data+="<p>Date: Not Implemented</p>";
 	data+="<p>Time: "+convert_time(obj.fromhour,obj.fromminute,obj.tohour,obj.tominute)+"</p>";
 	data += "<p>Location:" + obj.place + "</p>";
 	data += "<p>Recurrence: " + recurrence_freq(obj.recurrence) + "</p>";
+	data+="<p> Purpose:";
+	var tesr=[]
+	if(obj.homework)
+		tesr.push("Homework");
+	if(obj.examstudy)
+		tesr.push("Study for Exam");
+	if(obj.notes)
+		tesr.push("Share Notes");
+	if(obj.lecture_review)
+		tesr.push("Lecture Review");
+	if(obj.other)
+		tesr.push("Other");
+	var r=0;
+	for(r=0;r<tesr.length-1;r++)
+		data+=" "+tesr[r]+",";
+	data+=" "+tesr[r];
+	
+	data+="<p>"+obj.comments+"</p>"
 	if (isInRequestSession(obj))
 		data+="<button> waiting for approval</button>";
 	else
@@ -549,8 +572,8 @@ function searchresults(group,minsize,maxsize,partner,startminute,endminute,homew
 				
 			}
 
-			if (recurrence) {
-			    p = newsessions[i].recurrence == true;
+			if (recurrence>0) {
+			    p = (newsessions[i].recurrence == recurrence);
 			    if (p) {
 			        filsessions.push(newsessions[i]);
 			        continue;
