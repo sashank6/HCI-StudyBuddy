@@ -87,7 +87,7 @@ function init()
 	ss2.recurrence = 1;
 	
 	ss3.subject="CSE556"
-	ss3.description="Should this being created after they selected sth in post study seesion";
+	ss3.description="Human CI";
 	ss3.group=false
 	ss3.partner=true
 	ss3.fromhour=1
@@ -374,13 +374,31 @@ function displayobjectdata(obj,i)
 	//alert(obj.subject);
 	
 	var data="";
-	data+="<h2>"+obj.subject+"</h2>";
-	data+="<p> Subject:"+obj.description+"</p>";
+	data+="<h2>"+obj.subject+"-"+obj.description+"</h2>";
+	
 	data+="<p>User: "+obj.username+"</p>"           //where can we get the info of username?
 	data+="<p>Date: Not Implemented</p>";
 	data+="<p>Time: "+convert_time(obj.fromhour,obj.fromminute,obj.tohour,obj.tominute)+"</p>";
 	data += "<p>Location:" + obj.place + "</p>";
 	data += "<p>Recurrence: " + recurrence_freq(obj.recurrence) + "</p>";
+	data+="<p> Purpose:";
+	var tesr=[]
+	if(obj.homework)
+		tesr.push("Homework");
+	if(obj.examstudy)
+		tesr.push("Study for Exam");
+	if(obj.notes)
+		tesr.push("Share Notes");
+	if(obj.lecture_review)
+		tesr.push("Lecture Review");
+	if(obj.other)
+		tesr.push("Other");
+	var r=0;
+	for(r=0;r<tesr.length-1;r++)
+		data+=" "+tesr[r]+",";
+	data+=" "+tesr[r];
+	
+	
 	if (isInRequestSession(obj))
 		data+="<button> waiting for approval</button>";
 	else
