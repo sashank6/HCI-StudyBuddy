@@ -124,6 +124,8 @@ function init()
 function convert_time(fhour,fminute,thour,tminute)
 {
 	var temp="";
+	if (fminute < 10) fminute = "0"+fminute
+	if (tminute < 10) tminute = "0"+tminute
 	if(fhour>12)
 		temp+=parseInt(fhour-12)+":"+fminute+"pm";
 	else
