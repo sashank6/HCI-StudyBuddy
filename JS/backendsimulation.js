@@ -241,7 +241,7 @@ function displayrequest_sessions()
 		var temp="";
 		for(var i=0;i<request_sessions.length;i++)
 		{
-		    temp += "<br/><div><p><u>" + request_sessions[i].subject + " with " + request_sessions[i].username + "</u></p><p> Location: " + request_sessions[i].place + "</p><p> Date: " + request_sessions[i].date + "</p><p> Time: " + request_sessions[i].fromhour + ":" + request_sessions[i].fromminute + "-" + request_sessions[i].tohour + ":" + request_sessions[i].tominute + "</p><p> Recurrence: " + recurrence_freq(request_sessions[i].recurrence) + "</p></div>";
+		    temp += "<br/><div><p><u>" + request_sessions[i].subject + " with " + request_sessions[i].username + "</u></p><p> Location: " + request_sessions[i].place + "</p><p> Date: " + request_sessions[i].date + "</p><p> Time: " + convert_time(request_sessions[i].fromhour, request_sessions[i].fromminute, request_sessions[i].tohour, request_sessions[i].tominute) + "</p><p> Recurrence: " + recurrence_freq(request_sessions[i].recurrence) + "</p></div>";
 		}
 		document.getElementById("requestedsessions").innerHTML=temp;
 	}
@@ -336,7 +336,7 @@ function applyfilter()
 	var startminute=fromhour*60+fromminute;
 	var endminute=tohour*60+tominute;
 	var recur_index=document.getElementById("recur_select").selectedIndex;
-	alert(recur_index);
+	//alert(recur_index);
 	//alert("Apply Filter");
 	searchresults(group,minsize,maxsize,partner,startminute,endminute,homework,examstudy,lecture_review,notes,other,recur_index);
 
