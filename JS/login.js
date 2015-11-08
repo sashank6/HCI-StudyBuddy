@@ -4,7 +4,15 @@ function loginverify()
 	var password=document.getElementById("password").value;
 	if(usernamevalidate(username)&&passwordvalidate(password))
 	{	
-	if((username=="sashank" && password=="hci556a")||(username=="buddy" && password=="hci556a"))
+	if((username=="sashank" && password=="hci556a")||
+	   (username=="buddy" && password=="hci556a")||
+	   
+	   //added 4
+	   (username=="Sarah92" && password=="italy101")||
+	   (username=="JimMechE" && password=="helpm3")||
+	   (username=="bobEE" && password=="webd3v")||
+	   (username=="lawlschool" && password=="f3dupjur"))
+	
 	{
 		document.cookie="username="+username;
 		window.location="home.html";
