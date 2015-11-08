@@ -758,7 +758,7 @@ function user_link(username)
         var result = str.link("***user profile page***");       //where is the user profile link? I couldn't find it
     else if (username == "sashank")
         var result = str.link("***sashank profile page***");
-    else if (username == "uCheng")
+    else if (username == "Cheng")
         var result = str.link("***Cheng profile page***");
     else if (username == "Nahnah")
         var result = str.link("***Nahnah profile page***");
