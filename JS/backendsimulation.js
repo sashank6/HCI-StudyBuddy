@@ -32,7 +32,8 @@ function init()
 	for(var i=1;i<=12;i++)
 		hour_html+="<option>"+i+"</option>";
 	for(var i=0;i<60;i++)
-		minute_html+="<option>"+i+"</option>"
+		if (i < 10) minute_html+="<option>0"+i+"</option>"
+		else minute_html+="<option>"+i+"</option>"
 	document.getElementById("from-hour").innerHTML=hour_html;
 	document.getElementById("to-hour").innerHTML=hour_html;
 	document.getElementById("from-minute").innerHTML=minute_html;

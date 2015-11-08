@@ -69,6 +69,18 @@ function PR_detail(i)
 function PR_accept(i)
 {
 	alert("accepted")
+	/*
+	=localStorage.getItem(usernamecok+"_1");
+	myscheduled[i].subject = pending_requests[i].post.subject
+	myscheduled[i].username = pending_requests[i].username
+	//myscheduled[i].place = pending_requests[i].post.place //we do not have this feature
+	//myscheduled[i].date = pending_requests[i].post.date //no this feature
+	myscheduled[i].fromhour = pending_requests[i].post.fromhour
+	myscheduled[i].fromminute = pending_requests[i].post.fromminute
+	myscheduled[i].tohour = pending_requests[i].post.tohour
+	myscheduled[i].tominute = pending_requests[i].post.tominute
+	//myscheduled[i].recurrence = pending_requests[i].post.recurrence //no this feature
+	*/
 	PR_delete(i)
 }
 
