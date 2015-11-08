@@ -57,7 +57,11 @@ function display_pendingrequests()
 		{
 			
 			temp+="<h3 onclick=\"PR_detail("+i+")\">"+pending_requests[i].username+"</h3>is asking to join<h3>"+pending_requests[i].post.subject+"</h3></br>"+
-				"Purpose:"+pending_requests[i].description+"</br>Date:"+pending_requests[i].date+"</br>Location:"+pending_requests[i].location+
+				"Purpose:"+pending_requests[i].description+"</br>Date:"+pending_requests[i].date+
+				"</br>From:"+pending_requests[i].fromhour+":"+pending_requests[i].fromminute+
+				"</br>To:"+pending_requests[i].tohour+":"+pending_requests[i].tominute+
+				"</br>Location:"+pending_requests[i].location+
+				"</br>Recurrence:"+pending_requests[i].recurrence+"</br>"+
 				"<input type=\"button\" value=\"Accept\" id=\"PR_accept\" onclick=\"PR_accept("+i+")\"></button>"+
 				"<input type=\"button\" value=\"Deny\" id=\"PR_deny\" onclick=\"PR_deny("+i+")\"></button>"
 		}
