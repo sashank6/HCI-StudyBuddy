@@ -368,7 +368,7 @@ function displayobjectdata(obj,i)
 	return data;
 	
 }
-<<<<<<< HEAD
+
 
 function isInRequestSession(obj)
 {
@@ -387,10 +387,10 @@ function isInRequestSession(obj)
 	
 }
 
-function searchresults(group,minsize,maxsize,partner,fromhour,fromminute,tohour,tominute,homework,examstudy,lecture_review,notes,other)
-=======
+//function searchresults(group,minsize,maxsize,partner,fromhour,fromminute,tohour,tominute,homework,examstudy,lecture_review,notes,other)
+
 function searchresults(group,minsize,maxsize,partner,startminute,endminute,homework,examstudy,lecture_review,notes,other)
->>>>>>> origin/master
+
 {
 	default_mode=isdefault(group,minsize,maxsize,partner,startminute,endminute,homework,examstudy,lecture_review,notes,other)
 	//alert(group+""+minsize+""+maxsize+""+partner+""+fromhour+fromminute+tohour+tominute+homework+examstudy+lecture_review+notes+other);
