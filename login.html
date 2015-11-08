@@ -75,10 +75,18 @@
 				<tr>
 					<td id="register_error_message" colspan="2" align="right" style="font-family: Helvetica; margin:200px; color:red;" ></td>
 				</tr>
+				   <tr>
+                        <td align="right" style="font-family: Helvetica; margin:200px;">Name:</td>
+                        <td>
+                            <input type="text" style="width:200px;" name="email" placeholder="first and last name, or a nickname" id="email" onkeydown="if (event.keyCode == 13) document.getElementById('register').click()" />
+                            
+                        </td>
+                        
+                    </tr>
                     <tr>
                         <td align="right" style="font-family: Helvetica; margin:200px;">Email:</td>
                         <td>
-                            <input type="text" name="email" placeholder=".edu email" id="email" onkeydown="if (event.keyCode == 13) document.getElementById('register').click()" />
+                            <input type="text" style="width:200px;" name="email" placeholder="your wustl.edu email" id="email" onkeydown="if (event.keyCode == 13) document.getElementById('register').click()" />
                             
                         </td>
                         
@@ -87,7 +95,7 @@
                     <tr>
                         <td align="right" style="font-family: Helvetica;">Username:</td>
                         <td>
-                            <input type="text" name="username" placeholder="4-10 characters" id="username1" onkeydown="if (event.keyCode == 13) document.getElementById('register').click()" />
+                            <input type="text" style="width:200px;" name="username" placeholder="4-10 characters" id="username1" onkeydown="if (event.keyCode == 13) document.getElementById('register').click()" />
                             
                         </td>
                         
@@ -96,14 +104,14 @@
                     <tr>
                         <td align="right" style="font-family: Helvetica;"> Password:</td>
                         <td>
-                            <input type="password" name="password" placeholder="6-8 characters" id="password1" onkeydown="if (event.keyCode == 13) document.getElementById('register').click()" /><br />
+                            <input type="password" style="width:200px;" name="password" placeholder="6-8 characters" id="password1" onkeydown="if (event.keyCode == 13) document.getElementById('register').click()" /><br />
                             
                         </td>
                     </tr>
                     <tr>
                        
                         <td align="right" style="font-family: Helvetica;">Confirm Password:</td>
-                        <td><input type="password" name="confirmpassword" placeholder="6-8 digits" id="confirmpassword" onkeydown="if (event.keyCode == 13) document.getElementById('register').click()" /><br />
+                        <td><input type="password" style="width:200px;" name="confirmpassword" placeholder="6-8 digits" id="confirmpassword" onkeydown="if (event.keyCode == 13) document.getElementById('register').click()" /><br />
                     </tr>
                 </table>
 				 </div>
