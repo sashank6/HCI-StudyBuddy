@@ -442,14 +442,16 @@ function isInRequestSession(obj)
 {
 	request_string = localStorage.getItem(usernamecok+"_3")
 	request_list = JSON.parse(request_string)
-	for (i = 0; i < request_list.length; i++)
-	{
-		//may still need to and location, recurrence, etc if those conditions are added into filter
-		if (request_list[i].subject == obj.subject && request_list[i].fromhour == obj.fromhour && request_list[i].fromminute == obj.fromminute)
-			if (request_list[i].tohour == obj.tohour && request_list[i].tominute == obj.tominute)
-				return true
-	
-	}
+	if (request_list.length == null) return false
+	else
+		for (i = 0; i < request_list.length; i++)
+		{
+			//may still need to and location, recurrence, etc if those conditions are added into filter
+			if (request_list[i].subject == obj.subject && request_list[i].fromhour == obj.fromhour && request_list[i].fromminute == obj.fromminute)
+				if (request_list[i].tohour == obj.tohour && request_list[i].tominute == obj.tominute)
+					return true
+		
+		}
 	return false	
 	
 	
