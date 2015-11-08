@@ -67,7 +67,7 @@ function init()
 	ss1.startminute=803;
 	ss1.endminute=910;
 	ss1.recurrence = 5;
-	ss1.comments = "description"
+	ss1.comments = "description of 200 characters maybe ;alskdjf;lkjas;dlkjfweuhfuhiguhiuh "
 
 	ss2.subject="CSE511"
 	ss2.description="Intro to Artificial Intelligence";
@@ -104,7 +104,7 @@ function init()
 	ss3.recurrence = 1;
 	
 	ss4.subject="ESE444"
-	ss4.description="QQXD";
+	ss4.description="Sensors and Actuators";
 	ss4.group=false
 	ss4.partner=false
 	ss4.fromhour=1
