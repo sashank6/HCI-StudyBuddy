@@ -12,8 +12,7 @@
     <script src="JS/datastructures.js" type="text/javascript"></script>
     <script src="datePicrSrc/datepickr.js" type="text/javascript"></script>
     <script src="JS/GeoJavaScript.js" type="text/javascript"></script>
-
-    <script src="JS/InitPostStuddySession.js" type="text/javascript"></script>
+    <!--<script src="JS/InitPostStuddySession.js" type="text/javascript"></script>-->
 </head>
 <body onload="PostStudySession_Init()">
     <div id="header">
@@ -32,10 +31,12 @@
                        <legend style="font-weight:bold;font-size:large;" >Criteria for Session:</legend>
                        <div id="outerGrp-1">
                        <div id="courseDiv" >
-                          <p style="font-weight:bold;">Course:&nbsp<input type=text name="subject" maxlength="35" style="width:200px;" placeholder="Course ID (number) and name." /></p>
+                          <p style="font-weight:bold;">Course:&nbsp ID:&nbsp<input type=text name="subjectID" maxlength="10" style="width:50px;" placeholder="ID" />
+                          &nbsp Name:&nbsp<input type=text name="subjectName" maxlength="35" style="width:125px;" placeholder="Course Name" />
+                          </p>
                        </div>
                        <div id="dateDiv">
-                         <p style="font-weight:bold;">Date:&nbsp<input id="datepickr" placeholder="Select session date" /></p>
+                         <p style="font-weight:bold;">Date:&nbsp<input id="datepickr"  placeholder="click here for date" />&nbsp<img src="images/calendar-icon.gif" id="calendar" alt="cal" /></p>
                          <script type="text/javascript">
                              datepickr('#datepickr')
                          </script>
@@ -64,7 +65,7 @@
                        <input type="checkbox" name="examstudy"value="Exam Study" />&nbsp Study for Exam<br />
                        </div>
                        <div id="checkDiv-2" style="width:20%;">
-                       <input type="checkbox" name="notes" value="Notes" />&nbsp Compare Notes <br />
+                       <input type="checkbox" name="notes" value="Notes" />&nbsp Notes <br />
                        <input type="checkbox" name="other"value="Other..." />&nbsp Other<br />
                        </div>
                        <div id="clearDiv-2"></div>
@@ -86,7 +87,7 @@
                        <div id="selectOccDiv">  
                        <h4 style="font-weight:bold;">Freq. Of Session</h4>                   
                        <select name='selectOccurance' id='selectOccurance'>
-                            <option value=''>-- Select --</option>
+                            <option value='' id='select'>-- Select --</option>
                             <option value="1">Once</option>
                             <option value="2">Monthly</option>
                             <option value="3">Weekly</option>
@@ -95,16 +96,15 @@
                       </select>          
                       </div>
                       <div id="notesDiv">
-                      <h4 style="font-weight:bold;">Notes</h4> 
-                      <textarea rows="5" cols="10" maxlength="100" placeholder="Type in info..">
-                      </textarea>
+                      <h4 style="font-weight:bold;">Session Notes</h4> 
+                         <textarea rows="10" cols="20" id="sessionNotes" name="sessionNotes" maxlength="100" placeholder="Type in info.." ></textarea>
                       </div>
                        <div id="clearDiv"></div>
                        </div>
  
                       <br />
                       <div>
-                      <input type="button" name="ClickButton"  value="POST" style="display:block;" onclick="Identify()"/>&nbsp&nbsp
+                      <input type="button" name="ClickButton"  value="POST" style="display:block;" onclick="submitData()"/>&nbsp&nbsp
                       <input type="button" name="ClickEnablePost"  style="display:none;" value="Post Another Session?" onclick="EnableClickButton()"  />
                       </div>
                           <!---<input id="Submit2" type="submit" value="submit" onclick="Identify()" /> -->
@@ -114,9 +114,8 @@
 
                 <div class="col2">
                     <!-- Column 2start -->
-                 
-                    <h2><img src="images/female3.png" style="width:1.5em; height:1.5em; vertical-align:text-bottom;" alt="silloette"/><span id="username_display_post"></span></h2>
-					<h3>Wash. U. in St. Louis</h3>
+                   <h2><img src="images/female3.png" style="width:1.5em; height:1.5em; vertical-align:text-bottom;" alt="silloette"/>NahNah Kim</h2>
+					<h3>Wash. U. in St. Louis</h3>                 
 					<br />
 
                     <hr />
