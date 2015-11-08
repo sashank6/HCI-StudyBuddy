@@ -1,7 +1,8 @@
 var studysession=[]
 var searchlist=[]
 var default_data = true
-var post={group:false,minsize:0,maxsize:0,partner:false,fromhour:0,fromminute:0,tohour:0,tominute:0,homework:false,examstudy:false,lecture_review:false,notes:false,other:false,subject:"",description:"",place:"",recurrence:0,username:""}
+var post={group:false,minsize:0,maxsize:0,partner:false,fromhour:0,fromminute:0,tohour:0,tominute:0,homework:false,examstudy:false,startminute:0,endminute:0,lecture_review:false,notes:false,other:false,subject:"",description:"",place:"",recurrence:0,username:"",comments:""};
+var request={username:"",post:null}
 //profile global
 var name = "Cheng Lin"
 var university = "Wash. U. in St. Louis"
@@ -63,6 +64,8 @@ function init()
 	ss1.notes=false
 	ss1.other=false
 	ss1.username="buddy";
+	ss1.startminute=803;
+	ss1.endminute=910;
 	
 	ss2.subject="CSE511"
 	ss2.description="XDDDD";
@@ -73,7 +76,7 @@ function init()
 	ss2.fromhour=1
 	ss2.tohour=5
 	ss2.fromminute=59
-	ss2.tominute=00
+	ss2.tominute=0
 	ss2.homework=true
 	ss2.examstudy=true
 	ss2.lecture_review=false
@@ -88,7 +91,7 @@ function init()
 	ss3.fromhour=1
 	ss3.tohour=15
 	ss3.fromminute=23
-	ss3.tominute=01
+	ss3.tominute=1
 	ss3.homework=true
 	ss3.examstudy=false
 	ss3.lecture_review=false
@@ -102,7 +105,7 @@ function init()
 	ss4.fromhour=1
 	ss4.tohour=15
 	ss4.fromminute=23
-	ss4.tominute=01
+	ss4.tominute=1
 	ss4.homework=true
 	ss4.examstudy=false
 	ss4.lecture_review=false
@@ -254,10 +257,10 @@ function register()
 	if(password==confirmpassword)
 		window.location="verification.html";
 }
-function isdefault(group,minsize,maxsize,partner,fromhour,fromminute,tohour,tominute,homework,examstudy,lecture_review,notes,other)
+function isdefault(group,minsize,maxsize,partner,startminute,endminute,homework,examstudy,lecture_review,notes,other)
 {
 	//alert(group,minsize,maxsize,partner,fromhour,fromminute,tohour,tominute,homework,examstudy,lecture_review,notes,other);
-	return (group==false && minsize==0 && maxsize==0 && partner==false && fromhour==0 && fromminute==-1 && tohour==0 && tominute==-1 && homework==false && examstudy==false && lecture_review==false && notes==false && other==false);
+	return (group==false && minsize==0 && maxsize==0 && partner==false && startminute==0&&endminute==0 && homework==false && examstudy==false && lecture_review==false && notes==false && other==false);
 }
 function applyfilter()
 {
@@ -293,9 +296,16 @@ function applyfilter()
 	        tohour += 12;
 	    }
 	}
+	if(fromminute==-1)
+		fromminute++;
+	if(tominute==-1)
+		tominute++;
 	
+	var startminute=fromhour*60+fromminute;
+	var endminute=tohour*60+tominute;
+	alert(startminute);
 	//alert("Apply Filter");
-	searchresults(group,minsize,maxsize,partner,fromhour,fromminute,tohour,tominute,homework,examstudy,lecture_review,notes,other);
+	searchresults(group,minsize,maxsize,partner,startminute,endminute,homework,examstudy,lecture_review,notes,other);
 	
 	
 	
@@ -353,10 +363,11 @@ function displayobjectdata(obj,i)
 	return data;
 	
 }
-function searchresults(group,minsize,maxsize,partner,fromhour,fromminute,tohour,tominute,homework,examstudy,lecture_review,notes,other)
+function searchresults(group,minsize,maxsize,partner,startminute,endminute,homework,examstudy,lecture_review,notes,other)
 {
-	default_mode=isdefault(group,minsize,maxsize,partner,fromhour,fromminute,tohour,tominute,homework,examstudy,lecture_review,notes,other)
+	default_mode=isdefault(group,minsize,maxsize,partner,startminute,endminute,homework,examstudy,lecture_review,notes,other)
 	//alert(group+""+minsize+""+maxsize+""+partner+""+fromhour+fromminute+tohour+tominute+homework+examstudy+lecture_review+notes+other);
+	alert(default_mode);
 	default_course=searchlist.length==0;
 	var temp="";
 	if(default_mode && default_course)
@@ -462,7 +473,7 @@ function searchresults(group,minsize,maxsize,partner,fromhour,fromminute,tohour,
 				
 			}
 			
-			if(newsessions[i].fromhour >=fromhour && newsessions[i].tohour <=tohour && newsessions[i].fromminute >=fromminute && newsessions[i].tominute<=tominute)
+			if(newsessions[i].startminute>=startminute&&newsessions[i].endminute<=endminute)
 			{
 				filsessions.push(newsessions[i]);
 				//alert("time"+i);
