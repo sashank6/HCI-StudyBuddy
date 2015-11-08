@@ -196,6 +196,7 @@ function requestsessions(i)
 	alert(end_user);
 	alert(t);
 	localStorage.setItem(end_user+"_9",t);
+	applyfilter();
 	
 }
 function displayrequest_sessions()
@@ -347,12 +348,34 @@ function displayobjectdata(obj,i)
 	data+="<p>Date: Not Implemented</p>";
 	data+="<p>Time: "+convert_time(obj.fromhour,obj.fromminute,obj.tohour,obj.tominute)+"</p>";
 	data+="<p>Location:"+obj.place+"</p>";
-	data+="<button onclick=\"requestsessions("+i+")\">"+"Request to join"+"</button>";
+	if (isInRequestSession(obj))
+		data+="<button> waiting for approval</button>";
+	else
+		data+="<button onclick=\"requestsessions("+i+")\">"+"Request to join"+"</button>";
 	data+="<hr/>"
+	
 	
 	return data;
 	
 }
+
+function isInRequestSession(obj)
+{
+	request_string = localStorage.getItem(usernamecok+"_3")
+	request_list = JSON.parse(request_string)
+	for (i = 0; i < request_list.length; i++)
+	{
+		//may still need to and location, recurrence, etc if those conditions are added into filter
+		if (request_list[i].subject == obj.subject && request_list[i].fromhour == obj.fromhour && request_list[i].fromminute == obj.fromminute)
+			if (request_list[i].tohour == obj.tohour && request_list[i].tominute == obj.tominute)
+				return true
+	
+	}
+	return false	
+	
+	
+}
+
 function searchresults(group,minsize,maxsize,partner,fromhour,fromminute,tohour,tominute,homework,examstudy,lecture_review,notes,other)
 {
 	default_mode=isdefault(group,minsize,maxsize,partner,fromhour,fromminute,tohour,tominute,homework,examstudy,lecture_review,notes,other)
