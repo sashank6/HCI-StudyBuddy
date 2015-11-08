@@ -398,7 +398,7 @@ function displayobjectdata(obj,i)
 		data+=" "+tesr[r]+",";
 	data+=" "+tesr[r];
 	
-	
+	data+="<p>"+obj.comments+"</p>"
 	if (isInRequestSession(obj))
 		data+="<button> waiting for approval</button>";
 	else
