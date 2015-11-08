@@ -66,7 +66,7 @@ function init()
 	ss1.username="buddy";
 	ss1.startminute=803;
 	ss1.endminute=910;
-	ss1.recurrence = 0;
+	ss1.recurrence = 5;
 
 	ss2.subject="CSE511"
 	ss2.description="XDDDD";
@@ -236,7 +236,7 @@ function displayrequest_sessions()
 		var temp="";
 		for(var i=0;i<request_sessions.length;i++)
 		{
-		    temp += "<div><p><u>" + request_sessions[i].subject + " with " + request_sessions[i].username + "</u></p><p> Location: " + request_sessions[i].place + "</p><p> Date: " + request_sessions[i].date + "</p><p> Time: " + request_sessions[i].fromhour +":"+ request_sessions[i].fromminute + "-" + request_sessions[i].tohour +":"+ request_sessions[i].tominute + "</p><p> Recurrence: " + request_sessions[i].recurrence + "</p></div>";
+		    temp += "<div><p><u>" + request_sessions[i].subject + " with " + request_sessions[i].username + "</u></p><p> Location: " + request_sessions[i].place + "</p><p> Date: " + request_sessions[i].date + "</p><p> Time: " + request_sessions[i].fromhour +":"+ request_sessions[i].fromminute + "-" + request_sessions[i].tohour +":"+ request_sessions[i].tominute + "</p><p> Recurrence: " +  request_sessions[i].recurrence + "</p></div>";
 		}
 		document.getElementById("requestedsessions").innerHTML=temp;
 	}
@@ -379,7 +379,7 @@ function displayobjectdata(obj,i)
 	data+="<p>Date: Not Implemented</p>";
 	data+="<p>Time: "+convert_time(obj.fromhour,obj.fromminute,obj.tohour,obj.tominute)+"</p>";
 	data += "<p>Location:" + obj.place + "</p>";
-	data += "<p>Recurrence:" + obj.recurrence + "</p>";
+	data += "<p>Recurrence: " + recurrence_freq(obj.recurrence) + "</p>";
 	if (isInRequestSession(obj))
 		data+="<button> waiting for approval</button>";
 	else
@@ -389,6 +389,32 @@ function displayobjectdata(obj,i)
 	
 	return data;
 	
+}
+
+function recurrence_freq(index)
+{
+    temp = "";
+    if(index ==1)
+    {
+        temp += "Once"
+        return temp;
+    }
+    else if (index == 2) {
+        temp += "Monthly"
+        return temp;
+    }
+    else if (index == 3) {
+        temp += "Weekly"
+        return temp;
+    }
+    else if (index == 4) {
+        temp += "Daily"
+        return temp;
+    }
+    else if (index == 5) {
+        temp += "Daily(M-F)"
+        return temp;
+    }
 }
 
 
@@ -411,10 +437,10 @@ function isInRequestSession(obj)
 
 //function searchresults(group,minsize,maxsize,partner,fromhour,fromminute,tohour,tominute,homework,examstudy,lecture_review,notes,other)
 
-function searchresults(group,minsize,maxsize,partner,startminute,endminute,homework,examstudy,lecture_review,notes,other)
+function searchresults(group,minsize,maxsize,partner,startminute,endminute,homework,examstudy,lecture_review,notes,other,recurrence)
 
 {
-	default_mode=isdefault(group,minsize,maxsize,partner,startminute,endminute,homework,examstudy,lecture_review,notes,other)
+    default_mode = isdefault(group, minsize, maxsize, partner, startminute, endminute, homework, examstudy, lecture_review, notes, other, recurrence)
 	//alert(group+""+minsize+""+maxsize+""+partner+""+fromhour+fromminute+tohour+tominute+homework+examstudy+lecture_review+notes+other);
 	alert(default_mode);
 	default_course=searchlist.length==0;
@@ -520,6 +546,15 @@ function searchresults(group,minsize,maxsize,partner,startminute,endminute,homew
 				continue;
 			}
 				
+			}
+
+			if (recurrence) {
+			    p = newsessions[i].recurrence == true;
+			    if (p) {
+			        filsessions.push(newsessions[i]);
+			        continue;
+			    }
+
 			}
 			
 			if(newsessions[i].startminute>=startminute&&newsessions[i].endminute<=endminute)
