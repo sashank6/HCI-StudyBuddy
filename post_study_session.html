@@ -46,7 +46,7 @@
                        </div>
                        <br />
                        <div id="outerDiv-2">
-                       <div id="timeDiv" style="width:55%;">
+                       <div id="timeDiv" style="width:100%;">
                         <p style="font-weight:bold;">Location: &nbsp<input type="text" name="sessionlocation" placeholder="Study session location" /></p><br />
                          <p style="font-weight:bold;">Time:&nbsp From:&nbsp<input type="text" name="FromHr" style=width:5%; maxlength="2" placeholder="hh" />:<input type="text" name="FromMin" style=width:7%;  maxlength="2" placeholder="mm" />
                              <select name='FromAmPm' id='FromAmPm' style="width:45px;">
@@ -59,16 +59,20 @@
                             </select>
                         </p>                      
                        </div>
-                       <div id="checkDiv" style="width:25%;">
-                       <input type="checkbox" name="homework" value="Homework" />&nbsp Study Homework <br />
+                       <div id="clearDiv-2"></div>
+                       </div>
+                       <hr />
+                       <div id="checkDiv-Area">
+                       <div id="checkDiv" style="width:30%;">
+                       <input type="checkbox" name="homework" value="Homework" />&nbsp Homework <br />
                        <input type="checkbox" name="lecture_review"value="Lecture Review" />&nbsp Lecture Review<br />
                        <input type="checkbox" name="examstudy"value="Exam Study" />&nbsp Study for Exam<br />
                        </div>
-                       <div id="checkDiv-2" style="width:20%;">
-                       <input type="checkbox" name="notes" value="Notes" />&nbsp Notes <br />
+                       <div id="checkDiv-2" style="width:70%;">
+                       <input type="checkbox" name="notes" value="Notes" />&nbsp Share Notes <br />
                        <input type="checkbox" name="other"value="Other..." />&nbsp Other<br />
                        </div>
-                       <div id="clearDiv-2"></div>
+                       <div id="clearDiv-3"></div>
                        </div>
                        <hr />
                        <div id="outerGrpPart-2">
@@ -107,8 +111,7 @@
                       <input type="button" name="ClickButton"  value="POST" style="display:block;" onclick="submitData()"/>&nbsp&nbsp
                       <input type="button" name="ClickEnablePost"  style="display:none;" value="Post Another Session?" onclick="EnableClickButton()"  />
                       </div>
-                          <!---<input id="Submit2" type="submit" value="submit" onclick="Identify()" /> -->
-                    </fieldset>
+                      </fieldset>
                     </form>
                 </div>
 
@@ -121,7 +124,7 @@
                     <hr />
  				<div class="menu">
 			    <br />
-					<h3><a href="home.html">Home (Search)</a></br></h3>
+					<h3><a href="home.html">Home (Search)</a><br/></h3>
 					<h3><a href="pendingRequests.html">Pending Requests</a></h3>
 					<h3><a href="post_study_session.html">Post Study Session</a></h3>
 					<h3><a onclick="invalidate_cookie()"><u>Logout</u></a></h3>

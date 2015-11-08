@@ -62,7 +62,7 @@ function submitData() {
     // alert(strFromAmPm);
 
     //Creating a block of html and text to display the new entry:
-    strPrintOut = "<div style=\"background-color:#FFFF66;\"> <p style=\"font-weight:bold;font-size:small;\">" + document.DemoForm.subjectID.value.toString() + 
+    strPrintOut = "<div style=\"background-color:none;\"> <p style=\"font-weight:bold;font-size:small;\">" + document.DemoForm.subjectID.value.toString() + 
     ": "+ document.DemoForm.subjectName.value.toString()+"</p>" +
     "<p style=\"font-weight:bold;font-size:small;\">" + document.getElementById('datepickr').value.toString() + "</p>" +
     "<p style=\"font-weight:bold;font-size:small;\"> FROM: " + document.DemoForm.FromHr.value.toString() + ":" + document.DemoForm.FromMin.value.toString() +
@@ -236,13 +236,32 @@ function submitData() {
           return false;
       }
 
+      //Cannot post date in past:
+      var date = new Date(document.DemoForm.datepickr.value.toString());
+      var yesterday = new Date(); // its today at this point will change to yesterday below!
+      var today = new Date();//this is today man!
+
+      var x = 1; // go back to yesterday!
+      yesterday.setDate(yesterday.getDate() - x);//now its yesterday
+
+      var monthNames = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+
+      if (date <= yesterday)
+      {
+          alert(document.DemoForm.datepickr.value.toString() + " is less than today's\ndate: " + monthNames[today.getMonth()] + " "
+                 + today.getDate()+", "+ today.getFullYear()+". Please pick\ntoday's date, or later.");
+          return false;
+      }
+        //UNCOMMENT for DEBUGING...
+       // alert("date passed?");
+
       // Occurance Validation (Anything but "--Select--"):
       //Find selected text in selectOccurance ddl:
        var e = document.DemoForm.selectOccurance;
        var strFreq = e.options[e.selectedIndex].text;
        if (strFreq == "-- Select --")
      {
-         alert('Please enter a valid session frequency or occurance; Monthly, Weekly,Daily, Daily (M-F), or Once');
+         alert('Please enter a valid session frequency or occurance;\nMonthly, Weekly,Daily, Daily (M-F), or Once');
          return false;
      }
 

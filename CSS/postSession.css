@@ -45,17 +45,7 @@
  width:50%;  
 }
 
-#checkDiv
-{
- float:left;
- width:25%;  
-}
 
-#checkDiv-2
-{
- float:left;
- width:25%;
-}
 #clearDiv-2 {
  clear:both;
 }
@@ -72,3 +62,19 @@
    vertical-align:middle;
 }
 
+/*Check boxes */
+#checkDiv
+{
+ float:left;
+ width:25%;  
+}
+
+#checkDiv-2
+{
+ float:left;
+ width:25%;
+}
+
+#clearDiv-3 {
+ clear:both;
+}
