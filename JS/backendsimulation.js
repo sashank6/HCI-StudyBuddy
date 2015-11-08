@@ -20,7 +20,7 @@ var MS_list = [];
 var filsessions=[];
 function init()
 {
-	
+	//localStorage.clear();
 	var usrverif=document.cookie;
 	if(usrverif=="")
 		window.location="login.html";
