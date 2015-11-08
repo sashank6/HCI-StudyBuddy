@@ -26,7 +26,7 @@ function init()
 	var temparray=usrverif.split("=");
 	usernamecok=temparray[1];
 	name=usernamecok;
-	//localStorage.clear();
+	
 	var hour_html="<option> </option>";
 	var minute_html="<option> </option>";
 	for(var i=1;i<=12;i++)
@@ -61,7 +61,6 @@ function init()
 	ss1.lecture_review=true
 	ss1.notes=false
 	ss1.other=false
-	ss1.username="buddy";
 	
 	ss2.subject="CSE511"
 	ss2.description="XDDDD";
@@ -119,6 +118,21 @@ function init()
 	
 	
 }
+function invalidate_cookie()
+{
+	deleteAllCookies();
+	window.location="login.html";
+}
+function deleteAllCookies() {
+    var cookies = document.cookie.split(";");
+
+    for (var i = 0; i < cookies.length; i++) {
+    	var cookie = cookies[i];
+    	var eqPos = cookie.indexOf("=");
+    	var name = eqPos > -1 ? cookie.substr(0, eqPos) : cookie;
+    	document.cookie = name + "=;expires=Thu, 01 Jan 1970 00:00:00 GMT";
+    }
+}
 function convert_time(fhour,fminute,thour,tminute)
 {
 	var temp="";
@@ -158,7 +172,6 @@ function myscheduledsessions()
 
 function requestsessions(i)
 {
-	
 	var request_sessions=localStorage.getItem(usernamecok+"_3");
 	if(request_sessions==null)
 	{
@@ -176,7 +189,7 @@ function requestsessions(i)
 	var end_user=filsessions[i].username;
 	var requests_enduser=localStorage.getItem(end_user+"_9");
 	newobject=Object.create(request);
-	newobject.username=usernamecok;
+	newobject.username=filsessions[i].usernamecok;
 	newobject.post=filsessions[i];
 	if(requests_enduser==null)
 	{
@@ -189,9 +202,7 @@ function requestsessions(i)
 		requests_enduser.push(newobject);
 	}
 	t=JSON.stringify(requests_enduser);
-	alert(end_user);
-	alert(t);
-	localStorage.setItem(end_user+"_9",t);
+	localStorage.setItem(end_user+"_9",requests_enduser);
 	
 }
 function displayrequest_sessions()
