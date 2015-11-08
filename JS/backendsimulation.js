@@ -62,15 +62,11 @@ function init()
 	ss1.notes=false
 	ss1.other=false
 	ss1.username="buddy";
-<<<<<<< HEAD
-	
-=======
 	ss1.startminute=803;
 	ss1.endminute=910;
 	ss1.recurrence = 5;
 	ss1.comments = "description of 200 characters maybe ;alskdjf;lkjas;dlkjfweuhfuhiguhiuh "
 
->>>>>>> origin
 	ss2.subject="CSE511"
 	ss2.description="Intro to Artificial Intelligence";
 	ss2.group=false
@@ -86,11 +82,9 @@ function init()
 	ss2.lecture_review=false
 	ss2.notes=true
 	ss2.other=false
-<<<<<<< HEAD
-=======
+
 	ss2.username = "Jim";
 	ss2.recurrence = 1;
->>>>>>> origin
 	
 	ss3.subject="CSE556"
 	ss3.description="Human Computer Interaction";
@@ -267,17 +261,13 @@ function register()
 	if(password==confirmpassword)
 		window.location="verification.html";
 }
-<<<<<<< HEAD
-function isdefault(group,minsize,maxsize,partner,fromhour,fromminute,tohour,tominute,homework,examstudy,lecture_review,notes,other)
-{
 	//alert(group,minsize,maxsize,partner,fromhour,fromminute,tohour,tominute,homework,examstudy,lecture_review,notes,other);
-	return (group==false && minsize==0 && maxsize==0 && partner==false && fromhour==0 && fromminute==-1 && tohour==0 && tominute==-1 && homework==false && examstudy==false && lecture_review==false && notes==false && other==false);
-=======
+
 function isdefault(group,minsize,maxsize,partner,startminute,endminute,homework,examstudy,lecture_review,notes,other,recur_index)
 {
 	//alert(group,minsize,maxsize,partner,fromhour,fromminute,tohour,tominute,homework,examstudy,lecture_review,notes,other);
 	return (group==false && minsize==0 && maxsize==0 && partner==false && startminute==0&&endminute==0 && homework==false && examstudy==false && lecture_review==false && notes==false && other==false && recur_index==0);
->>>>>>> origin
+
 }
 function applyfilter()
 {
@@ -313,11 +303,8 @@ function applyfilter()
 	        tohour += 12;
 	    }
 	}
-<<<<<<< HEAD
-	
-	//alert("Apply Filter");
-	searchresults(group,minsize,maxsize,partner,fromhour,fromminute,tohour,tominute,homework,examstudy,lecture_review,notes,other);
-=======
+
+
 	if(fromminute==-1)
 		fromminute++;
 	if(tominute==-1)
@@ -329,7 +316,7 @@ function applyfilter()
 	alert(recur_index);
 	//alert("Apply Filter");
 	searchresults(group,minsize,maxsize,partner,startminute,endminute,homework,examstudy,lecture_review,notes,other,recur_index);
->>>>>>> origin
+
 	
 	
 	
@@ -375,14 +362,7 @@ function displayobjectdata(obj,i)
 	//alert(obj.subject);
 	
 	var data="";
-<<<<<<< HEAD
-	data+="<h2"+obj.subject+"</h2>";
-	data+="<p>User: "+obj.username+"</p>"
-	data+="<p>Date: Not Implemented</p>";
-	data+="<p>Time: "+convert_time(obj.fromhour,obj.fromminute,obj.tohour,obj.tominute)+"</p>";
-	data+="<p>Location:"+obj.place+"</p>";
-	data+="<button onclick=\"requestsessions("+i+")\">"+"Request to join"+"</button>";
-=======
+
 	data+="<h2>"+obj.subject+"-"+obj.description+"</h2>";
 	
 	data+="<p>User: "+obj.username+"</p>"           //where can we get the info of username?
@@ -412,17 +392,13 @@ function displayobjectdata(obj,i)
 		data+="<button> waiting for approval</button>";
 	else
 		data+="<button onclick=\"requestsessions("+i+")\">"+"Request to join"+"</button>";
->>>>>>> origin
+ 
 	data+="<hr/>"
 	
 	return data;
 	
 }
-<<<<<<< HEAD
-function searchresults(group,minsize,maxsize,partner,fromhour,fromminute,tohour,tominute,homework,examstudy,lecture_review,notes,other)
-{
-	default_mode=isdefault(group,minsize,maxsize,partner,fromhour,fromminute,tohour,tominute,homework,examstudy,lecture_review,notes,other)
-=======
+
 
 function recurrence_freq(index)
 {
@@ -476,7 +452,7 @@ function searchresults(group,minsize,maxsize,partner,startminute,endminute,homew
 
 {
     default_mode = isdefault(group, minsize, maxsize, partner, startminute, endminute, homework, examstudy, lecture_review, notes, other, recurrence)
->>>>>>> origin
+
 	//alert(group+""+minsize+""+maxsize+""+partner+""+fromhour+fromminute+tohour+tominute+homework+examstudy+lecture_review+notes+other);
 	default_course=searchlist.length==0;
 	var temp="";
@@ -819,8 +795,7 @@ function MS_show_msg(i)
 
 	document.getElementById("MS_detail").innerHTML = "<text>"+MS_list[i].MS_subject+"</br></text><p>"+MS_list[i].MS_outline+"</p>"+
 		"<input type=\"button\" value=\"Delete\" id=\"MS_delete\" onclick=\"MS_delete("+i+")\"></button>"
-<<<<<<< HEAD
-=======
+
 }
 
 function user_link(username)
@@ -836,5 +811,4 @@ function user_link(username)
     else if (username == "George")
         var result = str.link("***George profile page***");
     document.getElementById("user_profile").innerHTML = result;
->>>>>>> origin
 }
