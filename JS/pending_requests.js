@@ -72,8 +72,8 @@ function PR_detail(i)
 function PR_accept(i)
 {
 	alert("accepted")
-	/*
-	=localStorage.getItem(usernamecok+"_1");
+	
+	/*=localStorage.getItem(usernamecok+"_1");
 	myscheduled[i].subject = pending_requests[i].post.subject
 	myscheduled[i].username = pending_requests[i].username
 	//myscheduled[i].place = pending_requests[i].post.place //we do not have this feature

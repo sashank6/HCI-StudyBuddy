@@ -744,3 +744,18 @@ function MS_show_msg(i)
 	document.getElementById("MS_detail").innerHTML = "<text>"+MS_list[i].MS_subject+"</br></text><p>"+MS_list[i].MS_outline+"</p>"+
 		"<input type=\"button\" value=\"Delete\" id=\"MS_delete\" onclick=\"MS_delete("+i+")\"></button>"
 }
+
+function user_link(selected)
+{
+    if (selected == "user_buddy")
+        var result = str.link("***user profile page***");       //where is the user profile link? I couldn't find it
+    else if (selected == "user_sashank")
+        var result = str.link("***sashank profile page***");
+    else if (selected == "user_Cheng")
+        var result = str.link("***Cheng profile page***");
+    else if (selected == "user_Nahnah")
+        var result = str.link("***Nahnah profile page***");
+    else if (selected == "user_George")
+        var result = str.link("***George profile page***");
+    document.getElementById("user_profile").innerHTML = result;
+}
