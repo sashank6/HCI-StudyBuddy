@@ -19,7 +19,7 @@ var MS_list = [];
 var filsessions=[];
 function init()
 {
-	
+	//localStorage.clear();
 	var usrverif=document.cookie;
 	if(usrverif=="")
 		window.location="login.html";
@@ -47,7 +47,7 @@ function init()
 	var ss3=Object.create(post);
 	var ss4=Object.create(post);
 	ss1.subject="CSE541"
-	ss1.description="Some Description";
+	ss1.description="Advanced Algorithms";
 	ss1.group=true
 	ss1.minsize=2
 	ss1.maxsize=5
@@ -62,9 +62,17 @@ function init()
 	ss1.notes=false
 	ss1.other=false
 	ss1.username="buddy";
+<<<<<<< HEAD
 	
+=======
+	ss1.startminute=803;
+	ss1.endminute=910;
+	ss1.recurrence = 5;
+	ss1.comments = "description of 200 characters maybe ;alskdjf;lkjas;dlkjfweuhfuhiguhiuh "
+
+>>>>>>> origin
 	ss2.subject="CSE511"
-	ss2.description="XDDDD";
+	ss2.description="Intro to Artificial Intelligence";
 	ss2.group=false
 	ss2.minsize=1
 	ss2.maxsize=1
@@ -78,9 +86,14 @@ function init()
 	ss2.lecture_review=false
 	ss2.notes=true
 	ss2.other=false
+<<<<<<< HEAD
+=======
+	ss2.username = "Jim";
+	ss2.recurrence = 1;
+>>>>>>> origin
 	
 	ss3.subject="CSE556"
-	ss3.description="QQQQQ";
+	ss3.description="Human Computer Interaction";
 	ss3.group=false
 	ss3.partner=true
 	ss3.fromhour=1
@@ -91,10 +104,12 @@ function init()
 	ss3.examstudy=false
 	ss3.lecture_review=false
 	ss3.notes=true
-	ss3.other=true
+	ss3.other = true
+	ss3.username = "lawl";
+	ss3.recurrence = 1;
 	
 	ss4.subject="ESE444"
-	ss4.description="QQXD";
+	ss4.description="Sensors and Actuators";
 	ss4.group=false
 	ss4.partner=false
 	ss4.fromhour=1
@@ -105,7 +120,9 @@ function init()
 	ss4.examstudy=false
 	ss4.lecture_review=false
 	ss4.notes=true
-	ss4.other=true
+	ss4.other = true
+	ss4.username = "Sarah";
+	ss4.recurrence = 3;
 	
 	studysession.push(ss1);
 	studysession.push(ss2);
@@ -207,7 +224,7 @@ function displayrequest_sessions()
 		var temp="";
 		for(var i=0;i<request_sessions.length;i++)
 		{
-		    temp += "<div><p><u>" + request_sessions[i].subject + " with " + request_sessions[i].username + "</u></p><p> Location: " + request_sessions[i].place + "</p><p> Date: " + request_sessions[i].date + "</p><p> Time: " + request_sessions[i].fromhour +":"+ request_sessions[i].fromminute + "-" + request_sessions[i].tohour +":"+ request_sessions[i].tominute + "</p><p> Recurrence: " + request_sessions[i].recurrence + "</p></div>";
+		    temp += "<div><p><u>" + request_sessions[i].subject + " with " + request_sessions[i].username + "</u></p><p> Location: " + request_sessions[i].place + "</p><p> Date: " + request_sessions[i].date + "</p><p> Time: " + request_sessions[i].fromhour +":"+ request_sessions[i].fromminute + "-" + request_sessions[i].tohour +":"+ request_sessions[i].tominute + "</p><p> Recurrence: " +  request_sessions[i].recurrence + "</p></div>";
 		}
 		document.getElementById("requestedsessions").innerHTML=temp;
 	}
@@ -250,10 +267,17 @@ function register()
 	if(password==confirmpassword)
 		window.location="verification.html";
 }
+<<<<<<< HEAD
 function isdefault(group,minsize,maxsize,partner,fromhour,fromminute,tohour,tominute,homework,examstudy,lecture_review,notes,other)
 {
 	//alert(group,minsize,maxsize,partner,fromhour,fromminute,tohour,tominute,homework,examstudy,lecture_review,notes,other);
 	return (group==false && minsize==0 && maxsize==0 && partner==false && fromhour==0 && fromminute==-1 && tohour==0 && tominute==-1 && homework==false && examstudy==false && lecture_review==false && notes==false && other==false);
+=======
+function isdefault(group,minsize,maxsize,partner,startminute,endminute,homework,examstudy,lecture_review,notes,other,recur_index)
+{
+	//alert(group,minsize,maxsize,partner,fromhour,fromminute,tohour,tominute,homework,examstudy,lecture_review,notes,other);
+	return (group==false && minsize==0 && maxsize==0 && partner==false && startminute==0&&endminute==0 && homework==false && examstudy==false && lecture_review==false && notes==false && other==false && recur_index==0);
+>>>>>>> origin
 }
 function applyfilter()
 {
@@ -289,9 +313,23 @@ function applyfilter()
 	        tohour += 12;
 	    }
 	}
+<<<<<<< HEAD
 	
 	//alert("Apply Filter");
 	searchresults(group,minsize,maxsize,partner,fromhour,fromminute,tohour,tominute,homework,examstudy,lecture_review,notes,other);
+=======
+	if(fromminute==-1)
+		fromminute++;
+	if(tominute==-1)
+		tominute++;
+	
+	var startminute=fromhour*60+fromminute;
+	var endminute=tohour*60+tominute;
+	var recur_index=document.getElementById("recur_select").selectedIndex;
+	alert(recur_index);
+	//alert("Apply Filter");
+	searchresults(group,minsize,maxsize,partner,startminute,endminute,homework,examstudy,lecture_review,notes,other,recur_index);
+>>>>>>> origin
 	
 	
 	
@@ -337,20 +375,108 @@ function displayobjectdata(obj,i)
 	//alert(obj.subject);
 	
 	var data="";
+<<<<<<< HEAD
 	data+="<h2"+obj.subject+"</h2>";
 	data+="<p>User: "+obj.username+"</p>"
 	data+="<p>Date: Not Implemented</p>";
 	data+="<p>Time: "+convert_time(obj.fromhour,obj.fromminute,obj.tohour,obj.tominute)+"</p>";
 	data+="<p>Location:"+obj.place+"</p>";
 	data+="<button onclick=\"requestsessions("+i+")\">"+"Request to join"+"</button>";
+=======
+	data+="<h2>"+obj.subject+"-"+obj.description+"</h2>";
+	
+	data+="<p>User: "+obj.username+"</p>"           //where can we get the info of username?
+	data+="<p>Date: Not Implemented</p>";
+	data+="<p>Time: "+convert_time(obj.fromhour,obj.fromminute,obj.tohour,obj.tominute)+"</p>";
+	data += "<p>Location:" + obj.place + "</p>";
+	data += "<p>Recurrence: " + recurrence_freq(obj.recurrence) + "</p>";
+	data+="<p> Purpose:";
+	var tesr=[]
+	if(obj.homework)
+		tesr.push("Homework");
+	if(obj.examstudy)
+		tesr.push("Study for Exam");
+	if(obj.notes)
+		tesr.push("Share Notes");
+	if(obj.lecture_review)
+		tesr.push("Lecture Review");
+	if(obj.other)
+		tesr.push("Other");
+	var r=0;
+	for(r=0;r<tesr.length-1;r++)
+		data+=" "+tesr[r]+",";
+	data+=" "+tesr[r];
+	
+	data+="<p>"+obj.comments+"</p>"
+	if (isInRequestSession(obj))
+		data+="<button> waiting for approval</button>";
+	else
+		data+="<button onclick=\"requestsessions("+i+")\">"+"Request to join"+"</button>";
+>>>>>>> origin
 	data+="<hr/>"
 	
 	return data;
 	
 }
+<<<<<<< HEAD
 function searchresults(group,minsize,maxsize,partner,fromhour,fromminute,tohour,tominute,homework,examstudy,lecture_review,notes,other)
 {
 	default_mode=isdefault(group,minsize,maxsize,partner,fromhour,fromminute,tohour,tominute,homework,examstudy,lecture_review,notes,other)
+=======
+
+function recurrence_freq(index)
+{
+    temp = "";
+    if(index ==1)
+    {
+        temp += "Once"
+        return temp;
+    }
+    else if (index == 2) {
+        temp += "Monthly"
+        return temp;
+    }
+    else if (index == 3) {
+        temp += "Weekly"
+        return temp;
+    }
+    else if (index == 4) {
+        temp += "Daily"
+        return temp;
+    }
+    else if (index == 5) {
+        temp += "Daily(M-F)"
+        return temp;
+    }
+}
+
+
+function isInRequestSession(obj)
+{
+	request_string = localStorage.getItem(usernamecok+"_3")
+	request_list = JSON.parse(request_string)
+	if (request_list.length == null) return false
+	else
+		for (i = 0; i < request_list.length; i++)
+		{
+			//may still need to and location, recurrence, etc if those conditions are added into filter
+			if (request_list[i].subject == obj.subject && request_list[i].fromhour == obj.fromhour && request_list[i].fromminute == obj.fromminute)
+				if (request_list[i].tohour == obj.tohour && request_list[i].tominute == obj.tominute)
+					return true
+		
+		}
+	return false	
+	
+	
+}
+
+//function searchresults(group,minsize,maxsize,partner,fromhour,fromminute,tohour,tominute,homework,examstudy,lecture_review,notes,other)
+
+function searchresults(group,minsize,maxsize,partner,startminute,endminute,homework,examstudy,lecture_review,notes,other,recurrence)
+
+{
+    default_mode = isdefault(group, minsize, maxsize, partner, startminute, endminute, homework, examstudy, lecture_review, notes, other, recurrence)
+>>>>>>> origin
 	//alert(group+""+minsize+""+maxsize+""+partner+""+fromhour+fromminute+tohour+tominute+homework+examstudy+lecture_review+notes+other);
 	default_course=searchlist.length==0;
 	var temp="";
@@ -454,6 +580,15 @@ function searchresults(group,minsize,maxsize,partner,fromhour,fromminute,tohour,
 				continue;
 			}
 				
+			}
+
+			if (recurrence>0) {
+			    p = (newsessions[i].recurrence == recurrence);
+			    if (p) {
+			        filsessions.push(newsessions[i]);
+			        continue;
+			    }
+
 			}
 			
 			if(newsessions[i].fromhour >=fromhour && newsessions[i].tohour <=tohour && newsessions[i].fromminute >=fromminute && newsessions[i].tominute<=tominute)
@@ -684,4 +819,22 @@ function MS_show_msg(i)
 
 	document.getElementById("MS_detail").innerHTML = "<text>"+MS_list[i].MS_subject+"</br></text><p>"+MS_list[i].MS_outline+"</p>"+
 		"<input type=\"button\" value=\"Delete\" id=\"MS_delete\" onclick=\"MS_delete("+i+")\"></button>"
+<<<<<<< HEAD
+=======
+}
+
+function user_link(username)
+{
+    if (username == "buddy")
+        var result = str.link("profile_Bob.html");       //where is the user profile link? I couldn't find it
+    else if (username == "Jim")
+        var result = str.link("profile_Jim.html");
+    else if (username == "lawl")
+        var result = str.link("profile_lawl.html");
+    else if (username == "Sarah")
+        var result = str.link("profile_Sarah.html");
+    else if (username == "George")
+        var result = str.link("***George profile page***");
+    document.getElementById("user_profile").innerHTML = result;
+>>>>>>> origin
 }

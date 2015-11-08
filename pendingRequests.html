@@ -2,9 +2,9 @@
 <script src="JS/backendsimulation.js"></script>
 <script src="JS/datastructures.js"></script>
 <script src="JS/pending_requests.js"></script>
-<link rel="stylesheet" href="CSS/profile.css" property='stylesheet'>
+<link rel="stylesheet" href="CSS/pendingRequests.css" property='stylesheet'>
 <body onload="init_pending_requests()">
-<div id = header><h1>My StudyBuddy: Pending Sessions</h1></div>
+<div id = header><h1>My StudyBuddy: Pending Sessions</h1> <a onclick="invalidate_cookie()" style = "position: absolute; top: 0; right: 0; width: 100px; text-align:right; padding-right: 15px;";><h3><u>Logout</u></h3></a></div>
 	<div class = "colmask threecol">
 		<div class="colmid">
 			<div class="colleft">
@@ -15,8 +15,8 @@
 			</div>
 			<!--end of column 1-->
 				<div class = "col2">
-					<h3><img src="images/generic.png" style="width:1.5em; height:1.5em; vertical-align:text-bottom;"/><a href = #PF_name>Cheng Lin</a></h3>
-					<h3><a href = #PF_university>Wash U. in St. Louis</a></h3>
+					<h3><img src="images/generic.png" style="width:1.5em; height:1.5em; vertical-align:text-bottom;"/><a href = profile.html>Cheng Lin</a></h3>
+					<h3><span id="PF_university"></span>Wash. U. in St. Louis</h3>
 					<br>
 					<br>
 				<div class="menu">
@@ -24,7 +24,7 @@
 					<h3><a href="home.html">Home (Search)</a></br></h3>
 					<h3><a href="pendingRequests.html">Pending Requests</a></h3>
 					<h3><a href="post_study_session.html">Post Study Session</a></h3>
-					<h3><a onclick="invalidate_cookie()"><u>Logout</u></a></h3>
+
 				</div>
 				</p>
 				</div>
