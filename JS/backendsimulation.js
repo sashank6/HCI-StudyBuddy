@@ -88,11 +88,7 @@ function init()
 	ss2.recurrence = 1;
 	
 	ss3.subject="CSE556"
-<<<<<<< HEAD
 	ss3.description="Human Computer Interaction";
-=======
-	ss3.description="Human CI";
->>>>>>> origin/master
 	ss3.group=false
 	ss3.partner=true
 	ss3.fromhour=1
