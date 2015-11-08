@@ -49,7 +49,7 @@ function init()
 	var ss3=Object.create(post);
 	var ss4=Object.create(post);
 	ss1.subject="CSE541"
-	ss1.description="Some Description";
+	ss1.description="Advanced Algorithms";
 	ss1.group=true
 	ss1.minsize=2
 	ss1.maxsize=5
@@ -67,9 +67,10 @@ function init()
 	ss1.startminute=803;
 	ss1.endminute=910;
 	ss1.recurrence = 5;
+	ss1.comments = "description"
 
 	ss2.subject="CSE511"
-	ss2.description="XDDDD";
+	ss2.description="Intro to Artificial Intelligence";
 	ss2.group=false
 	ss2.minsize=1
 	ss2.maxsize=1
@@ -87,7 +88,7 @@ function init()
 	ss2.recurrence = 1;
 	
 	ss3.subject="CSE556"
-	ss3.description="Should this being created after they selected sth in post study seesion";
+	ss3.description="Human Computer Interaction";
 	ss3.group=false
 	ss3.partner=true
 	ss3.fromhour=1
