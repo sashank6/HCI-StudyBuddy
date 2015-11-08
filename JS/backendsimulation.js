@@ -382,8 +382,7 @@ function displayobjectdata(obj,i)
 	var data="";
 
 	data+="<h2>"+obj.subject+"-"+obj.description+"</h2>";
-	
-	data+="<p>User: "+obj.username+"</p>"           //where can we get the info of username?
+	data += "<p>User: <a href=\"user_link(\"obj.username\")\"> " + obj.username + "</a></p>"           //where can we get the info of username?
 	data+="<p>Date: Not Implemented</p>";
 	data+="<p>Time: "+convert_time(obj.fromhour,obj.fromminute,obj.tohour,obj.tominute)+"</p>";
 	data += "<p>Location:" + obj.place + "</p>";
@@ -818,15 +817,15 @@ function MS_show_msg(i)
 
 function user_link(username)
 {
+    var result = "";
     if (username == "buddy")
-        var result = str.link("profile_Bob.html");       //where is the user profile link? I couldn't find it
+        return result += "profile_Bob.html";       //where is the user profile link? I couldn't find it
     else if (username == "Jim")
-        var result = str.link("profile_Jim.html");
+        return result += "profile_Jim.html";
     else if (username == "lawl")
-        var result = str.link("profile_lawl.html");
+        return result += "profile_lawl.html";
     else if (username == "Sarah")
-        var result = str.link("profile_Sarah.html");
+        return result += "profile_Sarah.html";
     else if (username == "George")
-        var result = str.link("***George profile page***");
-    document.getElementById("user_profile").innerHTML = result;
+        return result += "***George profile page***";
 }
