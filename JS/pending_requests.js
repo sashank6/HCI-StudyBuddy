@@ -1,6 +1,6 @@
 var usernamecok="";
-var pending_requests=localStorage.getItem(usernamecok+"_9");
-pending_requests=JSON.parse(pending_requests);
+var pending_requests;
+
 function init_pending_requests()
 {
 	var usrverif=document.cookie;
@@ -38,17 +38,17 @@ username":"buddy"}},
 function display_pendingrequests()
 {
 	
-	
+	//pending_requests=JSON.parse(pending_requests);
 	
 	var temp="";
-	if(pending_requests==null || pending_requests.length == 0)
+	pending_requests=localStorage.getItem(usernamecok+"_9");
+	if(pending_requests==null)
 	{
 		temp="<p>You do not have any requests pending!</p>";
 	}
 	else
 	{
-		
-		
+		pending_requests=JSON.parse(pending_requests);
 		
 		for (i = 0; i < pending_requests.length; i++)
 		{
@@ -57,6 +57,7 @@ function display_pendingrequests()
 				"<input type=\"button\" value=\"Accept\" id=\"PR_accept\" onclick=\"PR_accept("+i+")\"></button>"+
 				"<input type=\"button\" value=\"Deny\" id=\"PR_deny\" onclick=\"PR_deny("+i+")\"></button>"
 		}
+	
 	}
 	document.getElementById("request_info").innerHTML=temp;
 	
@@ -69,7 +70,7 @@ function PR_detail(i)
 	document.getElementById("pending_requests").innerHTML = "<h3>XDDDDD</h3>"
 }
 
-function PR_accept(i)
+/*function PR_accept(i)
 {
 	alert("accepted")
 	
@@ -83,7 +84,7 @@ function PR_accept(i)
 	myscheduled[i].tohour = pending_requests[i].post.tohour
 	myscheduled[i].tominute = pending_requests[i].post.tominute
 	//myscheduled[i].recurrence = pending_requests[i].post.recurrence //no this feature
-	*/
+	
 	PR_delete(i)
 }
 
@@ -98,4 +99,4 @@ function PR_delete(i)
 	pending_requests.splice(i,1)
 	
 	display_pendingrequests()
-}
+}*/

@@ -455,7 +455,7 @@ function isInRequestSession(obj)
 {
 	request_string = localStorage.getItem(usernamecok+"_3")
 	request_list = JSON.parse(request_string)
-	if (request_list.length == null) return false
+	if (request_list == null) return false;
 	else
 		for (i = 0; i < request_list.length; i++)
 		{
