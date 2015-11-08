@@ -1,4 +1,5 @@
 var usernamecok="";
+var pending_requests=localStorage.getItem(usernamecok+"_9");
 function init_pending_requests()
 {
 	var usrverif=document.cookie;
@@ -7,7 +8,8 @@ function init_pending_requests()
 	var temparray=usrverif.split("=");
 	usernamecok=temparray[1];
 	display_pendingrequests();
-	
+	myscheduledsessions();
+	displayrequest_sessions();
 }
 
 /*
@@ -35,10 +37,10 @@ username":"buddy"}},
 function display_pendingrequests()
 {
 	
-	var pending_requests=localStorage.getItem(usernamecok+"_9");
-	//alert(pending_requests)
+	
+	
 	var temp="";
-	if(pending_requests==null)
+	if(pending_requests==null || pending_requests.length == 0)
 	{
 		temp="<p>You do not have any requests pending!</p>";
 	}
@@ -49,7 +51,8 @@ function display_pendingrequests()
 		for (i = 0; i < pending_requests.length; i++)
 		{
 			temp+="<h3 onclick=\"PR_detail("+i+")\">"+pending_requests[i].username+"</h3>is asking to join<h3>"+pending_requests[i].post.subject+"</h3></br>"+
-				"<input type =\"button\" value=\"accept\" id=\"PR_accept("+i+")\"></button>"
+				"<input type=\"button\" value=\"Accept\" id=\"PR_accept\" onclick=\"PR_accept("+i+")\"></button>"+
+				"<input type=\"button\" value=\"Deny\" id=\"PR_deny\" onclick=\"PR_deny("+i+")\"></button>"
 		}
 	}
 	document.getElementById("request_info").innerHTML=temp;
@@ -65,10 +68,17 @@ function PR_detail(i)
 
 function PR_accept(i)
 {
-		alert(i)
+	alert("accepted")
+	PR_delete(i)
 }
 
 function PR_deny(i)
 {
-	
+	alert("denied")
+	PR_delete(i)
+}
+function PR_delete(i)
+{
+	pending_requests.splice(i,1)
+	display_pendingrequests()
 }
