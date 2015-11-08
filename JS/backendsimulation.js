@@ -62,10 +62,12 @@ function init()
 	ss1.notes=false
 	ss1.other=false
 	ss1.username="buddy";
+
 	ss1.startminute=803;
 	ss1.endminute=910;
 	ss1.recurrence = 5;
 	ss1.comments = "description of 200 characters maybe ;alskdjf;lkjas;dlkjfweuhfuhiguhiuh "
+
 
 	ss2.subject="CSE511"
 	ss2.description="Intro to Artificial Intelligence";
@@ -85,6 +87,7 @@ function init()
 
 	ss2.username = "Jim";
 	ss2.recurrence = 1;
+
 	
 	ss3.subject="CSE556"
 	ss3.description="Human Computer Interaction";
@@ -129,6 +132,21 @@ function init()
 	
 	
 	
+}
+function invalidate_cookie()
+{
+	deleteAllCookies();
+	window.location="login.html";
+}
+function deleteAllCookies() {
+    var cookies = document.cookie.split(";");
+
+    for (var i = 0; i < cookies.length; i++) {
+    	var cookie = cookies[i];
+    	var eqPos = cookie.indexOf("=");
+    	var name = eqPos > -1 ? cookie.substr(0, eqPos) : cookie;
+    	document.cookie = name + "=;expires=Thu, 01 Jan 1970 00:00:00 GMT";
+    }
 }
 function convert_time(fhour,fminute,thour,tminute)
 {
