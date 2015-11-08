@@ -39,7 +39,7 @@ function display_pendingrequests()
 {
 	
 	//pending_requests=JSON.parse(pending_requests);
-	localStorage.clear();
+	//localStorage.clear();
 	var temp="";
 	pending_requests=localStorage.getItem(usernamecok+"_9");
 	
