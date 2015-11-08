@@ -218,9 +218,10 @@ function requestsessions(i)
 		requests_enduser.push(newobject);
 	}
 	t=JSON.stringify(requests_enduser);
-	alert(end_user);
-	alert(t);
+	//alert(end_user);
+	//alert(t);
 	localStorage.setItem(end_user+"_9",t);
+	applyfilter();
 	
 }
 function displayrequest_sessions()
