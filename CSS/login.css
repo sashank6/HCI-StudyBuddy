@@ -9,16 +9,22 @@ h2{
 h3{
     font-family: Helvetica;
 }
+
+.right{
+padding: 0px 0px 0px 75px;
+}
+
 .center {
     margin: auto;
     width: 90%;
-    padding: 5px;
+    padding: 10px;
 }
 
 .margin_left{
     margin-left: auto;
-    margin-right:0px;
-    vertical-align:middle;
+    margin-right:0;
+    vertical-align:left;
+    text-align:center;
   
 }
 
@@ -41,6 +47,7 @@ h3{
     -webkit-column-rule: 2px outset ; /* Chrome, Safari, Opera */
     -moz-column-rule: 2px outset ; /* Firefox */
     column-rule: 2px outset;
+
 }
 
 .verification{

@@ -15,15 +15,15 @@
 <body>
     <div class="center">
 
-        <h1>My StudyBuddy: schedule group study sessions</h1>
+        <h1>StudyBuddy</h1>
        <h2> Use StudyBuddy to easily schedule group or partner study sessions</h2>
-        <br />
         <br>
+		<br>
 
         <div class="newspaper">
 
             <div class="margin_left">
-                <table>
+                <table style = "padding: 5px 5px 5px 5px";>
                     <tr >
                         <td >
 
@@ -31,23 +31,27 @@
 							<h2>Welcome Back! Please Sign In:</h2>
 							<p id="errormessage" style="color:red"></p>
                             <br />
-							Username:
-              
+							<table style= "width:100px;">
+							<tr>
+							<td align = "auto" style = "font-family: Helvetica";>Username:</td>
+							<td>
                             <input type="text" name="username" placeholder="4-10 characters" id="username" onkeydown="if (event.keyCode == 13) document.getElementById('login').click()" />
-                            <br />
-                            <br />Password:
+							</td>
+							</tr>
+                            <tr>
+							 <td align = "auto" style = "font-family:Helvetica";>Password:</td>
+							 <td>
                             <input type="password" name="password" placeholder="6-8 characters" id="password" onkeydown="if (event.keyCode == 13) document.getElementById('login').click()" />
-                         
-                            <br />
-                            <br />
-                            <input type="button" value="Login" id="login" onclick="loginverify()" />
-                            <br />
-                            <br />
+							 </td>
+                            
+							 </table style = "text-align: center">
+                            <input type="button" value="Login" id="login" onclick="loginverify()" /> </tr>
+
                             <br /><br />
                             
                         </td>
                     </tr>
-                </table>
+
             </div>
             <div class="margin_left">
                 <table>
@@ -56,13 +60,21 @@
                             
                         </td>
                     </tr>
+					
+					</br>
+					</br>
+					</br>
+					</br>
+					<br>
                 </table>
                 <h3>Don't have an account?</h3>
 				<h2>Create one in seconds: </h2>
                 <br />
-                <table style="width:60%;">
+				 <div class = "right">
+                <table>
+				
                     <tr>
-                        <td align="right" style="font-family: Helvetica;">Email:</td>
+                        <td align="right" style="font-family: Helvetica; margin:200px;">Email:</td>
                         <td>
                             <input type="text" name="email" placeholder=".edu email" id="email" onkeydown="if (event.keyCode == 13) document.getElementById('register').click()" />
                             
@@ -92,8 +104,9 @@
                         <td><input type="password" name="confirmpassword" placeholder="6-8 digits" id="confirmpassword" onkeydown="if (event.keyCode == 13) document.getElementById('register').click()" /><br />
                     </tr>
                 </table>
+				 </div>
                 <br />
-                &nbsp&nbsp&nbsp&nbsp&nbsp<input type="button" value="Register" id="register" onclick="register()" /><br />
+                &nbsp&nbsp&nbsp&nbsp&nbsp<input type="button" value="Register" id="register" onclick="register()" /></br >
 
 
             </div>
