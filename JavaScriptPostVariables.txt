@@ -1,0 +1,28 @@
+ 
+      //Time:
+      document.DemoForm.FromHr.value = ""; //integer
+      document.DemoForm.FromMin.value = "";
+      document.DemoForm.ToHr.value = "";   
+      document.DemoForm.ToMin.value = "";
+
+      //Subject, Date:
+      document.DemoForm.subjectID.value.toString();  //string
+      document.DemoForm.subjectName.value.toString(); 
+      document.Demoform.sessionlocation.value.toString();
+      document.DemoForm.datepickr.value = "";
+
+      //Checkboxes:
+      document.DemoForm.homework.checked = false;//boolean 
+      document.DemoForm.lecture_review.checked = false;
+      document.DemoForm.examstudy.checked = false;
+      document.DemoForm.notes.checked = false;
+      document.DemoForm.other.checked = false;
+
+      //Frequency/Occurance...
+      document.DemoForm.selectOccurance.index; //integer
+
+      //Group Min & Max:
+      document.DemoForm.groupMin.value = 1; //integer
+      document.DemoForm.groupMax.value = 2;
+
+      document.DemoForm.sessionNotes.value.toString();string//
