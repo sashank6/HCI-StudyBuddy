@@ -237,7 +237,7 @@ function displayrequest_sessions()
 		var temp="";
 		for(var i=0;i<request_sessions.length;i++)
 		{
-		    temp += "<div><p><u>" + request_sessions[i].subject + " with " + request_sessions[i].username + "</u></p><p> Location: " + request_sessions[i].place + "</p><p> Date: " + request_sessions[i].date + "</p><p> Time: " + request_sessions[i].fromhour +":"+ request_sessions[i].fromminute + "-" + request_sessions[i].tohour +":"+ request_sessions[i].tominute + "</p><p> Recurrence: " +  request_sessions[i].recurrence + "</p></div>";
+		    temp += "<div><p><u>" + request_sessions[i].subject + " with " + request_sessions[i].username + "</u></p><p> Location: " + request_sessions[i].place + "</p><p> Date: " + request_sessions[i].date + "</p><p> Time: " + request_sessions[i].fromhour +":"+ request_sessions[i].fromminute + "-" + request_sessions[i].tohour +":"+ request_sessions[i].tominute + "</p><p> Recurrence: " +  recurrence_freq(request_sessions[i].recurrence) + "</p></div>";
 		}
 		document.getElementById("requestedsessions").innerHTML=temp;
 	}
