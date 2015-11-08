@@ -1,5 +1,6 @@
 var usernamecok="";
 var pending_requests=localStorage.getItem(usernamecok+"_9");
+pending_requests=JSON.parse(pending_requests);
 function init_pending_requests()
 {
 	var usrverif=document.cookie;
@@ -47,9 +48,11 @@ function display_pendingrequests()
 	else
 	{
 		
-		pending_requests=JSON.parse(pending_requests);
+		
+		
 		for (i = 0; i < pending_requests.length; i++)
 		{
+			
 			temp+="<h3 onclick=\"PR_detail("+i+")\">"+pending_requests[i].username+"</h3>is asking to join<h3>"+pending_requests[i].post.subject+"</h3></br>"+
 				"<input type=\"button\" value=\"Accept\" id=\"PR_accept\" onclick=\"PR_accept("+i+")\"></button>"+
 				"<input type=\"button\" value=\"Deny\" id=\"PR_deny\" onclick=\"PR_deny("+i+")\"></button>"
@@ -91,6 +94,8 @@ function PR_deny(i)
 }
 function PR_delete(i)
 {
+	
 	pending_requests.splice(i,1)
+	
 	display_pendingrequests()
 }
