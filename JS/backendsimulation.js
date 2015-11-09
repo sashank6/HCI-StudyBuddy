@@ -150,6 +150,14 @@ function deleteAllCookies() {
 }
 function convert_time(fhour,fminute,thour,tminute)
 {
+    if (fminute < 10)
+    {
+        fminute = "0" + fminute;
+    }
+    if (tminute < 10)
+    {
+        tminute = "0" + tminute;
+    }
 	var temp="";
 	if(fhour>12)
 		temp+=parseInt(fhour-12)+":"+fminute+"pm";
@@ -178,7 +186,7 @@ function myscheduledsessions()
 		var temp="";
 		for(var i=0;i<myscheduled.length;i++)
 		{
-		    temp += "<div><p><u>" + myscheduled[i].subject + " with " + myscheduled[i].username + "</u></p><p> Location: " + myscheduled[i].place + "</p><p> Date: " + myscheduled[i].date + "</p><p> Time: " + myscheduled[i].fromhour+":"+myscheduled[i].fromminute +"-"+ myscheduled[i].tohour +myscheduled[i].tominute + "</p><p> Recurrence: " + myscheduled[i].recurrence + "</p></div>";
+		    temp += "<br /><div><p><u>" + myscheduled[i].subject + " with " + myscheduled[i].username + "</u></p><p> Location: " + myscheduled[i].place + "</p><p> Date: " + myscheduled[i].date + "</p><p> Time: " + convert_time(myscheduled[i].fromhour, myscheduled[i].fromminute, myscheduled[i].tohour, myscheduled[i].tominute) + "</p><p> Recurrence: " + myscheduled[i].recurrence + "</p></div>";
 			
 		}
 		
@@ -236,7 +244,7 @@ function displayrequest_sessions()
 		var temp="";
 		for(var i=0;i<request_sessions.length;i++)
 		{
-		    temp += "<div><p><u>" + request_sessions[i].subject + " with " + request_sessions[i].username + "</u></p><p> Location: " + request_sessions[i].place + "</p><p> Date: " + request_sessions[i].date + "</p><p> Time: " + request_sessions[i].fromhour +":"+ request_sessions[i].fromminute + "-" + request_sessions[i].tohour +":"+ request_sessions[i].tominute + "</p><p> Recurrence: " +  request_sessions[i].recurrence + "</p></div>";
+		    temp += "<br /><div><p><u>" + request_sessions[i].subject + " with " + request_sessions[i].username + "</u></p><p> Location: " + request_sessions[i].place + "</p><p> Date: " + request_sessions[i].date + "</p><p> Time: " + convert_time(request_sessions[i].fromhour,request_sessions[i].fromminute,request_sessions[i].tohour,request_sessions[i].tominute)+ "</p><p> Recurrence: " +  request_sessions[i].recurrence + "</p></div>";
 		}
 		document.getElementById("requestedsessions").innerHTML=temp;
 	}
