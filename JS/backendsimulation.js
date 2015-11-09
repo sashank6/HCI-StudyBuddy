@@ -150,6 +150,10 @@ function deleteAllCookies() {
 }
 function convert_time(fhour,fminute,thour,tminute)
 {
+    if (fminute < 10)
+        fminute = "0" + fminute;
+    if (tminute < 10)
+        tminute = "0" + tminute;
 	var temp="";
 	if(fhour>12)
 		temp+=parseInt(fhour-12)+":"+fminute+"pm";
@@ -178,7 +182,7 @@ function myscheduledsessions()
 		var temp="";
 		for(var i=0;i<myscheduled.length;i++)
 		{
-		    temp += "<div><p><u>" + myscheduled[i].subject + " with " + myscheduled[i].username + "</u></p><p> Location: " + myscheduled[i].place + "</p><p> Date: " + myscheduled[i].date + "</p><p> Time: " + myscheduled[i].fromhour+":"+myscheduled[i].fromminute +"-"+ myscheduled[i].tohour +myscheduled[i].tominute + "</p><p> Recurrence: " + myscheduled[i].recurrence + "</p></div>";
+		    temp += "<div><p><u>" + myscheduled[i].subject + " with " + myscheduled[i].username + "</u></p><p> Location: " + myscheduled[i].place + "</p><p> Date: " + myscheduled[i].date + "</p><p> Time: " + convert_time(myscheduled[i].fromhour, myscheduled[i].fromminute, myscheduled[i].tohour, myscheduled[i].tominute) + "</p><p> Recurrence: " + myscheduled[i].recurrence + "</p></div>";
 			
 		}
 		
@@ -218,9 +222,10 @@ function requestsessions(i)
 		requests_enduser.push(newobject);
 	}
 	t=JSON.stringify(requests_enduser);
-	alert(end_user);
-	alert(t);
+	//alert(end_user);
+	//alert(t);
 	localStorage.setItem(end_user+"_9",t);
+	applyfilter();
 	
 }
 function displayrequest_sessions()
@@ -236,7 +241,7 @@ function displayrequest_sessions()
 		var temp="";
 		for(var i=0;i<request_sessions.length;i++)
 		{
-		    temp += "<div><p><u>" + request_sessions[i].subject + " with " + request_sessions[i].username + "</u></p><p> Location: " + request_sessions[i].place + "</p><p> Date: " + request_sessions[i].date + "</p><p> Time: " + request_sessions[i].fromhour +":"+ request_sessions[i].fromminute + "-" + request_sessions[i].tohour +":"+ request_sessions[i].tominute + "</p><p> Recurrence: " +  request_sessions[i].recurrence + "</p></div>";
+		    temp += "<br/><div><p><u>" + request_sessions[i].subject + " with " + request_sessions[i].username + "</u></p><p> Location: " + request_sessions[i].place + "</p><p> Date: " + request_sessions[i].date + "</p><p> Time: " + convert_time(request_sessions[i].fromhour, request_sessions[i].fromminute, request_sessions[i].tohour, request_sessions[i].tominute) + "</p><p> Recurrence: " + recurrence_freq(request_sessions[i].recurrence) + "</p></div>";
 		}
 		document.getElementById("requestedsessions").innerHTML=temp;
 	}
@@ -331,7 +336,7 @@ function applyfilter()
 	var startminute=fromhour*60+fromminute;
 	var endminute=tohour*60+tominute;
 	var recur_index=document.getElementById("recur_select").selectedIndex;
-	alert(recur_index);
+	//alert(recur_index);
 	//alert("Apply Filter");
 	searchresults(group,minsize,maxsize,partner,startminute,endminute,homework,examstudy,lecture_review,notes,other,recur_index);
 
@@ -382,8 +387,12 @@ function displayobjectdata(obj,i)
 	var data="";
 
 	data+="<h2>"+obj.subject+"-"+obj.description+"</h2>";
+<<<<<<< HEAD
 	
 	data+="<p>User: <a href=\"profile_"+obj.username+".html\" >"+obj.username+"</a></p>"           //where can we get the info of username?
+=======
+	data += "<p>User: <a href=\"user_link(\"obj.username\")\"> " + obj.username + "</a></p>"           //where can we get the info of username?
+>>>>>>> origin/master
 	data+="<p>Date: Not Implemented</p>";
 	data+="<p>Time: "+convert_time(obj.fromhour,obj.fromminute,obj.tohour,obj.tominute)+"</p>";
 	data += "<p>Location:" + obj.place + "</p>";
@@ -818,15 +827,15 @@ function MS_show_msg(i)
 
 function user_link(username)
 {
+    var result = "";
     if (username == "buddy")
-        var result = str.link("profile_Bob.html");       //where is the user profile link? I couldn't find it
+        return result += "profile_Bob.html";       //where is the user profile link? I couldn't find it
     else if (username == "Jim")
-        var result = str.link("profile_Jim.html");
+        return result += "profile_Jim.html";
     else if (username == "lawl")
-        var result = str.link("profile_lawl.html");
+        return result += "profile_lawl.html";
     else if (username == "Sarah")
-        var result = str.link("profile_Sarah.html");
+        return result += "profile_Sarah.html";
     else if (username == "George")
-        var result = str.link("***George profile page***");
-    document.getElementById("user_profile").innerHTML = result;
+        return result += "***George profile page***";
 }
