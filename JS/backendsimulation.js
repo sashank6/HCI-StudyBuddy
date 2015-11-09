@@ -62,10 +62,12 @@ function init()
 	ss1.notes=false
 	ss1.other=false
 	ss1.username="buddy";
+
 	ss1.startminute=803;
 	ss1.endminute=910;
 	ss1.recurrence = 5;
 	ss1.comments = "description of 200 characters maybe ;alskdjf;lkjas;dlkjfweuhfuhiguhiuh "
+
 
 	ss2.subject="CSE511"
 	ss2.description="Intro to Artificial Intelligence";
@@ -83,8 +85,9 @@ function init()
 	ss2.notes=true
 	ss2.other=false
 
-	ss2.username = "Jim";
+	ss2.username = "JimMechE";
 	ss2.recurrence = 1;
+
 	
 	ss3.subject="CSE556"
 	ss3.description="Human Computer Interaction";
@@ -99,7 +102,7 @@ function init()
 	ss3.lecture_review=false
 	ss3.notes=true
 	ss3.other = true
-	ss3.username = "lawl";
+	ss3.username = "lawlschool";
 	ss3.recurrence = 1;
 	
 	ss4.subject="ESE444"
@@ -115,7 +118,7 @@ function init()
 	ss4.lecture_review=false
 	ss4.notes=true
 	ss4.other = true
-	ss4.username = "Sarah";
+	ss4.username = "Sarah92";
 	ss4.recurrence = 3;
 	
 	studysession.push(ss1);
@@ -129,6 +132,21 @@ function init()
 	
 	
 	
+}
+function invalidate_cookie()
+{
+	deleteAllCookies();
+	window.location="login.html";
+}
+function deleteAllCookies() {
+    var cookies = document.cookie.split(";");
+
+    for (var i = 0; i < cookies.length; i++) {
+    	var cookie = cookies[i];
+    	var eqPos = cookie.indexOf("=");
+    	var name = eqPos > -1 ? cookie.substr(0, eqPos) : cookie;
+    	document.cookie = name + "=;expires=Thu, 01 Jan 1970 00:00:00 GMT";
+    }
 }
 function convert_time(fhour,fminute,thour,tminute)
 {
@@ -360,12 +378,9 @@ function filter_subjectresults()
 function displayobjectdata(obj,i)
 {
 	//alert(obj.subject);
-	
 	var data="";
-
 	data+="<h2>"+obj.subject+"-"+obj.description+"</h2>";
-	
-	data+="<p>User: "+obj.username+"</p>"           //where can we get the info of username?
+	data+="<p>User: <a href=\"profile_"+obj.username+".html\" >"+obj.username+"</a></p>"           //where can we get the info of username?
 	data+="<p>Date: Not Implemented</p>";
 	data+="<p>Time: "+convert_time(obj.fromhour,obj.fromminute,obj.tohour,obj.tominute)+"</p>";
 	data += "<p>Location:" + obj.place + "</p>";
@@ -666,7 +681,7 @@ function PF_name(write)
 	if (write)
 		name = document.getElementById("PF_name").value
 	else
-		document.getElementById("PF_name").innerHTML = name;
+		document.getElementById("PF_name").innerHTML = "<a href=profile_"+usernamecok+".html>"+usernamecok+"</a>";
 		document.getElementById("PF_name").defaultValue = name;
 }
 
@@ -803,11 +818,11 @@ function user_link(username)
     if (username == "buddy")
         var result = str.link("profile_Bob.html");       //where is the user profile link? I couldn't find it
     else if (username == "Jim")
-        var result = str.link("profile_Jim.html");
+        var result = str.link("profile_JimMechE.html");
     else if (username == "lawl")
-        var result = str.link("profile_lawl.html");
+        var result = str.link("profile_lawlschool.html");
     else if (username == "Sarah")
-        var result = str.link("profile_Sarah.html");
+        var result = str.link("profile_Sarah92.html");
     else if (username == "George")
         var result = str.link("***George profile page***");
     document.getElementById("user_profile").innerHTML = result;

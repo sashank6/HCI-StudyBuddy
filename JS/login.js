@@ -34,11 +34,15 @@ function loginverify()
 
 function registervalidate()
 {
+	var fullname=document.getElementById("fullname").value;
 	var email=document.getElementById("email").value;
 	var username=document.getElementById("username1").value;
 	var password=document.getElementById("password1").value;
 	var confirmpassword=document.getElementById("confirmpassword").value;
 	var msg="";
+	
+	if(validatename(fullname))
+	{
 	if(validate_email(email))
 	{
 		if(usernamevalidate(username))
@@ -69,12 +73,23 @@ function registervalidate()
 	{
 		msg="Invalid email please input your wustl.edu email";
 	}
+}else
+{
+	msg="Invalid First Name";
+}
 	document.getElementById("register_error_message").innerHTML=msg;
 }
 
+function validatename(fullname)
+{
+	var pattern=/^[a-zA-Z]{3,12}$/
+	return pattern.test(fullname);
+}
+
+
 function validate_email(email)
 {
-	var pattern=/(^[a-zA-Z]+[0-9_a-zA-Z]*)@wustl.edu/;
+	var pattern=/(^[a-zA-Z]+[0-9_a-zA-Z.]*)@wustl.edu/;
 	return pattern.test(email);
 }
 

@@ -11,6 +11,7 @@ function init_pending_requests()
 	display_pendingrequests();
 	myscheduledsessions();
 	displayrequest_sessions();
+	document.getElementById("username_display").innerHTML="<a href=profile_"+usernamecok+".html>"+usernamecok+"</a>";
 }
 
 /*
@@ -39,21 +40,29 @@ function display_pendingrequests()
 {
 	
 	//pending_requests=JSON.parse(pending_requests);
-	
+	//localStorage.clear();
 	var temp="";
 	pending_requests=localStorage.getItem(usernamecok+"_9");
+	
+	
 	if(pending_requests==null)
 	{
 		temp="<p>You do not have any requests pending!</p>";
 	}
 	else
 	{
+		
 		pending_requests=JSON.parse(pending_requests);
 		
 		for (i = 0; i < pending_requests.length; i++)
 		{
 			
 			temp+="<h3 onclick=\"PR_detail("+i+")\">"+pending_requests[i].username+"</h3>is asking to join<h3>"+pending_requests[i].post.subject+"</h3></br>"+
+				"Purpose:"+pending_requests[i].description+"</br>Date:"+pending_requests[i].date+
+				"</br>From:"+pending_requests[i].fromhour+":"+pending_requests[i].fromminute+
+				"</br>To:"+pending_requests[i].tohour+":"+pending_requests[i].tominute+
+				"</br>Location:"+pending_requests[i].location+
+				"</br>Recurrence:"+pending_requests[i].recurrence+"</br>"+
 				"<input type=\"button\" value=\"Accept\" id=\"PR_accept\" onclick=\"PR_accept("+i+")\"></button>"+
 				"<input type=\"button\" value=\"Deny\" id=\"PR_deny\" onclick=\"PR_deny("+i+")\"></button>"
 		}
@@ -70,7 +79,7 @@ function PR_detail(i)
 	document.getElementById("pending_requests").innerHTML = "<h3>XDDDDD</h3>"
 }
 
-/*function PR_accept(i)
+function PR_accept(i)
 {
 	alert("accepted")
 	
@@ -84,7 +93,7 @@ function PR_detail(i)
 	myscheduled[i].tohour = pending_requests[i].post.tohour
 	myscheduled[i].tominute = pending_requests[i].post.tominute
 	//myscheduled[i].recurrence = pending_requests[i].post.recurrence //no this feature
-	
+	*/
 	PR_delete(i)
 }
 
@@ -97,6 +106,6 @@ function PR_delete(i)
 {
 	
 	pending_requests.splice(i,1)
-	
+	//localStorage.setItem(usernamecok+"_9",pending_requests);
 	display_pendingrequests()
-}*/
+}
