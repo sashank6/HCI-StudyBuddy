@@ -11,6 +11,7 @@ function init_pending_requests()
 	display_pendingrequests();
 	myscheduledsessions();
 	displayrequest_sessions();
+	document.getElementById("username_display").innerHTML="<a href=profile_"+usernamecok+".html>"+usernamecok+"</a>";
 }
 
 /*

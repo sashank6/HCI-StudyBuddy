@@ -383,7 +383,7 @@ function displayobjectdata(obj,i)
 
 	data+="<h2>"+obj.subject+"-"+obj.description+"</h2>";
 	
-	data+="<p>User: "+obj.username+"</p>"           //where can we get the info of username?
+	data+="<p>User: <a href=\"profile_"+obj.username+".html\" >"+obj.username+"</a></p>"           //where can we get the info of username?
 	data+="<p>Date: Not Implemented</p>";
 	data+="<p>Time: "+convert_time(obj.fromhour,obj.fromminute,obj.tohour,obj.tominute)+"</p>";
 	data += "<p>Location:" + obj.place + "</p>";
@@ -684,7 +684,7 @@ function PF_name(write)
 	if (write)
 		name = document.getElementById("PF_name").value
 	else
-		document.getElementById("PF_name").innerHTML = name;
+		document.getElementById("PF_name").innerHTML = "<a href=profile_"+usernamecok+".html>"+usernamecok+"</a>";
 		document.getElementById("PF_name").defaultValue = name;
 }
 
