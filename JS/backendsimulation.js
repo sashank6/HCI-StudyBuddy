@@ -186,7 +186,7 @@ function myscheduledsessions()
 		var temp="";
 		for(var i=0;i<myscheduled.length;i++)
 		{
-		    temp += "<br /><div><p><u>" + myscheduled[i].subject + " with " + myscheduled[i].username + "</u></p><p> Location: " + myscheduled[i].place + "</p><p> Date: " + myscheduled[i].date + "</p><p> Time: " + convert_time(myscheduled[i].fromhour, myscheduled[i].fromminute, myscheduled[i].tohour, myscheduled[i].tominute) + "</p><p> Recurrence: " + myscheduled[i].recurrence + "</p></div>";
+		    temp += "<br /><div><p><u>" + myscheduled[i].subject + " with " + myscheduled[i].username + "</u></p><p> Location: " + myscheduled[i].place + "</p><p> Date: " + myscheduled[i].date + "</p><p> Time: " + convert_time(myscheduled[i].fromhour, myscheduled[i].fromminute, myscheduled[i].tohour, myscheduled[i].tominute) + "</p><p> Recurrence: " + recurrence_freq(myscheduled[i].recurrence) + "</p></div>";
 			
 		}
 		
@@ -244,7 +244,7 @@ function displayrequest_sessions()
 		var temp="";
 		for(var i=0;i<request_sessions.length;i++)
 		{
-		    temp += "<br /><div><p><u>" + request_sessions[i].subject + " with " + request_sessions[i].username + "</u></p><p> Location: " + request_sessions[i].place + "</p><p> Date: " + request_sessions[i].date + "</p><p> Time: " + convert_time(request_sessions[i].fromhour,request_sessions[i].fromminute,request_sessions[i].tohour,request_sessions[i].tominute)+ "</p><p> Recurrence: " +  request_sessions[i].recurrence + "</p></div>";
+		    temp += "<br /><div><p><u>" + request_sessions[i].subject + " with " + request_sessions[i].username + "</u></p><p> Location: " + request_sessions[i].place + "</p><p> Date: " + request_sessions[i].date + "</p><p> Time: " + convert_time(request_sessions[i].fromhour,request_sessions[i].fromminute,request_sessions[i].tohour,request_sessions[i].tominute)+ "</p><p> Recurrence: " +  recurrence_freq(request_sessions[i].recurrence) + "</p></div>";
 		}
 		document.getElementById("requestedsessions").innerHTML=temp;
 	}
@@ -824,7 +824,7 @@ function MS_show_msg(i)
 function user_link(username)
 {
     if (username == "buddy")
-        var result = str.link("profile_Bob.html");       //where is the user profile link? I couldn't find it
+        var result = str.link("profile_Bob.html");       
     else if (username == "Jim")
         var result = str.link("profile_JimMechE.html");
     else if (username == "lawl")
