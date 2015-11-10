@@ -17,16 +17,34 @@
   vertical-align: text-top;
 }
 
+.invitePending{
+ -webkit-border-radius: 10;
+  -moz-border-radius: 10;
+  border-radius: 5px;
+  font-family: Arial;
+  color: LightSlateGrey;
+  font-size: 15px;
+  background: LightGrey;
+  padding: 2px 5px 2px 5px;
+  text-decoration: none;
+}
+
 .invite{
  -webkit-border-radius: 10;
   -moz-border-radius: 10;
   border-radius: 5px;
   font-family: Arial;
   color: #ffffff;
-  font-size: 10px;
+  font-size: 15px;
   background: #575d61;
-  padding: 5px 5px 5px 5px;
+  padding: 2px 5px 2px 5px;
   text-decoration: none;
+}
+
+
+.invite:hover{
+	background:#3cb0fd;
+  text-decoration: none;	
 }
 
 

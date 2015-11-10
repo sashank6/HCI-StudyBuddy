@@ -421,7 +421,7 @@ function displayobjectdata(obj,i)
 	
 	data+="<p>"+obj.comments+"</p>"
 	if (isInRequestSession(obj))
-		data+="<button><span class=\"invite\"> waiting for approval</button></span>";
+		data+="<span class=\"invitePending\"> invite sent: waiting for approval</span>";
 	else
 		data+="<button onclick=\"requestsessions("+i+")\" span class=\"inviteX\">"+"Request to join"+"</button> </span>";
  
