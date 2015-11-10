@@ -94,7 +94,7 @@ function submitData() {
 
        //alert(strPrintOut);
        strPrintOut += SelectedValue + "</li></ul><br/></div><hr/>";
-       document.getElementById("divOput").innerHTML += strPrintOut;
+       //document.getElementById("divOput").innerHTML += strPrintOut;
 
        document.DemoForm.ClickEnablePost.style.display = "block";//visible
        document.DemoForm.ClickButton.style.display = "none";//invisible

@@ -121,10 +121,19 @@ function init()
 	ss4.username = "Sarah92";
 	ss4.recurrence = 3;
 	
-	studysession.push(ss1);
-	studysession.push(ss2);
-	studysession.push(ss3);
-	studysession.push(ss4);
+	//studysession.push(ss1);
+	//studysession.push(ss2);
+	//studysession.push(ss3);
+	//studysession.push(ss4);
+	var sessionstring=localStorage.getItem("@-*!");
+	if(sessionstring==null)
+	{
+		
+	}
+	else
+	{
+		studysession=JSON.parse(sessionstring);
+	}
 	displaysearchlist();
 	applyfilter();
 	myscheduledsessions();
