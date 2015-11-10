@@ -487,6 +487,7 @@ function searchresults(group,minsize,maxsize,partner,startminute,endminute,homew
 			//{alert("XD")}
 			//request_button.push("Join!")
 		//temp+="<div><h4>"+studysession[i].subject+"<button onclick=\"request("+i+")\">"+request_button[i]+"</button>"+"</h4>"+"<p>"+studysession[i].description+"</p></div>";
+		if(usernamecok!=filsessions[i].username)
 		temp+="<div>"+displayobjectdata(filsessions[i],i)+"</div>";
 	document.getElementById("results").innerHTML=temp;
 	
@@ -590,7 +591,7 @@ function searchresults(group,minsize,maxsize,partner,startminute,endminute,homew
 
 			}
 			
-			if(newsessions[i].fromhour >=fromhour && newsessions[i].tohour <=tohour && newsessions[i].fromminute >=fromminute && newsessions[i].tominute<=tominute)
+			if(newsessions[i].startminute>=startminute&&newsessions[i].endminute<=endminute)
 			{
 				filsessions.push(newsessions[i]);
 				//alert("time"+i);
@@ -615,7 +616,7 @@ function searchresults(group,minsize,maxsize,partner,startminute,endminute,homew
 		temp="";
 		for(var i=0;i<filsessions.length;i++)
 			if(usernamecok!=filsessions[i].username)
-			temp+="<div><h4>"+filsessions[i].subject+"</h4>"+"<p>"+filsessions[i].description+"<button onclick=\"requestsessions("+i+")\">"+"Request to join"+"</button>"+"</p></div>";
+			temp+="<div>"+displayobjectdata(filsessions[i],i)+"</div>";
 		document.getElementById("results").innerHTML=temp;
 			
 			}
