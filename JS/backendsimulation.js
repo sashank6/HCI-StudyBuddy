@@ -367,7 +367,7 @@ function displaysearchlist()
 {
 	var temp="";
 	for(var i=0;i<searchlist.length;i++)
-		temp+="<span class =\"box\"><span class=\"cross\" onclick=\"removesearchlist("+i+")\">X </span>"+searchlist[i]+"</span>";
+		temp+="<span class =\"box\"><span class=\"cross\" onclick=\"removesearchlist("+i+")\">X</span>"+ " " +searchlist[i]+"</span>";
 	document.getElementById("selected_subjects").innerHTML=temp;
 		
 }
@@ -421,9 +421,9 @@ function displayobjectdata(obj,i)
 	
 	data+="<p>"+obj.comments+"</p>"
 	if (isInRequestSession(obj))
-		data+="<button> waiting for approval</button>";
+		data+="<button><span class=\"invite\"> waiting for approval</button></span>";
 	else
-		data+="<button onclick=\"requestsessions("+i+")\">"+"Request to join"+"</button>";
+		data+="<button onclick=\"requestsessions("+i+")\" span class=\"inviteX\">"+"Request to join"+"</button> </span>";
  
 	data+="<hr/>"
 	

@@ -14,7 +14,21 @@
   background: #575d61;
   padding: 1px 5px 1px 5px;
   text-decoration: none;
+  vertical-align: text-top;
 }
+
+.invite{
+ -webkit-border-radius: 10;
+  -moz-border-radius: 10;
+  border-radius: 5px;
+  font-family: Arial;
+  color: #ffffff;
+  font-size: 10px;
+  background: #575d61;
+  padding: 5px 5px 5px 5px;
+  text-decoration: none;
+}
+
 
 .cross:hover{
 	background: #3cb0fd;
@@ -23,7 +37,7 @@
 
 .box{
 border:0.5px dashed;
-padding:5px 5px 5px 5px;
+padding:2px 2px 2px 2px;
 margin:0 auto;
 }
 
