@@ -138,7 +138,7 @@ function init()
 	applyfilter();
 	myscheduledsessions();
 	displayrequest_sessions();
-	displaypost_sessions();
+	
 	
 	
 }
@@ -421,9 +421,9 @@ function displayobjectdata(obj,i)
 	
 	data+="<p>"+obj.comments+"</p>"
 	if (isInRequestSession(obj))
-		data+="<span class=\"invitePending\"> invite sent: waiting for response</span>";
+		data+="<span class=\"invitePending\"> invite sent: waiting for approval</span>";
 	else
-		data+="<button onclick=\"requestsessions("+i+")\" span class=\"invite\">"+"Request to join"+"</button> </span>";
+		data+="<button onclick=\"requestsessions("+i+")\" span class=\"inviteX\">"+"Request to join"+"</button> </span>";
  
 	data+="<hr/>"
 	
@@ -844,48 +844,4 @@ function user_link(username)
     else if (username == "George")
         var result = str.link("***George profile page***");
     document.getElementById("user_profile").innerHTML = result;
-}
-
-function displayobjectdata(obj) {
-    //alert(obj.subject);
-    var data = "";
-    data += "<u>" + obj.subject + "</u>";
-    data += "<p><b>Date: </b>" + obj.date + "</p>";
-    data += "<p><b>Time: </b>" + convert_time(obj.fromhour, obj.fromminute, obj.tohour, obj.tominute) + "</p>";
-    data += "<p><b>Location: </b>" + obj.place + "</p>";
-    data += "<p><b>Recurrence: </b>" + recurrence_freq(obj.recurrence) + "</p>";
-    data += "<p><b> Purpose: </b>";
-    var tesr = []
-    if (obj.homework)
-        tesr.push("Homework");
-    if (obj.examstudy)
-        tesr.push("Study for Exam");
-    if (obj.notes)
-        tesr.push("Share Notes");
-    if (obj.lecture_review)
-        tesr.push("Lecture Review");
-    if (obj.other)
-        tesr.push("Other");
-    var r = 0;
-    for (r = 0; r < tesr.length - 1; r++)
-        data += " " + tesr[r] + ",";
-    data += " " + tesr[r];
-    return data + "<br /><br />";
-
-}
-
-function displaypost_sessions() {
-    var post_sessions = localStorage.getItem(usernamecok + "_2");
-    if (post_sessions == null) {
-        document.getElementById("requestpostsessions").innerHTML = "You didn't post any sessions";
-    }
-    else {
-        post_sessions = JSON.parse(post_sessions);
-        var temp = "";
-        for (var i = 0; i < post_sessions.length; i++) {
-            temp += displayobjectdata(post_sessions[i]);
-        }
-        alert(temp);
-        document.getElementById("requestpostsessions").innerHTML = temp;
-    }
 }
