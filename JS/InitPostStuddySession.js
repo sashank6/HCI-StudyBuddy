@@ -129,7 +129,7 @@ function requestpostsessions()
     displaypost_sessions();
 
 }
-function displayobjectdata(obj)
+function displaypostobjectdata(obj)
 {
 	//alert(obj.subject);
 	var data="";
@@ -168,13 +168,13 @@ function displaypost_sessions()
 	else
 	{
 		post_sessions=JSON.parse(post_sessions);
-		var temp="";
+		var tempPost="";
 		for(var i=0;i<post_sessions.length;i++)
 		{
-			temp+=displayobjectdata(post_sessions[i]);
+			tempPost+=displaypostobjectdata(post_sessions[i]);
 		}
-		alert(temp);
-		document.getElementById("requestpostsessions").innerHTML=temp;
+		alert(tempPost);
+		document.getElementById("requestpostsessions").innerHTML=tempPost;
 	}
 }
 
