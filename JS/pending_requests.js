@@ -141,6 +141,9 @@ function PR_accept(i)
 			alert("6"+applicant_scheduled_session[0])
 			localStorage.setItem(applicant_username+"_1", applicant_scheduled_session)
 			alert("applicant schedule session = "+applicant_schedule_add.post.subject)
+			applicant_sessions_applied = JSON.stringify(applicant_sessions_applied)
+			localStorage.setItem(applicant_username+"_3", applicant_sessions_applied)
+			
 			break;
 		}
 	}
@@ -170,8 +173,10 @@ function PR_deny(i)
 function PR_delete(i)
 {
 	
+	//pending_requests=localStorage.getItem(usernamecok+"_9");
 	pending_requests.splice(i,1)
-	//localStorage.setItem(usernamecok+"_9",pending_requests);
+	pending_requests = JSON.stringify(pending_requests)
+	localStorage.setItem(usernamecok+"_9", pending_requests)
 	display_pendingrequests()
 
 }
