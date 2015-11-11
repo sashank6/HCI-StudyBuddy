@@ -46,7 +46,7 @@ function display_pendingrequests()
 	pending_requests=localStorage.getItem(usernamecok+"_9");
 	
 	
-	if(pending_requests==null || pending_requests.length == 0)
+	if(pending_requests==null || pending_requests == "[]")
 	{
 		temp="<p>You do not have any requests pending!</p>";
 	}
@@ -116,7 +116,7 @@ function PR_accept(i,decision)
 			//applicant_schedule_add = applicant_sessions_applied.splice(j,1)
 			applicant_sessions_applied.splice(j,1)
 			applicant_scheduled_session.push(applicant_schedule_add)
-			if (applicant_scheduled_session.length != 0) applicant_scheduled_session = JSON.stringify(applicant_scheduled_session)
+			applicant_scheduled_session = JSON.stringify(applicant_scheduled_session)
 			if (decision == 1) localStorage.setItem(applicant_username+"_1", applicant_scheduled_session)
 			
 			applicant_sessions_applied = JSON.stringify(applicant_sessions_applied)
