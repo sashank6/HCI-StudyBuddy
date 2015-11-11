@@ -61,7 +61,7 @@ function display_pendingrequests()
 				"Purpose:"+pending_requests[i].post.description+"</br>Date:"+pending_requests[i].post.date+
 				"</br>From:"+pending_requests[i].post.fromhour+":"+pending_requests[i].post.fromminute+
 				"</br>To:"+pending_requests[i].post.tohour+":"+pending_requests[i].post.tominute+
-				"</br>Location:"+pending_requests[i].post.place+
+				"</br>Place:"+pending_requests[i].post.place+
 				"</br>Recurrence:"+pending_requests[i].post.recurrence+"</br>"+
 				"<input type=\"button\" value=\"Accept\" id=\"PR_accept\" onclick=\"PR_accept("+i+")\"></button>"+
 				"<input type=\"button\" value=\"Deny\" id=\"PR_deny\" onclick=\"PR_deny("+i+")\"></button>"
@@ -85,12 +85,34 @@ function PR_accept(i)
 	
 	
 	applicant_username = pending_requests[i].username
-	applicant_sessions_applied=JSON.parse(localStorage.getItem(applicant_username+"_3"));
+	applicant_sessions_applied = JSON.parse(localStorage.getItem(applicant_username+"_3"));
+	alert(localStorage.getItem(applicant_username+"_1"))
+	applicant_scheduled_session = JSON.parse(localStorage.getItem(applicant_username+"_1"));
+	if (applicant_scheduled_session == null) applicant_scheduled_session = [];
 	
 	for (j=0; j < applicant_sessions_applied.length; j++)
 	{
-		if (applicant_sessions_applied[j].place == pending_requests[i].post.location)
-			alert("==")
+		if (applicant_sessions_applied[j].place == pending_requests[i].post.place &&
+		applicant_sessions_applied[j].fromhour == pending_requests[i].post.fromhour &&
+		applicant_sessions_applied[j].fromminute == pending_requests[i].post.fromminute &&
+		applicant_sessions_applied[j].tohour == pending_requests[i].post.tohour &&
+		applicant_sessions_applied[j].tominute == pending_requests[i].post.tominute &&
+		applicant_sessions_applied[j].subject == pending_requests[i].post.subject &&
+		applicant_sessions_applied[j].recurrence == pending_requests[i].post.recurrence &&
+		applicant_sessions_applied[j].homework == pending_requests[i].post.homework &&
+		applicant_sessions_applied[j].lecture_review == pending_requests[i].post.lecture_review &&
+		applicant_sessions_applied[j].examstudy == pending_requests[i].post.examstudy &&
+		applicant_sessions_applied[j].notes == pending_requests[i].post.notes &&
+		applicant_sessions_applied[j].description == pending_requests[i].post.description
+		)
+		{
+			
+			applicant_schedule_add = applicant_sessions_applied.splice(j,1)
+			applicant_scheduled_session.push(applicant_schedule_add)
+			localStorage.setItem(applicant_username+"_1", applicant_scheduled_session)
+			alert("applicant_username in for")
+			break;
+		}
 	}
 	
 	
@@ -98,15 +120,14 @@ function PR_accept(i)
 	reply.subject = pending_requests[i].post.subject
 	//myscheduled[i].place = pending_requests[i].post.place //we do not have this feature
 	//myscheduled[i].date = pending_requests[i].post.date //no this feature
-	reply.fromhour = pending_requests[i].post.fromhour
-	myscheduled[i].fromminute = pending_requests[i].post.fromminute
-	myscheduled[i].tohour = pending_requests[i].post.tohour
-	myscheduled[i].tominute = pending_requests[i].post.tominute
 	//myscheduled[i].recurrence = pending_requests[i].post.recurrence //no this feature
 	*/
-	//localStorage.setItem(reply.username+"_9",t);
+	//localStorage.setItem(applicant_username+"_3",applicant_sessions_applied);
 	alert(applicant_username)
-	document.getElementById("PR_test_area").innerHTML=applicant_sessions_applied[0].place
+	document.getElementById("PR_test_area").innerHTML=applicant_scheduled_session//applicant_sessions_applied[0].place
+	applicant_scheduled_session = JSON.parse(localStorage.getItem(applicant_username+"_1"));
+	document.getElementById("PR_test_area").innerHTML=applicant_scheduled_session//applicant_sessions_applied[0].place
+	
 	PR_delete(i)
 }
 
@@ -121,6 +142,7 @@ function PR_delete(i)
 	pending_requests.splice(i,1)
 	//localStorage.setItem(usernamecok+"_9",pending_requests);
 	display_pendingrequests()
+
 }
 
 function PR_test()

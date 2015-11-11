@@ -185,6 +185,7 @@ function convert_time(fhour,fminute,thour,tminute)
 function myscheduledsessions()
 {
 	var myscheduled=localStorage.getItem(usernamecok+"_1");
+	alert(myscheduled+" = myscheduled")
 	if(myscheduled==null)
 	{
 		
@@ -198,7 +199,7 @@ function myscheduledsessions()
 		    temp += "<br /><div><p><u>" + myscheduled[i].subject + " with " + myscheduled[i].username + "</u></p><p> Location: " + myscheduled[i].place + "</p><p> Date: " + myscheduled[i].date + "</p><p> Time: " + convert_time(myscheduled[i].fromhour, myscheduled[i].fromminute, myscheduled[i].tohour, myscheduled[i].tominute) + "</p><p> Recurrence: " + recurrence_freq(myscheduled[i].recurrence) + "</p></div>";
 			
 		}
-		
+		document.getElementById("myscheduledsessions").innerHTML=temp
 	}
 }
 
