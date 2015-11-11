@@ -58,16 +58,16 @@ function display_pendingrequests()
 		{
 
 			
-			temp+="<h3 onclick=\"PR_detail("+i+")\">"+pending_requests[i].username+"</h3>is asking to join<h3>"+pending_requests[i].post.subject+"</h3></br>"+
-				"Purpose:"+pending_requests[i].post.description+"</br>Date:"+pending_requests[i].post.date+
-				"</br>Time:"+pending_requests[i].post.fromhour+":"
+			temp+="<b onclick=\"PR_detail("+i+")\">"+pending_requests[i].username+"</b> is asking to join <b>"+pending_requests[i].post.subject+"</b></br>"+
+				"<b>Purpose:</b>"+pending_requests[i].post.description+"</br>Date:"+pending_requests[i].post.date+
+				"</br><b>Time:</b>"+pending_requests[i].post.fromhour+":"
 			if (pending_requests[i].post.fromminute < 10) temp+="0"
 			temp+=pending_requests[i].post.fromminute+
 				" - "+pending_requests[i].post.tohour+":"
 			if (pending_requests[i].post.tominute < 10) temp+="0"
 			temp+=pending_requests[i].post.tominute+
-				"</br>Location:"+pending_requests[i].post.place+
-				"</br>Recurrence:"+pending_requests[i].post.recurrence+"</br>"+
+				"</br><b>Location:</b>"+pending_requests[i].post.place+
+				"</br><b>Recurrence:</b>"+pending_requests[i].post.recurrence+"</br>"+
 
 				"<input type=\"button\" value=\"Accept\" id=\"PR_accept\" onclick=\"PR_accept("+i+",1)\"></button>"+
 				"<input type=\"button\" value=\"Deny\" id=\"PR_deny\" onclick=\"PR_accept("+i+")\",0></button>"
