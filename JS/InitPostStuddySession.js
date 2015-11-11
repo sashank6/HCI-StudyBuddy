@@ -134,11 +134,11 @@ function displayobjectdata(obj)
 	//alert(obj.subject);
 	var data="";
 	data+="<u>"+obj.subject+"</u>";
-	data+="<p>Date"+obj.date+"</p>";
-	data+="<p>Time: "+convert_time(obj.fromhour,obj.fromminute,obj.tohour,obj.tominute)+"</p>";
-	data += "<p>Location:" + obj.place + "</p>";
-	data += "<p>Recurrence: " + recurrence_freq(obj.recurrence) + "</p>";
-	data+="<p> Purpose:";
+	data += "<p><b>Date: </b>" + obj.date + "</p>";
+	data += "<p><b>Time: </b>" + convert_time(obj.fromhour, obj.fromminute, obj.tohour, obj.tominute) + "</p>";
+	data += "<p><b>Location: </b>" + obj.place + "</p>";
+	data += "<p><b>Recurrence: </b>" + recurrence_freq(obj.recurrence) + "</p>";
+	data += "<p><b> Purpose: </b>";
 	var tesr=[]
 	if(obj.homework)
 		tesr.push("Homework");
@@ -154,7 +154,7 @@ function displayobjectdata(obj)
 	for(r=0;r<tesr.length-1;r++)
 		data+=" "+tesr[r]+",";
 	data+=" "+tesr[r];
-	return data+"</br>";
+	return data + "<br /><br />";
 	
 }
 
