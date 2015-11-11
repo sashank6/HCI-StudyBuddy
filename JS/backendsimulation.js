@@ -159,7 +159,14 @@ function deleteAllCookies() {
 }
 function convert_time(fhour,fminute,thour,tminute)
 {
-
+	if(fminute.length ==1)
+	{
+		fminute ="0"+ fminute;
+	}
+	if(tminute.length ==1)
+	{
+		tminute ="0"+tminute;
+	}
 	var temp="";
 	if(fhour>12)
 		temp+=parseInt(fhour-12)+":"+fminute+"pm";
