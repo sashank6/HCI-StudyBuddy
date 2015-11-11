@@ -61,7 +61,7 @@ function display_pendingrequests()
 				"Purpose:"+pending_requests[i].post.description+"</br>Date:"+pending_requests[i].post.date+
 				"</br>From:"+pending_requests[i].post.fromhour+":"+pending_requests[i].post.fromminute+
 				"</br>To:"+pending_requests[i].post.tohour+":"+pending_requests[i].post.tominute+
-				"</br>Location:"+pending_requests[i].post.location+
+				"</br>Location:"+pending_requests[i].post.place+
 				"</br>Recurrence:"+pending_requests[i].post.recurrence+"</br>"+
 				"<input type=\"button\" value=\"Accept\" id=\"PR_accept\" onclick=\"PR_accept("+i+")\"></button>"+
 				"<input type=\"button\" value=\"Deny\" id=\"PR_deny\" onclick=\"PR_deny("+i+")\"></button>"
