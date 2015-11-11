@@ -57,13 +57,13 @@ function display_pendingrequests()
 		
 		for (i = 0; i < pending_requests.length; i++)
 		{
-			
-			temp+="<h3 onclick=\"PR_detail("+i+")\">"+pending_requests[i].username+"</h3>is asking to join<h3>"+pending_requests[i].post.subject+"</h3></br>"+
-				"Purpose:"+pending_requests[i].post.description+"</br>Date:"+pending_requests[i].post.date+
-				"</br>From:"+pending_requests[i].post.fromhour+":"+pending_requests[i].post.fromminute+
-				"</br>To:"+pending_requests[i].post.tohour+":"+pending_requests[i].post.tominute+
-				"</br>Place:"+pending_requests[i].post.place+
-				"</br>Recurrence:"+pending_requests[i].post.recurrence+"</br>"+
+		
+			temp+="<b onclick=\"PR_detail("+i+")\">"+pending_requests[i].username+"</b> is asking to join your "+ pending_requests[i].post.subject+" study session</br>"+
+				"<b>Purpose:</b>"+pending_requests[i].post.description+"</br>Date:"+pending_requests[i].post.date+
+				"</br><b>From:</b>"+pending_requests[i].post.fromhour+":"+pending_requests[i].post.fromminute+
+				"</br><b>To</b>:"+pending_requests[i].post.tohour+":"+pending_requests[i].post.tominute+
+				"</br><b>Place</b>:"+pending_requests[i].post.place+
+				"</br><b>Recurrence</b>:"+pending_requests[i].post.recurrence+"</br>"+
 				"<input type=\"button\" value=\"Accept\" id=\"PR_accept\" onclick=\"PR_accept("+i+",1)\"></button>"+
 				"<input type=\"button\" value=\"Deny\" id=\"PR_deny\" onclick=\"PR_accept("+i+")\",0></button>"
 		}
