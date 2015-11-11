@@ -4,15 +4,18 @@
     window.location = "login.html";
     var temparray = usrverif.split("=");
     usernamecok = temparray[1];
-    name = usernamecok;
-	alert(name);
-	displaypost_sessions();
+    name = usernamecok;
+    alert(name);
+    PF_name(false);
+    PF_university(false);
+    myscheduledsessions();
+    displayrequest_sessions();
+    displaypost_sessions();
+
 	document.getElementById("username_display_post").innerHTML=usernamecok;
 }
-
-
-function requestpostsessions()
- {
+function requestpostsessions()
+{
      var ssPost = Object.create(post);
      var GroupSize;
      var SelectedValue;
@@ -317,4 +320,37 @@ function testmin(val, name) {
         return true;
     }
 
+}
+
+function myscheduledsessions() {
+    var myscheduled = localStorage.getItem(usernamecok + "_1");
+    alert(myscheduled + " = myscheduled")
+    if (myscheduled == null) {
+
+        document.getElementById("myscheduledsessions").innerHTML = "<p> You do not have any sessions scheduled </p>";
+    }
+    else {
+        var temp = "";
+        for (var i = 0; i < myscheduled.length; i++) {
+            temp += "<br /><div><p><u>" + myscheduled[i].subject + " with " + myscheduled[i].username + "</u></p><p> Location: " + myscheduled[i].place + "</p><p> Date: " + myscheduled[i].date + "</p><p> Time: " + convert_time(myscheduled[i].fromhour, myscheduled[i].fromminute, myscheduled[i].tohour, myscheduled[i].tominute) + "</p><p> Recurrence: " + recurrence_freq(myscheduled[i].recurrence) + "</p></div>";
+
+        }
+        document.getElementById("myscheduledsessions").innerHTML = temp
+    }
+}
+
+
+function displayrequest_sessions() {
+    var request_sessions = localStorage.getItem(usernamecok + "_3");
+    if (request_sessions == null) {
+        document.getElementById("requestedsessions").innerHTML = "You didn't request any sessions";
+    }
+    else {
+        request_sessions = JSON.parse(request_sessions);
+        var temp = "";
+        for (var i = 0; i < request_sessions.length; i++) {
+            temp += "<br /><div><p><u>" + request_sessions[i].subject + " with " + request_sessions[i].username + "</u></p><p> Location: " + request_sessions[i].place + "</p><p> Date: " + request_sessions[i].date + "</p><p> Time: " + convert_time(request_sessions[i].fromhour, request_sessions[i].fromminute, request_sessions[i].tohour, request_sessions[i].tominute) + "</p><p> Recurrence: " + recurrence_freq(request_sessions[i].recurrence) + "</p></div>";
+        }
+        document.getElementById("requestedsessions").innerHTML = temp;
+    }
 }
