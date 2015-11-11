@@ -58,11 +58,11 @@ function display_pendingrequests()
 		{
 			
 			temp+="<h3 onclick=\"PR_detail("+i+")\">"+pending_requests[i].username+"</h3>is asking to join<h3>"+pending_requests[i].post.subject+"</h3></br>"+
-				"Purpose:"+pending_requests[i].description+"</br>Date:"+pending_requests[i].date+
-				"</br>From:"+pending_requests[i].fromhour+":"+pending_requests[i].fromminute+
-				"</br>To:"+pending_requests[i].tohour+":"+pending_requests[i].tominute+
-				"</br>Location:"+pending_requests[i].location+
-				"</br>Recurrence:"+pending_requests[i].recurrence+"</br>"+
+				"Purpose:"+pending_requests[i].post.description+"</br>Date:"+pending_requests[i].post.date+
+				"</br>From:"+pending_requests[i].post.fromhour+":"+pending_requests[i].post.fromminute+
+				"</br>To:"+pending_requests[i].post.tohour+":"+pending_requests[i].post.tominute+
+				"</br>Location:"+pending_requests[i].post.location+
+				"</br>Recurrence:"+pending_requests[i].post.recurrence+"</br>"+
 				"<input type=\"button\" value=\"Accept\" id=\"PR_accept\" onclick=\"PR_accept("+i+")\"></button>"+
 				"<input type=\"button\" value=\"Deny\" id=\"PR_deny\" onclick=\"PR_deny("+i+")\"></button>"
 		}
@@ -83,17 +83,30 @@ function PR_accept(i)
 {
 	alert("accepted")
 	
-	/*=localStorage.getItem(usernamecok+"_1");
-	myscheduled[i].subject = pending_requests[i].post.subject
-	myscheduled[i].username = pending_requests[i].username
+	
+	applicant_username = pending_requests[i].username
+	applicant_sessions_applied=JSON.parse(localStorage.getItem(applicant_username+"_3"));
+	
+	for (j=0; j < applicant_sessions_applied.length; j++)
+	{
+		if (applicant_sessions_applied[j].place == pending_requests[i].post.location)
+			alert("==")
+	}
+	
+	
+	/*
+	reply.subject = pending_requests[i].post.subject
 	//myscheduled[i].place = pending_requests[i].post.place //we do not have this feature
 	//myscheduled[i].date = pending_requests[i].post.date //no this feature
-	myscheduled[i].fromhour = pending_requests[i].post.fromhour
+	reply.fromhour = pending_requests[i].post.fromhour
 	myscheduled[i].fromminute = pending_requests[i].post.fromminute
 	myscheduled[i].tohour = pending_requests[i].post.tohour
 	myscheduled[i].tominute = pending_requests[i].post.tominute
 	//myscheduled[i].recurrence = pending_requests[i].post.recurrence //no this feature
 	*/
+	//localStorage.setItem(reply.username+"_9",t);
+	alert(applicant_username)
+	document.getElementById("PR_test_area").innerHTML=applicant_sessions_applied[0].place
 	PR_delete(i)
 }
 
@@ -108,4 +121,17 @@ function PR_delete(i)
 	pending_requests.splice(i,1)
 	//localStorage.setItem(usernamecok+"_9",pending_requests);
 	display_pendingrequests()
+}
+
+function PR_test()
+{
+	alert("test")
+	alert(usernamecok)
+	//alert(end_user)
+	a=localStorage.getItem(usernamecok+"_1");
+	b=localStorage.getItem(usernamecok+"_3");
+	c=localStorage.getItem(usernamecok+"_9");
+	alert(a)
+	alert(b)
+	alert(c)
 }
