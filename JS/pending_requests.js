@@ -3,6 +3,7 @@ var pending_requests;
 
 function init_pending_requests()
 {
+	//localStorage.clear()
 	var usrverif=document.cookie;
 	if(usrverif=="")
 		window.location="login.html";
@@ -86,12 +87,14 @@ function PR_accept(i)
 	
 	applicant_username = pending_requests[i].username
 	applicant_sessions_applied = JSON.parse(localStorage.getItem(applicant_username+"_3"));
-	alert(localStorage.getItem(applicant_username+"_1"))
+	alert("1")
 	applicant_scheduled_session = JSON.parse(localStorage.getItem(applicant_username+"_1"));
+	alert(applicant_scheduled_session)
 	if (applicant_scheduled_session == null) applicant_scheduled_session = [];
 	
 	for (j=0; j < applicant_sessions_applied.length; j++)
 	{
+		alert("2 in for ")
 		if (applicant_sessions_applied[j].place == pending_requests[i].post.place &&
 		applicant_sessions_applied[j].fromhour == pending_requests[i].post.fromhour &&
 		applicant_sessions_applied[j].fromminute == pending_requests[i].post.fromminute &&
@@ -106,11 +109,38 @@ function PR_accept(i)
 		applicant_sessions_applied[j].description == pending_requests[i].post.description
 		)
 		{
+			alert("3 in if"+applicant_sessions_applied[j].subject)
+			applicant_schedule_add=Object.create(request);
+			alert("3.1")
+			alert(applicant_schedule_add.post)
+			applicant_schedule_add.username = usernamecok
+			alert("3.2"+applicant_schedule_add.username)
+			applicant_schedule_add.post = applicant_sessions_applied[j]
+			/*
+			applicant_schedule_add.post.fromhour = pending_requests[i].post.fromhour
+			applicant_schedule_add.post.fromminute = pending_requests[i].post.fromminute
+			applicant_schedule_add.post.tohour = pending_requests[i].post.tohour
+			applicant_schedule_add.post.tominute = pending_requests[i].post.tominute
+			applicant_schedule_add.post.subject = pending_requests[i].post.subject
+			applicant_schedule_add.post.recurrence = pending_requests[i].post.recurrence
+			alert("3.5")
+			applicant_schedule_add.post.homework = pending_requests[i].post.homework
+			applicant_schedule_add.post.lecture_review = pending_requests[i].post.lecture_review
+			applicant_schedule_add.post.examstudy = pending_requests[i].post.examstudy
+			applicant_schedule_add.post.notes == pending_requests[i].post.notes
+			applicant_schedule_add.post.description = pending_requests[i].post.description
+			*/
+			alert("3.9")
 			
-			applicant_schedule_add = applicant_sessions_applied.splice(j,1)
+			//applicant_schedule_add = applicant_sessions_applied.splice(j,1)
+			applicant_sessions_applied.splice(j,1)
+			alert("4"+applicant_schedule_add.post.subject)
 			applicant_scheduled_session.push(applicant_schedule_add)
+			alert("5"+applicant_scheduled_session[0].post.subject)
+			applicant_scheduled_session = JSON.stringify(applicant_scheduled_session)
+			alert("6"+applicant_scheduled_session[0])
 			localStorage.setItem(applicant_username+"_1", applicant_scheduled_session)
-			alert("applicant_username in for")
+			alert("applicant schedule session = "+applicant_schedule_add.post.subject)
 			break;
 		}
 	}
@@ -125,8 +155,8 @@ function PR_accept(i)
 	//localStorage.setItem(applicant_username+"_3",applicant_sessions_applied);
 	alert(applicant_username)
 	document.getElementById("PR_test_area").innerHTML=applicant_scheduled_session//applicant_sessions_applied[0].place
-	applicant_scheduled_session = JSON.parse(localStorage.getItem(applicant_username+"_1"));
-	document.getElementById("PR_test_area").innerHTML=applicant_scheduled_session//applicant_sessions_applied[0].place
+	//applicant_scheduled_session = JSON.parse(localStorage.getItem(applicant_username+"_1"));
+	document.getElementById("PR_test_area").innerHTML=applicant_scheduled_session[0].post.subject//applicant_sessions_applied[0].place
 	
 	PR_delete(i)
 }
@@ -134,6 +164,7 @@ function PR_accept(i)
 function PR_deny(i)
 {
 	alert("denied")
+	document.getElementById("PR_test_area").innerHTML=applicant_scheduled_session//applicant_sessions_applied[0].place
 	PR_delete(i)
 }
 function PR_delete(i)

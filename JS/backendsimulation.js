@@ -186,7 +186,7 @@ function convert_time(fhour,fminute,thour,tminute)
 function myscheduledsessions()
 {
 	var myscheduled=localStorage.getItem(usernamecok+"_1");
-	alert(myscheduled+" = myscheduled")
+	myscheduled=JSON.parse(myscheduled)
 	if(myscheduled==null)
 	{
 		
@@ -197,7 +197,7 @@ function myscheduledsessions()
 		var temp="";
 		for(var i=0;i<myscheduled.length;i++)
 		{
-		    temp += "<br /><div><p><u>" + myscheduled[i].subject + " with " + myscheduled[i].username + "</u></p><p> Location: " + myscheduled[i].place + "</p><p> Date: " + myscheduled[i].date + "</p><p> Time: " + convert_time(myscheduled[i].fromhour, myscheduled[i].fromminute, myscheduled[i].tohour, myscheduled[i].tominute) + "</p><p> Recurrence: " + recurrence_freq(myscheduled[i].recurrence) + "</p></div>";
+		    temp += "<br /><div><p><u>" + myscheduled[i].post.subject + " with " + myscheduled[i].post.username + "</u></p><p> Location: " + myscheduled[i].post.place + "</p><p> Date: " + myscheduled[i].post.date + "</p><p> Time: " + convert_time(myscheduled[i].post.fromhour, myscheduled[i].post.fromminute, myscheduled[i].post.tohour, myscheduled[i].post.tominute) + "</p><p> Recurrence: " + recurrence_freq(myscheduled[i].post.recurrence) + "</p></div>";
 			
 		}
 		document.getElementById("myscheduledsessions").innerHTML=temp
