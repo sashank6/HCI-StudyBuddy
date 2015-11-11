@@ -160,14 +160,14 @@ function deleteAllCookies() {
 }
 function convert_time(fhour,fminute,thour,tminute)
 {
-    if (fminute < 10)
-    {
-        fminute = "0" + fminute;
-    }
-    if (tminute < 10)
-    {
-        tminute = "0" + tminute;
-    }
+	if(fminute.length ==1)
+	{
+		fminute ="0"+ fminute;
+	}
+	if(tminute.length ==1)
+	{
+		tminute ="0"+tminute;
+	}
 	var temp="";
 	if(fhour>12)
 		temp+=parseInt(fhour-12)+":"+fminute+"pm";
@@ -186,6 +186,7 @@ function convert_time(fhour,fminute,thour,tminute)
 function myscheduledsessions()
 {
 	var myscheduled=localStorage.getItem(usernamecok+"_1");
+	alert(myscheduled+" = myscheduled")
 	if(myscheduled==null)
 	{
 		
@@ -199,7 +200,7 @@ function myscheduledsessions()
 		    temp += "<br /><div><p><u>" + myscheduled[i].subject + " with " + myscheduled[i].username + "</u></p><p> Location: " + myscheduled[i].place + "</p><p> Date: " + myscheduled[i].date + "</p><p> Time: " + convert_time(myscheduled[i].fromhour, myscheduled[i].fromminute, myscheduled[i].tohour, myscheduled[i].tominute) + "</p><p> Recurrence: " + recurrence_freq(myscheduled[i].recurrence) + "</p></div>";
 			
 		}
-		
+		document.getElementById("myscheduledsessions").innerHTML=temp
 	}
 }
 
