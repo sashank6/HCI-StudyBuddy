@@ -60,8 +60,12 @@ function display_pendingrequests()
 			
 			temp+="<h3 onclick=\"PR_detail("+i+")\">"+pending_requests[i].username+"</h3>is asking to join<h3>"+pending_requests[i].post.subject+"</h3></br>"+
 				"Purpose:"+pending_requests[i].post.description+"</br>Date:"+pending_requests[i].post.date+
-				"</br>From:"+pending_requests[i].post.fromhour+":"+pending_requests[i].post.fromminute+
-				"</br>To:"+pending_requests[i].post.tohour+":"+pending_requests[i].post.tominute+
+				"</br>From:"+pending_requests[i].post.fromhour+":"
+			if (pending_requests[i].post.fromminute < 10) temp+="0"
+			temp+=pending_requests[i].post.fromminute+
+				"</br>To:"+pending_requests[i].post.tohour+":"
+			if (pending_requests[i].post.tominute < 10) temp+="0"
+			temp+=pending_requests[i].post.tominute+
 				"</br>Place:"+pending_requests[i].post.place+
 				"</br>Recurrence:"+pending_requests[i].post.recurrence+"</br>"+
 				"<input type=\"button\" value=\"Accept\" id=\"PR_accept\" onclick=\"PR_accept("+i+",1)\"></button>"+
