@@ -32,7 +32,11 @@ function init()
 	for(var i=1;i<=12;i++)
 		hour_html+="<option>"+i+"</option>";
 	for(var i=0;i<60;i++)
-		minute_html+="<option>"+i+"</option>"
+	{
+
+		minute_html+="<option>"+i+"</option>";
+	}
+
 	document.getElementById("from-hour").innerHTML=hour_html;
 	document.getElementById("to-hour").innerHTML=hour_html;
 	document.getElementById("from-minute").innerHTML=minute_html;
@@ -400,6 +404,14 @@ function displayobjectdata(obj,i)
 	var data="";
 	data+="<h2>"+obj.subject+"-"+obj.description+"</h2>";
 	data+="<p>User: <a href=\"profile_"+obj.username+".html\" >"+obj.username+"</a></p>"           //where can we get the info of username?
+	if(obj.group)
+	{
+		data+="<p>Partner/Group Study:" +"Group"+"("+obj.maxsize+"-"+ obj.minsize+")" +"</p>";		
+	}
+	else
+	{
+		data+="<p>Partner/Group Study:" +"Partner"+"</p>";
+	}
 	data+="<p>Date:"+obj.date+"</p>";
 	data+="<p>Time: "+convert_time(obj.fromhour,obj.fromminute,obj.tohour,obj.tominute)+"</p>";
 	data += "<p>Location:" + obj.place + "</p>";
