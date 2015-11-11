@@ -437,6 +437,8 @@ function displayobjectdata(obj,i)
 	data+="<p>"+obj.comments+"</p>"
 	if (isInRequestSession(obj))
 		data+="<span class=\"invitePending\"> invite sent: waiting for approval</span>";
+	else if (isInMySchedule(obj))
+		data+="<span class=\"invitePending\"> already joined</span>";
 	else
 		data+="<button onclick=\"requestsessions("+i+")\" span class=\"inviteX\">"+"Request to join"+"</button> </span>";
  
@@ -477,6 +479,25 @@ function recurrence_freq(index)
 function isInRequestSession(obj)
 {
 	request_string = localStorage.getItem(usernamecok+"_3")
+	request_list = JSON.parse(request_string)
+	if (request_list == null) return false;
+	else
+		for (i = 0; i < request_list.length; i++)
+		{
+			//may still need to and location, recurrence, etc if those conditions are added into filter
+			if (request_list[i].subject == obj.subject && request_list[i].fromhour == obj.fromhour && request_list[i].fromminute == obj.fromminute)
+				if (request_list[i].tohour == obj.tohour && request_list[i].tominute == obj.tominute)
+					return true
+		
+		}
+	return false	
+	
+	
+}
+
+function isInMySchedule(obj)
+{
+	request_string = localStorage.getItem(usernamecok+"_1")
 	request_list = JSON.parse(request_string)
 	if (request_list == null) return false;
 	else
