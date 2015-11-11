@@ -3,6 +3,7 @@ var pending_requests;
 
 function init_pending_requests()
 {
+	//localStorage.clear()
 	var usrverif=document.cookie;
 	if(usrverif=="")
 		window.location="login.html";
@@ -45,13 +46,13 @@ function display_pendingrequests()
 	pending_requests=localStorage.getItem(usernamecok+"_9");
 	
 	
-	if(pending_requests==null)
+	if(pending_requests==null || pending_requests.length == 0)
 	{
 		temp="<p>You do not have any requests pending!</p>";
 	}
 	else
 	{
-		
+		alert("pend = "+pending_requests)
 		pending_requests=JSON.parse(pending_requests);
 		
 		for (i = 0; i < pending_requests.length; i++)
@@ -63,8 +64,8 @@ function display_pendingrequests()
 				"</br>To:"+pending_requests[i].post.tohour+":"+pending_requests[i].post.tominute+
 				"</br>Place:"+pending_requests[i].post.place+
 				"</br>Recurrence:"+pending_requests[i].post.recurrence+"</br>"+
-				"<input type=\"button\" value=\"Accept\" id=\"PR_accept\" onclick=\"PR_accept("+i+")\"></button>"+
-				"<input type=\"button\" value=\"Deny\" id=\"PR_deny\" onclick=\"PR_deny("+i+")\"></button>"
+				"<input type=\"button\" value=\"Accept\" id=\"PR_accept\" onclick=\"PR_accept("+i+",1)\"></button>"+
+				"<input type=\"button\" value=\"Deny\" id=\"PR_deny\" onclick=\"PR_accept("+i+")\",0></button>"
 		}
 	
 	}
@@ -79,19 +80,21 @@ function PR_detail(i)
 	document.getElementById("pending_requests").innerHTML = "<h3>XDDDDD</h3>"
 }
 
-function PR_accept(i)
+function PR_accept(i,decision)
 {
 	alert("accepted")
 	
 	
 	applicant_username = pending_requests[i].username
 	applicant_sessions_applied = JSON.parse(localStorage.getItem(applicant_username+"_3"));
-	alert(localStorage.getItem(applicant_username+"_1"))
+	alert("1")
 	applicant_scheduled_session = JSON.parse(localStorage.getItem(applicant_username+"_1"));
+	alert(applicant_scheduled_session)
 	if (applicant_scheduled_session == null) applicant_scheduled_session = [];
 	
 	for (j=0; j < applicant_sessions_applied.length; j++)
 	{
+		alert("2 in for ")
 		if (applicant_sessions_applied[j].place == pending_requests[i].post.place &&
 		applicant_sessions_applied[j].fromhour == pending_requests[i].post.fromhour &&
 		applicant_sessions_applied[j].fromminute == pending_requests[i].post.fromminute &&
@@ -106,11 +109,19 @@ function PR_accept(i)
 		applicant_sessions_applied[j].description == pending_requests[i].post.description
 		)
 		{
+			applicant_schedule_add=Object.create(request);
+			applicant_schedule_add.username = usernamecok
+			applicant_schedule_add.post = applicant_sessions_applied[j]
 			
-			applicant_schedule_add = applicant_sessions_applied.splice(j,1)
+			//applicant_schedule_add = applicant_sessions_applied.splice(j,1)
+			applicant_sessions_applied.splice(j,1)
 			applicant_scheduled_session.push(applicant_schedule_add)
-			localStorage.setItem(applicant_username+"_1", applicant_scheduled_session)
-			alert("applicant_username in for")
+			if (applicant_scheduled_session.length != 0) applicant_scheduled_session = JSON.stringify(applicant_scheduled_session)
+			if (decision == 1) localStorage.setItem(applicant_username+"_1", applicant_scheduled_session)
+			
+			applicant_sessions_applied = JSON.stringify(applicant_sessions_applied)
+			localStorage.setItem(applicant_username+"_3", applicant_sessions_applied)
+			
 			break;
 		}
 	}
@@ -124,23 +135,32 @@ function PR_accept(i)
 	*/
 	//localStorage.setItem(applicant_username+"_3",applicant_sessions_applied);
 	alert(applicant_username)
-	document.getElementById("PR_test_area").innerHTML=applicant_scheduled_session//applicant_sessions_applied[0].place
-	applicant_scheduled_session = JSON.parse(localStorage.getItem(applicant_username+"_1"));
-	document.getElementById("PR_test_area").innerHTML=applicant_scheduled_session//applicant_sessions_applied[0].place
 	
-	PR_delete(i)
+	//PR_delete(i)
+	pending_requests.splice(i,1)
+	alert("d1")
+	pending_requests = JSON.stringify(pending_requests)
+	alert("d2")
+	localStorage.setItem(usernamecok+"_9", pending_requests)
+	alert("d3")
+	display_pendingrequests()
+	alert("d4")
+
 }
 
 function PR_deny(i)
 {
 	alert("denied")
+	document.getElementById("PR_test_area").innerHTML=applicant_scheduled_session//applicant_sessions_applied[0].place
 	PR_delete(i)
 }
 function PR_delete(i)
 {
 	
+	//pending_requests=localStorage.getItem(usernamecok+"_9");
 	pending_requests.splice(i,1)
-	//localStorage.setItem(usernamecok+"_9",pending_requests);
+	pending_requests = JSON.stringify(pending_requests)
+	localStorage.setItem(usernamecok+"_9", pending_requests)
 	display_pendingrequests()
 
 }
