@@ -5,7 +5,7 @@
     var temparray = usrverif.split("=");
     usernamecok = temparray[1];
     name = usernamecok;
-    alert(name);
+    //alert(name);
     PF_name(false);
     PF_university(false);
     myscheduledsessions();
@@ -29,7 +29,7 @@ function requestpostsessions()
      var i;
 
 
-     alert("after validation" + GroupSize.toString());
+     //alert("after validation" + GroupSize.toString());
 
 
      for (i = 0; i <= GroupSize; i++) {
@@ -53,7 +53,7 @@ function requestpostsessions()
          }
 
      }
-             alert("after FOR LOOP");
+             //alert("after FOR LOOP");
              //Date:
              ssPost.date = document.getElementById('datepickr').value.toString()
              //Time:             ssPost.fromhour = document.DemoForm.FromHr.value;
@@ -61,7 +61,7 @@ function requestpostsessions()
              ssPost.tohour = document.DemoForm.ToHr.value;
              ssPost.tominute = document.DemoForm.ToMin.value
 
-             alert("after Time:");
+             //alert("after Time:");
              if (document.DemoForm.homework.checked) {
                  ssPost.homework = true;
              } else {
@@ -96,7 +96,7 @@ function requestpostsessions()
 
                  ssPost.notes = false;
              }
-             alert("after Checkboxes");
+             //alert("after Checkboxes");
 
      ssPost.subject        = document.DemoForm.subjectID.value.toString();
      ssPost.description    = document.DemoForm.subjectName.value.toString();
@@ -176,7 +176,7 @@ function displaypost_sessions()
 		{
 			tempPost+=displaypostobjectdata(post_sessions[i]);
 		}
-		alert(tempPost);
+		//alert(tempPost);
 		document.getElementById("requestpostsessions").innerHTML=tempPost;
 	}
 }
@@ -290,7 +290,7 @@ function postStudySessionValidation() {
         return false;
     }
 
-    alert("END OF VALIDATION FUNCTION");
+    //alert("END OF VALIDATION FUNCTION");
 }
 
 
@@ -324,7 +324,7 @@ function testmin(val, name) {
 
 function myscheduledsessions() {
     var myscheduled = localStorage.getItem(usernamecok + "_1");
-    alert(myscheduled + " = myscheduled")
+    //alert(myscheduled + " = myscheduled")
     if (myscheduled == null) {
 
         document.getElementById("myscheduledsessions").innerHTML = "<p> You do not have any sessions scheduled </p>";

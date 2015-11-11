@@ -241,8 +241,8 @@ function requestsessions(i)
 		requests_enduser.push(newobject);
 	}
 	t=JSON.stringify(requests_enduser);
-	alert(end_user+"=end_user");
-	alert(t+"=t");
+	//alert(end_user+"=end_user");
+	//alert(t+"=t");
 	localStorage.setItem(end_user+"_9",t);
 	applyfilter();
 	
@@ -355,7 +355,7 @@ function applyfilter()
 	var startminute=fromhour*60+fromminute;
 	var endminute=tohour*60+tominute;
 	var recur_index=document.getElementById("recur_select").selectedIndex;
-	alert(recur_index);
+	//alert(recur_index);
 	//alert("Apply Filter");
 	searchresults(group,minsize,maxsize,partner,startminute,endminute,homework,examstudy,lecture_review,notes,other,recur_index);
 
@@ -794,7 +794,7 @@ function MS_send()
 	document.getElementById("MS_to").value = ""
 	document.getElementById("MS_subject").value = ""
 	document.getElementById("MS_message").value = ""
-	alert("Message sent!")
+	//alert("Message sent!")
 }
 
 function MS_inbox()
