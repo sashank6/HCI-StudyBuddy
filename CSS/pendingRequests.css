@@ -196,6 +196,8 @@ l{
 .threecol .colmid {
 	right:25%;			/* width of the right column */
 	background:#fff;		/* center column background colour */
+	font-family: Helvetica;
+	
 }
 .threecol .colleft {
 	right:50%;			/* width of the middle column */
