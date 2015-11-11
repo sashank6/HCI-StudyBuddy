@@ -436,11 +436,11 @@ function displayobjectdata(obj,i)
 	
 	data+="<p>"+obj.comments+"</p>"
 	if (isInRequestSession(obj))
-		data+="<span class=\"invitePending\"> invite sent: waiting for approval</span>";
+		data+="<span class=\"invitePending\"> invite sent: waiting for response</span>";
 	else if (isInMySchedule(obj))
 		data+="<span class=\"invitePending\"> already joined</span>";
 	else
-		data+="<button onclick=\"requestsessions("+i+")\" span class=\"inviteX\">"+"Request to join"+"</button> </span>";
+		data+="<button onclick=\"requestsessions("+i+")\" span class=\"invite\">"+"Request to join"+"</button> </span>";
  
 	data+="<hr/>"
 	

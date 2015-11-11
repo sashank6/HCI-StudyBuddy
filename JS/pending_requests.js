@@ -64,8 +64,8 @@ function display_pendingrequests()
 				"</br><b>Location:</b>"+pending_requests[i].post.place+
 				"</br><b>Recurrence:</b>"+recurrence_freq(pending_requests[i].post.recurrence)+"</br>"+
 
-				"<input type=\"button\" value=\"Accept\" id=\"PR_accept\" onclick=\"PR_accept("+i+",1)\"></button>"+
-				"<input type=\"button\" value=\"Deny\" id=\"PR_deny\" onclick=\"PR_accept("+i+")\",0></button>"
+				"<input type=\"button\" value=\"Accept request\" id=\"PR_accept\" onclick=\"PR_accept("+i+",1)\"></button>"+
+				"<input type=\"button\" value=\"Deny request\" id=\"PR_deny\" onclick=\"PR_accept("+i+")\",0></button>"
 		}
 	
 	}
