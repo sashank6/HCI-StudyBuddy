@@ -1142,6 +1142,7 @@ function requestsessions(i)
 	alert(end_user+"=end_user");
 	alert(t+"=t");
 	localStorage.setItem(end_user+"_9",t);
+	applyfilter();
 	
 }
 function displayrequest_sessions()
