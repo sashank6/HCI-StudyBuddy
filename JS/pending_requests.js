@@ -3,15 +3,16 @@ var pending_requests;
 
 function init_pending_requests()
 {
-	//localStorage.clear()
+	
 	var usrverif=document.cookie;
 	if(usrverif=="")
 		window.location="login.html";
 	var temparray=usrverif.split("=");
 	usernamecok=temparray[1];
 	display_pendingrequests();
-	myscheduledsessions();
-	displayrequest_sessions();
+	//myscheduledsessions();
+	//displayrequest_sessions();
+	display_rightribbon();
 	document.getElementById("username_display").innerHTML="<a href=profile_"+usernamecok+".html>"+usernamecok+"</a>";
 }
 
@@ -37,11 +38,33 @@ username":"buddy"}},
 */
 //{"username":"sashank","post":{"subject":"CSE541","description":"Some Description","group":true,"minsize":2,"maxsize":5,"partner":false,"fromhour":13,"tohour":15,"fromminute":23,"tominute":29,"homework":false,"examstudy":true,"lecture_review":true,"notes":false,"other":false,"username":"buddy"}}]
 
+function purpose(obj)
+{
+	var data="";
+	var tesr=[]
+	
+	if(obj.homework)
+		tesr.push("Homework");
+	if(obj.examstudy)
+		tesr.push("Study for Exam");
+	if(obj.notes)
+		tesr.push("Share Notes");
+	if(obj.lecture_review)
+		tesr.push("Lecture Review");
+	if(obj.other)
+		tesr.push("Other");
+	var r=0;
+	for(r=0;r<tesr.length-1;r++)
+		data+=" "+tesr[r]+",";
+	data+=" "+tesr[r];
+	//alert(data);
+	return data;
+}
 function display_pendingrequests()
 {
 	
 	//pending_requests=JSON.parse(pending_requests);
-	//localStorage.clear();
+	
 	var temp="";
 	pending_requests=localStorage.getItem(usernamecok+"_9");
 	
@@ -59,7 +82,7 @@ function display_pendingrequests()
 
 			
 			temp+="<onclick=\"PR_detail("+i+")\"><b>"+"<a href=\"profile_"+pending_requests[i].username+".html\" >"+pending_requests[i].username+"</a>"+"</b> is asking to join <b>"+pending_requests[i].post.subject+"</b></br>"+
-				"<b>Purpose:</b>"+pending_requests[i].post.description+"</br>Date:"+pending_requests[i].post.date+
+				"<b>Purpose:</b>"+purpose(pending_requests[i].post)+"</br><b>Date:</b>"+pending_requests[i].post.date+
 				"</br><b>Time:</b>"+convert_time(pending_requests[i].post.fromhour, pending_requests[i].post.fromminute, pending_requests[i].post.tohour, pending_requests[i].post.tominute)+
 				"</br><b>Location:</b>"+pending_requests[i].post.place+
 				"</br><b>Recurrence:</b>"+recurrence_freq(pending_requests[i].post.recurrence)+"</br>"+

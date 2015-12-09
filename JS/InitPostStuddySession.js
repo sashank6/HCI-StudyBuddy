@@ -5,17 +5,18 @@
     var temparray = usrverif.split("=");
     usernamecok = temparray[1];
     name = usernamecok;
-    //alert(name);
     PF_name(false);
     PF_university(false);
     myscheduledsessions();
-    displayrequest_sessions();
-    displaypost_sessions();
+    //displayrequest_sessions();
+    //displaypost_sessions();
 
-	document.getElementById("username_display_post").innerHTML=usernamecok;
+	//document.getElementById("username_display_post").innerHTML=usernamecok;
+	display_rightribbon();
 }
 function requestpostsessions()
 {
+	//();
      var ssPost = Object.create(post);
      var GroupSize;
      var SelectedValue;
@@ -29,12 +30,12 @@ function requestpostsessions()
      var i;
 
 
-     //alert("after validation" + GroupSize.toString());
+
 
 
      for (i = 0; i <= GroupSize; i++) {
          if (document.DemoForm.RadioGroup[i].checked) {
-             alert("after if RadioGroup.checked");
+             //("after if RadioGroup.checked");
              SelectedValue = document.DemoForm.RadioGroup[i].value;
              if (SelectedValue == "Study Group") {
                  ssPost.group = true;
@@ -53,21 +54,34 @@ function requestpostsessions()
          }
 
      }
-             //alert("after FOR LOOP");
+
+             //("after FOR LOOP");
              //Date:
              ssPost.date = document.getElementById('datepickr').value.toString()
              //Time:             ssPost.fromhour = document.DemoForm.FromHr.value;
-             ssPost.fromminute = document.DemoForm.FromMin.value;
-             ssPost.tohour = document.DemoForm.ToHr.value;
-             ssPost.tominute = document.DemoForm.ToMin.value
+			 ssPost.fromhour = parseInt(document.DemoForm.FromHr.value);
+             ssPost.fromminute = parseInt(document.DemoForm.FromMin.value);
+             ssPost.tohour = parseInt(document.DemoForm.ToHr.value);
+             ssPost.tominute = parseInt(document.DemoForm.ToMin.value);
 
-             //alert("after Time:");
+			 var fromamp=document.DemoForm.FromAmPm.value;
+			 var toamp=document.DemoForm.ToAmPm.value;
+			 if(fromamp==2)
+				 ssPost.fromhour+=12;
+			 if(toamp==2)
+				 ssPost.tohour+=12;
+			 ssPost.startminute=ssPost.fromhour*60+ssPost.fromminute;
+			 ssPost.endminute=ssPost.tohour*60+ssPost.tominute;
+			 
+			 
+			 
+
              if (document.DemoForm.homework.checked) {
                  ssPost.homework = true;
              } else {
                  ssPost.homework = false;
              }
-             if (document.DemoForm.examstudy.checked) {
+             if (document.DemoForm.lecture_review.checked) {
                  ssPost.lecture_review = true;
              }
              else {
@@ -96,15 +110,16 @@ function requestpostsessions()
 
                  ssPost.notes = false;
              }
-             //alert("after Checkboxes");
 
      ssPost.subject        = document.DemoForm.subjectID.value.toString();
      ssPost.description    = document.DemoForm.subjectName.value.toString();
      ssPost.place          = document.DemoForm.sessionlocation.value.toString();
      ssPost.recurrence     = document.DemoForm.selectOccurance.value;
+	 ssPost.comments=	document.DemoForm.sessionNotes.value;
      ssPost.username = usernamecok;
      
-	// alert(JSON.stringify(ssPost));
+	 //(JSON.stringify(ssPost));
+	// //(JSON.stringify(ssPost));
     var post_sessions = localStorage.getItem(usernamecok + "_2");
     if (post_sessions == null) {
         post_sessions = [];
@@ -126,15 +141,16 @@ function requestpostsessions()
 	else
 		globalsession.push(ssPost);
 	localStorage.setItem("@-*!", JSON.stringify(globalsession));
+	//alert("JUST"+localStorage.getItem("@-*!"));
 
 	document.DemoForm.ClickEnablePost.style.display = "block"; //visible
 	document.DemoForm.ClickButton.style.display = "none"; //invisible
-    displaypost_sessions();
+    display_rightribbon();
 
 }
 function displaypostobjectdata(obj)
 {
-	//alert(obj.subject);
+	////(obj.subject);
 	var data="";
 	data+="<u>"+obj.subject+"</u>";
 	data += "<p><b>Date: </b>" + obj.date + "</p>";
@@ -176,7 +192,6 @@ function displaypost_sessions()
 		{
 			tempPost+=displaypostobjectdata(post_sessions[i]);
 		}
-		//alert(tempPost);
 		document.getElementById("requestpostsessions").innerHTML=tempPost;
 	}
 }
@@ -192,28 +207,28 @@ function postStudySessionValidation() {
     var subID = document.DemoForm.subjectID.value.trim();
     if (subID.toString() == "") {
 
-        alert("You must type a course ID!");
+        //("You must type a course ID!");
         return false;
     }
 
     var subName = document.DemoForm.subjectName.value.trim();
     if (subName.toString() == "") {
 
-        alert("You must type a course name!");
+        //("You must type a course name!");
         return false;
     }
 
     var sessloc = document.DemoForm.sessionlocation.value.trim();
     if (sessloc.toString() == "") {
 
-        alert("You must type a session location!");
+        //("You must type a session location!");
         return false;
     }
 
     //Date validation:
     if (document.getElementById('datepickr').value.toString() == "") {
 
-        alert("You must select a date!");
+        //("You must select a date!");
         return false;
     }
 
@@ -224,22 +239,22 @@ function postStudySessionValidation() {
     var toMinVal = document.DemoForm.ToMin.value.trim();
 
     if (frmHrVal == "") {
-        alert('Please enter a valid hour value 1-12 for your "\From Time\".');
+        //('Please enter a valid hour value 1-12 for your "\From Time\".');
         return false;
     }
 
     if (frmMinVal == "") {
-        alert('Please enter a valid minutes value 0-59 for your \"From Time\".');
+        //('Please enter a valid minutes value 0-59 for your \"From Time\".');
         return false;
     }
 
     if (toHrVal == "") {
-        alert('Please enter a valid hour value 1-12 for your "\To Time\".');
+        //('Please enter a valid hour value 1-12 for your "\To Time\".');
         return false;
     }
 
     if (toMinVal == "") {
-        alert('Please enter a valid minutes value 0-59 for your \"To Time\".');
+        //('Please enter a valid minutes value 0-59 for your \"To Time\".');
         return false;
     }
 
@@ -254,8 +269,8 @@ function postStudySessionValidation() {
     var monthNames = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
 
     if (date <= yesterday) {
-        alert(document.DemoForm.datepickr.value.toString() + " is less than today's\ndate: " + monthNames[today.getMonth()] + " "
-                 + today.getDate() + ", " + today.getFullYear() + ". Please pick\ntoday's date, or later.");
+        //(document.DemoForm.datepickr.value.toString() + " is less than today's\ndate: " + monthNames[today.getMonth()] + " "
+                 + today.getDate() + ", " + today.getFullYear() + ". Please pick\ntoday's date, or later.";
         return false;
     }
 
@@ -278,7 +293,7 @@ function postStudySessionValidation() {
     }
 
 
-    //UNCOMMENT for DEBUGING...
+   
    
 
     // Occurance Validation (Anything but "--Select--"):
@@ -286,11 +301,10 @@ function postStudySessionValidation() {
     var e = document.DemoForm.selectOccurance;
     var strFreq = e.options[e.selectedIndex].text;
     if (strFreq == "-- Select --") {
-        alert('Please enter a valid session frequency or occurance;\nMonthly, Weekly,Daily, Daily (M-F), or Once');
+        //('Please enter a valid session frequency or occurance;\nMonthly, Weekly,Daily, Daily (M-F), or Once');
         return false;
     }
 
-    //alert("END OF VALIDATION FUNCTION");
 }
 
 
@@ -298,7 +312,7 @@ function testhour(val,name){
 
     if (val > 12) {
  
-      alert("The "+name+" value: " + val + ", is invalid. Please pick a\nvalue less than or equal to 12");
+      //("The "+name+" value: " + val + ", is invalid. Please pick a\nvalue less than or equal to 12");
       return false;
   } else {
      
@@ -310,9 +324,9 @@ function testhour(val,name){
 
 function testmin(val, name) {
 
-    //alert("In testmin()");
+    ////("In testmin()");
     if (val > 59) {
-        alert("The " + name + "value: " + val + ", is invalid. Please pick a\nvalue less than or equal to 59");
+        //("The " + name + "value: " + val + ", is invalid. Please pick a\nvalue less than or equal to 59");
         
         return false;
     } else {
@@ -324,7 +338,6 @@ function testmin(val, name) {
 
 function myscheduledsessions() {
     var myscheduled = localStorage.getItem(usernamecok + "_1");
-    //alert(myscheduled + " = myscheduled")
     if (myscheduled == null) {
 
         document.getElementById("myscheduledsessions").innerHTML = "<p> You do not have any sessions scheduled </p>";

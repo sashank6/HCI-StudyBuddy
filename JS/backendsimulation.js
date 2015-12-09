@@ -1,7 +1,7 @@
 var studysession=[]
 var searchlist=[]
 var default_data = true
-var post={group:false,minsize:0,maxsize:0,partner:false,fromhour:0,fromminute:0,tohour:0,tominute:0,homework:false,examstudy:false,lecture_review:false,notes:false,other:false,subject:"",description:"",place:"",recurrence:0,username:""}
+//var post={group:false,minsize:0,maxsize:0,partner:false,fromhour:0,fromminute:0,tohour:0,tominute:0,homework:false,examstudy:false,lecture_review:false,notes:false,other:false,subject:"",description:"",place:"",recurrence:0,username:""}
 //profile global
 var name = "Cheng Lin"
 var university = "Wash. U. in St. Louis"
@@ -26,14 +26,21 @@ function init()
 	var temparray=usrverif.split("=");
 	usernamecok=temparray[1];
 	name=usernamecok;
-	//localStorage.clear();
+	
 	var hour_html="<option> </option>";
 	var minute_html="<option> </option>";
 	for(var i=1;i<=12;i++)
+	{
+		if(i<10)
+			hour_html+="<option>0"+i+"</option>";
+		else
 		hour_html+="<option>"+i+"</option>";
+	}
 	for(var i=0;i<60;i++)
 	{
-
+		if(i<10)
+			minute_html+="<option>0"+i+"</option>";
+		else
 		minute_html+="<option>"+i+"</option>";
 	}
 
@@ -130,6 +137,7 @@ function init()
 	//studysession.push(ss3);
 	//studysession.push(ss4);
 	var sessionstring=localStorage.getItem("@-*!");
+	
 	if(sessionstring==null)
 	{
 		
@@ -140,9 +148,10 @@ function init()
 	}
 	displaysearchlist();
 	applyfilter();
-	myscheduledsessions();
-	displayrequest_sessions();
-	displaypost_sessions();
+	//myscheduledsessions();
+	//displayrequest_sessions();
+	//displaypost_sessions();
+	display_rightribbon();
 	
 	
 	
@@ -164,11 +173,11 @@ function deleteAllCookies() {
 }
 function convert_time(fhour,fminute,thour,tminute)
 {
-	if(fminute.length ==1)
+	if(fminute < 10)
 	{
 		fminute ="0"+ fminute;
 	}
-	if(tminute.length ==1)
+	if(tminute < 10)
 	{
 		tminute ="0"+tminute;
 	}
@@ -207,7 +216,16 @@ function myscheduledsessions()
 		document.getElementById("myscheduledsessions").innerHTML=temp
 	}
 }
-
+function jquery_hide(gf)
+{
+	//alert(gf);
+	if($(gf).children().eq(1).is(":visible"))
+	$(gf).children().eq(1).hide();
+	else
+	{
+		$(gf).children().eq(1).show();
+	}
+}
 function requestsessions(i)
 {
 	
@@ -241,9 +259,8 @@ function requestsessions(i)
 		requests_enduser.push(newobject);
 	}
 	t=JSON.stringify(requests_enduser);
-	//alert(end_user+"=end_user");
-	//alert(t+"=t");
 	localStorage.setItem(end_user+"_9",t);
+	display_rightribbon();
 	applyfilter();
 	
 }
@@ -262,7 +279,8 @@ function displayrequest_sessions()
 		{
 		    temp += "<br /><div><p><u>" + request_sessions[i].subject + " with " + request_sessions[i].username + "</u></p><p> Location: " + request_sessions[i].place + "</p><p> Date: " + request_sessions[i].date + "</p><p> Time: " + convert_time(request_sessions[i].fromhour,request_sessions[i].fromminute,request_sessions[i].tohour,request_sessions[i].tominute)+ "</p><p> Recurrence: " +  recurrence_freq(request_sessions[i].recurrence) + "</p></div>";
 		}
-		document.getElementById("requestedsessions").innerHTML=temp;
+		display_rightribbon();
+		//document.getElementById("requestedsessions").innerHTML=temp;
 	}
 }
 
@@ -303,11 +321,11 @@ function register()
 	if(password==confirmpassword)
 		window.location="verification.html";
 }
-	//alert(group,minsize,maxsize,partner,fromhour,fromminute,tohour,tominute,homework,examstudy,lecture_review,notes,other);
+	////(group,minsize,maxsize,partner,fromhour,fromminute,tohour,tominute,homework,examstudy,lecture_review,notes,other);
 
 function isdefault(group,minsize,maxsize,partner,startminute,endminute,homework,examstudy,lecture_review,notes,other,recur_index)
 {
-	//alert(group,minsize,maxsize,partner,fromhour,fromminute,tohour,tominute,homework,examstudy,lecture_review,notes,other);
+	////(group,minsize,maxsize,partner,fromhour,fromminute,tohour,tominute,homework,examstudy,lecture_review,notes,other);
 	return (group==false && minsize==0 && maxsize==0 && partner==false && startminute==0&&endminute==0 && homework==false && examstudy==false && lecture_review==false && notes==false && other==false && recur_index==0);
 
 }
@@ -355,8 +373,6 @@ function applyfilter()
 	var startminute=fromhour*60+fromminute;
 	var endminute=tohour*60+tominute;
 	var recur_index=document.getElementById("recur_select").selectedIndex;
-	//alert(recur_index);
-	//alert("Apply Filter");
 	searchresults(group,minsize,maxsize,partner,startminute,endminute,homework,examstudy,lecture_review,notes,other,recur_index);
 
 	
@@ -401,23 +417,23 @@ function filter_subjectresults()
 }
 function displayobjectdata(obj,i)
 {
-	//alert(obj.subject);
+	////(obj.subject);
 	var data="";
 	data+="<h2>"+obj.subject+"-"+obj.description+"</h2>";
-	data+="<p>User: <a href=\"profile_"+obj.username+".html\" >"+obj.username+"</a></p>"           //where can we get the info of username?
+	data+="<p><b>User:</b> <a href=\"profile_"+obj.username+".html\" >"+obj.username+"</a></p>"           //where can we get the info of username?
 	if(obj.group)
 	{
-		data+="<p>Partner/Group Study:" +"Group"+"("+obj.maxsize+"-"+ obj.minsize+")" +"</p>";		
+		data+="<p><b>Partner/Group Study:</b>" +"Group"+"("+obj.maxsize+"-"+ obj.minsize+")" +"</p>";		
 	}
 	else
 	{
-		data+="<p>Partner/Group Study:" +"Partner"+"</p>";
+		data+="<p><b>Partner/Group Study:</b>" +"Partner"+"</p>";
 	}
-	data+="<p>Date:"+obj.date+"</p>";
-	data+="<p>Time: "+convert_time(obj.fromhour,obj.fromminute,obj.tohour,obj.tominute)+"</p>";
-	data += "<p>Location:" + obj.place + "</p>";
-	data += "<p>Recurrence: " + recurrence_freq(obj.recurrence) + "</p>";
-	data+="<p> Purpose:";
+	data+="<p><b>Date:</b>"+obj.date+"</p>";
+	data+="<p><b>Time:</b> "+convert_time(obj.fromhour,obj.fromminute,obj.tohour,obj.tominute)+"</p>";
+	data += "<p><b>Location:</b>" + obj.place + "</p>";
+	data += "<p><b>Recurrence:</b> " + recurrence_freq(obj.recurrence) + "</p>";
+	data+="<p> <b>Purpose:</b>";
 	var tesr=[]
 	if(obj.homework)
 		tesr.push("Homework");
@@ -432,9 +448,9 @@ function displayobjectdata(obj,i)
 	var r=0;
 	for(r=0;r<tesr.length-1;r++)
 		data+=" "+tesr[r]+",";
-	data+=" "+tesr[r];
-	
-	data+="<p>"+obj.comments+"</p>"
+	data+=" "+tesr[r]+"</p>";
+	data+="<div id=\""+i+"\" onclick=\"jquery_hide(this)\"><a><u><b>Details</b></u></a><div>"
+	data+="<p>"+obj.comments+"</p></div></div>"
 	if (isInRequestSession(obj))
 		data+="<span class=\"invitePending\"> invite sent: waiting for response</span>";
 	else if (isInMySchedule(obj))
@@ -521,7 +537,7 @@ function searchresults(group,minsize,maxsize,partner,startminute,endminute,homew
 {
     default_mode = isdefault(group, minsize, maxsize, partner, startminute, endminute, homework, examstudy, lecture_review, notes, other, recurrence)
 
-	//alert(group+""+minsize+""+maxsize+""+partner+""+fromhour+fromminute+tohour+tominute+homework+examstudy+lecture_review+notes+other);
+	////(group+""+minsize+""+maxsize+""+partner+""+fromhour+fromminute+tohour+tominute+homework+examstudy+lecture_review+notes+other);
 	default_course=searchlist.length==0;
 	var temp="";
 	if(default_mode && default_course)
@@ -529,7 +545,7 @@ function searchresults(group,minsize,maxsize,partner,startminute,endminute,homew
 		filsessions=studysession;
 	for(var i=0;i<filsessions.length;i++)
 		//if (isInArray("</br><h4>"+studysession[i].subject+"</h4></br>"+studysession[i].description, request_session) == false)
-			//{alert("XD")}
+			//{//("XD")}
 			//request_button.push("Join!")
 		//temp+="<div><h4>"+studysession[i].subject+"<button onclick=\"request("+i+")\">"+request_button[i]+"</button>"+"</h4>"+"<p>"+studysession[i].description+"</p></div>";
 		if(usernamecok!=filsessions[i].username)
@@ -556,7 +572,7 @@ function searchresults(group,minsize,maxsize,partner,startminute,endminute,homew
 			filsessions=[];
 			for(var i=0;i<newsessions.length;i++)
 		{
-			//alert();
+			////();
 			var p;
 			if(group)
 			{
@@ -639,7 +655,7 @@ function searchresults(group,minsize,maxsize,partner,startminute,endminute,homew
 			if(newsessions[i].startminute>=startminute&&newsessions[i].endminute<=endminute)
 			{
 				filsessions.push(newsessions[i]);
-				//alert("time"+i);
+				////("time"+i);
 				continue;
 			}
 			
@@ -657,7 +673,7 @@ function searchresults(group,minsize,maxsize,partner,startminute,endminute,homew
 		}
 			}
 	
-		//alert(filsessions.length);
+		////(filsessions.length);
 		temp="";
 		for(var i=0;i<filsessions.length;i++)
 			if(usernamecok!=filsessions[i].username)
@@ -672,7 +688,7 @@ function searchresults(group,minsize,maxsize,partner,startminute,endminute,homew
 /*function request(i)
 {
 	if (isInArray("</br><h4>"+studysession[i].subject+"</h4></br>"+studysession[i].description, request_session))
-		alert("Already Joined!")
+		//("Already Joined!")
 	else
 		request_session.push("</br><h4>"+studysession[i].subject+"</h4></br>"+studysession[i].description)
 	document.getElementById("request_session").innerHTML = request_session;	
@@ -721,7 +737,7 @@ function PF_save()
 	PF_email(true);
 	PF_major(true);
 //	PF_course(true);
-	//alert(name+"\n"+university+"\n"+major+"\n"+email+"\n"+course+"\n"+course_temp);
+	////(name+"\n"+university+"\n"+major+"\n"+email+"\n"+course+"\n"+course_temp);
 }
 
 /*function PF_addcourse()
@@ -780,7 +796,7 @@ function PF_major(write)
 function MS_new()
 {
 
-	//alert("XD")
+	////("XD")
 	document.getElementById("MS_detail").innerHTML = "To: <input type=\"text\" id=\"MS_to\" onkeydown=\"if (event.keyCode == 13) document.getElementById('MS_send').click()\"/><br/>"+
 					"Subject: <input type=\"text\" id=\"MS_subject\" onkeydown=\"if (event.keyCode == 13) document.getElementById('MS_send').click()\"/><br/>"+
 					"Message: </br>"+
@@ -794,7 +810,11 @@ function MS_send()
 	document.getElementById("MS_to").value = ""
 	document.getElementById("MS_subject").value = ""
 	document.getElementById("MS_message").value = ""
+<<<<<<< Updated upstream
 	//alert("Message sent!")
+=======
+	//("Message sent!")
+>>>>>>> Stashed changes
 }
 
 function MS_inbox()
@@ -883,7 +903,7 @@ function user_link(username)
 }
 
 function displaypostobjectdata(obj) {
-    //alert(obj.subject);
+    ////(obj.subject);
     var data = "";
     data += "<u>" + obj.subject + "</u>";
     data += "<p><strong>Date:</strong> " + obj.date + "</p>";
@@ -921,7 +941,7 @@ function displaypost_sessions() {
         for (var i = 0; i < post_sessions.length; i++) {
             tempPost += displaypostobjectdata(post_sessions[i]);
         }
-       // alert(tempPost);
+       // //(tempPost);
         document.getElementById("requestpostsessions").innerHTML = tempPost;
     }
 }
