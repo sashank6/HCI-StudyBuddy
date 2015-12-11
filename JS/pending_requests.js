@@ -3,7 +3,6 @@ var pending_requests;
 
 function init_pending_requests()
 {
-	
 	var usrverif=document.cookie;
 	if(usrverif=="")
 		window.location="login.html";
@@ -14,6 +13,7 @@ function init_pending_requests()
 	//displayrequest_sessions();
 	display_rightribbon();
 	document.getElementById("username_display").innerHTML="<a href=profile_"+usernamecok+".html>"+usernamecok+"</a>";
+	pending_num_display()
 }
 
 /*
@@ -149,6 +149,14 @@ function PR_accept(i,decision)
 	pending_requests = JSON.stringify(pending_requests)
 	localStorage.setItem(usernamecok+"_9", pending_requests)
 	display_pendingrequests()
+	pending_num_display()
 	
 
+}
+
+function pending_num_display()
+{
+	pending_num=JSON.parse(localStorage.getItem(usernamecok+"_9")).length;
+	document.getElementById("pending_request_link").innerHTML = "Pending Request(" + pending_num+ ")"
+	
 }
