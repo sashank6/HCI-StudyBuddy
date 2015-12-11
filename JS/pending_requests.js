@@ -145,16 +145,13 @@ function PR_accept(i,decision)
 				)
 				{
 					my_post_session[k].member_joined += 1;
-					alert(my_post_session[k].member_joined)
+					my_post_session = JSON.stringify(my_post_session)
+					localStorage.setItem(usernamecok+"_2",my_post_session)
+					break;
 				}
 				
 					
 			}
-			my_post_session = JSON.stringify(my_post_session)
-			alert(my_post_session)
-			localStorage.setItem(usernamecok+"2",my_post_session)
-			test = localStorage.getItem(usernamecok+"_2")
-			alert(test)
 					
 			
 			
