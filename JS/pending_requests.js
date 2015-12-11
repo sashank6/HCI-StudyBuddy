@@ -106,10 +106,10 @@ function PR_detail(i)
 
 function PR_accept(i,decision)
 {
-	
 	applicant_username = pending_requests[i].username
 	applicant_sessions_applied = JSON.parse(localStorage.getItem(applicant_username+"_3"));
 	applicant_scheduled_session = JSON.parse(localStorage.getItem(applicant_username+"_1"));
+	my_post_session = JSON.parse(localStorage.getItem(usernamecok+"_2"));
 	if (applicant_scheduled_session == null) applicant_scheduled_session = [];
 	
 	for (j=0; j < applicant_sessions_applied.length; j++)
@@ -128,6 +128,36 @@ function PR_accept(i,decision)
 		applicant_sessions_applied[j].description == pending_requests[i].post.description
 		)
 		{
+			for (k=0; k < my_post_session.length; k++)
+			{
+				if (my_post_session[k].place == pending_requests[i].post.place &&
+				my_post_session[k].fromhour == pending_requests[i].post.fromhour &&
+				my_post_session[k].fromminute == pending_requests[i].post.fromminute &&
+				my_post_session[k].tohour == pending_requests[i].post.tohour &&
+				my_post_session[k].tominute == pending_requests[i].post.tominute &&
+				my_post_session[k].subject == pending_requests[i].post.subject &&
+				my_post_session[k].recurrence == pending_requests[i].post.recurrence &&
+				my_post_session[k].homework == pending_requests[i].post.homework &&
+				my_post_session[k].lecture_review == pending_requests[i].post.lecture_review &&
+				my_post_session[k].examstudy == pending_requests[i].post.examstudy &&
+				my_post_session[k].notes == pending_requests[i].post.notes &&
+				my_post_session[k].description == pending_requests[i].post.description
+				)
+				{
+					my_post_session[k].member_joined += 1;
+					alert(my_post_session[k].member_joined)
+				}
+				
+					
+			}
+			my_post_session = JSON.stringify(my_post_session)
+			alert(my_post_session)
+			localStorage.setItem(usernamecok+"2",my_post_session)
+			test = localStorage.getItem(usernamecok+"_2")
+			alert(test)
+					
+			
+			
 			applicant_schedule_add=Object.create(request);
 			applicant_schedule_add.username = usernamecok
 			applicant_sessions_applied[j].member_joined += 1;

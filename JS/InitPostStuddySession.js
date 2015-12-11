@@ -116,7 +116,7 @@ function requestpostsessions()
      ssPost.place          = document.DemoForm.sessionlocation.value.toString();
      ssPost.recurrence     = document.DemoForm.selectOccurance.value;
 	 ssPost.comments=	document.DemoForm.sessionNotes.value;
-     ssPost.username = usernamecok;
+     ssPost.username = usernamecok;	 ssPost.member_joined = 0;
      
 	 //(JSON.stringify(ssPost));
 	// //(JSON.stringify(ssPost));
@@ -147,8 +147,8 @@ function requestpostsessions()
 	document.DemoForm.ClickButton.style.display = "none"; //invisible
     display_rightribbon();
 
-}
-function displaypostobjectdata(obj)
+}/*
+function displaypostobjectdata(obj) //see rightribbon.js
 {
 	////(obj.subject);
 	var data="";
@@ -176,7 +176,7 @@ function displaypostobjectdata(obj)
 	return data + "<br /><br />";
 	
 }
-
+*/
 function displaypost_sessions()
 {
 	var post_sessions=localStorage.getItem(usernamecok+"_2");

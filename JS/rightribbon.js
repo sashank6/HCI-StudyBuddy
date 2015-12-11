@@ -83,7 +83,6 @@ function display_rightribbon()
 	}
 	else
 	{
-		alert("SS")
 		scheduled_sessions=JSON.parse(scheduled_sessions);
 		for(var i=0;i<scheduled_sessions.length;i++)
 			sche+="<p>"+displaypostobjectdata(scheduled_sessions[i])+"</p>";
