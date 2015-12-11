@@ -12,7 +12,7 @@
     //displaypost_sessions();
 
 	//document.getElementById("username_display_post").innerHTML=usernamecok;
-	display_rightribbon();
+	display_rightribbon();	pending_num_display()
 }
 function requestpostsessions()
 {

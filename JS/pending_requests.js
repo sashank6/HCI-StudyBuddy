@@ -154,9 +154,3 @@ function PR_accept(i,decision)
 	
 
 }
-function pending_num_display()
-{
-	pending_num=JSON.parse(localStorage.getItem(usernamecok+"_9")).length;
-	document.getElementById("pending_request_link").innerHTML = "Pending Request(" + pending_num+ ")"
-	
-}
