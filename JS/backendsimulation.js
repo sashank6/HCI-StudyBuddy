@@ -548,7 +548,7 @@ function searchresults(group,minsize,maxsize,partner,startminute,endminute,homew
 			//{//("XD")}
 			//request_button.push("Join!")
 		//temp+="<div><h4>"+studysession[i].subject+"<button onclick=\"request("+i+")\">"+request_button[i]+"</button>"+"</h4>"+"<p>"+studysession[i].description+"</p></div>";
-		
+		if(usernamecok!=filsessions[i].username)
 		temp+="<div>"+displayobjectdata(filsessions[i],i)+"</div>";
 	document.getElementById("results").innerHTML=temp;
 	
@@ -676,6 +676,7 @@ function searchresults(group,minsize,maxsize,partner,startminute,endminute,homew
 		////(filsessions.length);
 		temp="";
 		for(var i=0;i<filsessions.length;i++)
+			if(usernamecok!=filsessions[i].username)
 			temp+="<div>"+displayobjectdata(filsessions[i],i)+"</div>";
 		document.getElementById("results").innerHTML=temp;
 			
@@ -809,6 +810,11 @@ function MS_send()
 	document.getElementById("MS_to").value = ""
 	document.getElementById("MS_subject").value = ""
 	document.getElementById("MS_message").value = ""
+<<<<<<< Updated upstream
+	//alert("Message sent!")
+=======
+	//("Message sent!")
+>>>>>>> Stashed changes
 }
 
 function MS_inbox()
