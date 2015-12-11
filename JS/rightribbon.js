@@ -1,8 +1,19 @@
-function display_request_sessions(obj)
+function display_request_sessions(obj) //obj data is [username subject location ...]
 {
-	
+	//alert(obj.post.subject)
 	var temp="";
-	temp += "<br /><div><p><u>" + obj.subject + " with " + obj.username + "</u></p><p> Location: " + obj.place + "</p><p> Date: " + obj.date + "</p><p> Time: " + convert_time(obj.fromhour,obj.fromminute,obj.tohour,obj.tominute)+ "</p><p> Recurrence: " +  recurrence_freq(obj.recurrence) + "</p><p> People joined: " +  obj.member_joined + "</p></div>";
+	//temp += "<br /><div><p><u>" + obj.post.subject + " with " + obj.username + "</u></p><p> Location: " + obj.post.place + "</p><p> Date: " + obj.post.date + "</p><p> Time: " + convert_time(obj.post.fromhour,obj.post.fromminute,obj.post.tohour,obj.post.tominute)+ "</p><p> Recurrence: " +  recurrence_freq(obj.post.recurrence) + "</p></div>";
+	temp += "<br /><div><p><u>" + obj.subject + " with " + obj.username + "</u></p><p> Location: " + obj.place + "</p><p> Date: " + obj.date + "</p><p> Time: " + convert_time(obj.fromhour,obj.fromminute,obj.tohour,obj.tominute)+ "</p><p> Recurrence: " +  recurrence_freq(obj.recurrence) + "</p></div>";
+	//alert(temp)
+	return temp;
+}
+function display_request_sessions2(obj) //obj data in my scheduled session has is [username, post] while subject, location .. etc is under post
+{
+	//alert(obj.post.subject)
+	var temp="";
+	temp += "<br /><div><p><u>" + obj.post.subject + " with " + obj.username + "</u></p><p> Location: " + obj.post.place + "</p><p> Date: " + obj.post.date + "</p><p> Time: " + convert_time(obj.post.fromhour,obj.post.fromminute,obj.post.tohour,obj.post.tominute)+ "</p><p> Recurrence: " +  recurrence_freq(obj.post.recurrence) + "</p></div>";
+	//temp += "<br /><div><p><u>" + obj.subject + " with " + obj.username + "</u></p><p> Location: " + obj.place + "</p><p> Date: " + obj.date + "</p><p> Time: " + convert_time(obj.fromhour,obj.fromminute,obj.tohour,obj.tominute)+ "</p><p> Recurrence: " +  recurrence_freq(obj.recurrence) + "</p></div>";
+	//alert(temp)
 	return temp;
 }
 function displaypostobjectdata(obj) {
@@ -46,8 +57,9 @@ function display_rightribbon()
 	else
 	{
 		scheduled_sessions=JSON.parse(scheduled_sessions);
+		
 		for(var i=0;i<scheduled_sessions.length;i++)
-			sche+="<p>"+display_request_sessions(scheduled_sessions[i])+"</p>";
+			sche+="<p>"+display_request_sessions2(scheduled_sessions[i])+"</p>";
 	}
 	main+="<h3>My Scheduled Sessions</h3>";
 	main+="<div>"+sche+"</div>";
