@@ -896,8 +896,8 @@ function user_link(username)
         var result = str.link("***George profile page***");
     document.getElementById("user_profile").innerHTML = result;
 }
-
-function displaypostobjectdata(obj) {
+/*
+function displaypostobjectdata(obj) { //see rightribbon.js
     ////(obj.subject);
     var data = "";
     data += "<u>" + obj.subject + "</u>";
@@ -924,7 +924,7 @@ function displaypostobjectdata(obj) {
     return data + "<br /><br />";
 
 }
-
+*/
 function displaypost_sessions() {
     var post_sessions = localStorage.getItem(usernamecok + "_2");
     if (post_sessions == null) {

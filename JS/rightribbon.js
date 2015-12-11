@@ -1,23 +1,17 @@
 function display_request_sessions(obj) //obj data is [username subject location ...]
 {
-	//alert(obj.post.subject)
 	var temp="";
-	//temp += "<br /><div><p><u>" + obj.post.subject + " with " + obj.username + "</u></p><p> Location: " + obj.post.place + "</p><p> Date: " + obj.post.date + "</p><p> Time: " + convert_time(obj.post.fromhour,obj.post.fromminute,obj.post.tohour,obj.post.tominute)+ "</p><p> Recurrence: " +  recurrence_freq(obj.post.recurrence) + "</p></div>";
-	temp += "<br /><div><p><u>" + obj.subject + " with " + obj.username + "</u></p><p> Location: " + obj.place + "</p><p> Date: " + obj.date + "</p><p> Time: " + convert_time(obj.fromhour,obj.fromminute,obj.tohour,obj.tominute)+ "</p><p> Recurrence: " +  recurrence_freq(obj.recurrence) + "</p></div>";
-	//alert(temp)
+	temp += "<br /><div><p><u>" + obj.subject + " with " + obj.username + "</u></p><p> Location: " + obj.place + "</p><p> Date: " + obj.date + "</p><p> Time: " + convert_time(obj.fromhour,obj.fromminute,obj.tohour,obj.tominute)+ "</p><p> Recurrence: " +  recurrence_freq(obj.recurrence) + "</p><p> People_joined: " +  obj.member_joined + "</p></div>";
 	return temp;
 }
 function display_request_sessions2(obj) //obj data in my scheduled session has is [username, post] while subject, location .. etc is under post
 {
-	//alert(obj.post.subject)
 	var temp="";
-	temp += "<br /><div><p><u>" + obj.post.subject + " with " + obj.username + "</u></p><p> Location: " + obj.post.place + "</p><p> Date: " + obj.post.date + "</p><p> Time: " + convert_time(obj.post.fromhour,obj.post.fromminute,obj.post.tohour,obj.post.tominute)+ "</p><p> Recurrence: " +  recurrence_freq(obj.post.recurrence) + "</p></div>";
-	//temp += "<br /><div><p><u>" + obj.subject + " with " + obj.username + "</u></p><p> Location: " + obj.place + "</p><p> Date: " + obj.date + "</p><p> Time: " + convert_time(obj.fromhour,obj.fromminute,obj.tohour,obj.tominute)+ "</p><p> Recurrence: " +  recurrence_freq(obj.recurrence) + "</p></div>";
-	//alert(temp)
+	temp += "<br /><div><p><u>" + obj.post.subject + " with " + obj.username + "</u></p><p> Location: " + obj.post.place + "</p><p> Date: " + obj.post.date + "</p><p> Time: " + convert_time(obj.post.fromhour,obj.post.fromminute,obj.post.tohour,obj.post.tominute)+ "</p><p> Recurrence: " +  recurrence_freq(obj.post.recurrence) + "</p><p> People joined: " +  obj.post.member_joined + "</p></div>";
 	return temp;
 }
 function displaypostobjectdata(obj) {
-    ////(obj.subject);
+    
     var data = "";
     data += "<u>" + obj.subject + "</u>";
     data += "<p><strong>Date:</strong> " + obj.date + "</p>";
@@ -89,6 +83,7 @@ function display_rightribbon()
 	}
 	else
 	{
+		alert("SS")
 		scheduled_sessions=JSON.parse(scheduled_sessions);
 		for(var i=0;i<scheduled_sessions.length;i++)
 			sche+="<p>"+displaypostobjectdata(scheduled_sessions[i])+"</p>";
