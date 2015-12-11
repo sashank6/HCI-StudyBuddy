@@ -1,7 +1,8 @@
 function display_request_sessions(obj)
 {
+	
 	var temp="";
-	temp += "<br /><div><p><u>" + obj.post.subject + " with " + obj.post.username + "</u></p><p> Location: " + obj.post.place + "</p><p> Date: " + obj.post.date + "</p><p> Time: " + convert_time(obj.post.fromhour,obj.post.fromminute,obj.post.tohour,obj.post.tominute)+ "</p><p> Recurrence: " +  recurrence_freq(obj.post.recurrence) + "</p></div>";
+	temp += "<br /><div><p><u>" + obj.subject + " with " + obj.username + "</u></p><p> Location: " + obj.place + "</p><p> Date: " + obj.date + "</p><p> Time: " + convert_time(obj.fromhour,obj.fromminute,obj.tohour,obj.tominute)+ "</p><p> Recurrence: " +  recurrence_freq(obj.recurrence) + "</p></div>";
 	return temp;
 }
 function displaypostobjectdata(obj) {
