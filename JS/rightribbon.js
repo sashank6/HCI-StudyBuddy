@@ -6,7 +6,6 @@ function display_request_sessions(obj)
 }
 function displaypostobjectdata(obj) {
     ////(obj.subject);
-	alert("in display post obj data, obj = "+obj)
     var data = "";
     data += "<u>" + obj.subject + "</u>";
     data += "<p><strong>Date:</strong> " + obj.date + "</p>";
