@@ -130,6 +130,7 @@ function PR_accept(i,decision)
 		{
 			applicant_schedule_add=Object.create(request);
 			applicant_schedule_add.username = usernamecok
+			applicant_sessions_applied[j].member_joined += 1;
 			applicant_schedule_add.post = applicant_sessions_applied[j]
 			
 			//applicant_schedule_add = applicant_sessions_applied.splice(j,1)

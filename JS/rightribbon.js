@@ -2,7 +2,7 @@ function display_request_sessions(obj)
 {
 	
 	var temp="";
-	temp += "<br /><div><p><u>" + obj.subject + " with " + obj.username + "</u></p><p> Location: " + obj.place + "</p><p> Date: " + obj.date + "</p><p> Time: " + convert_time(obj.fromhour,obj.fromminute,obj.tohour,obj.tominute)+ "</p><p> Recurrence: " +  recurrence_freq(obj.recurrence) + "</p></div>";
+	temp += "<br /><div><p><u>" + obj.subject + " with " + obj.username + "</u></p><p> Location: " + obj.place + "</p><p> Date: " + obj.date + "</p><p> Time: " + convert_time(obj.fromhour,obj.fromminute,obj.tohour,obj.tominute)+ "</p><p> Recurrence: " +  recurrence_freq(obj.recurrence) + "</p><p> People joined: " +  obj.member_joined + "</p></div>";
 	return temp;
 }
 function displaypostobjectdata(obj) {
@@ -13,6 +13,7 @@ function displaypostobjectdata(obj) {
     data += "<p>Time: " + convert_time(obj.fromhour, obj.fromminute, obj.tohour, obj.tominute) + "</p>";
     data += "<p>Location: " + obj.place + "</p>";
     data += "<p>Recurrence: " + recurrence_freq(obj.recurrence) + "</p>";
+	data += "<p>Member joined: " + obj.member_joined + "</p>";
     data += "<p> Purpose: ";
     var tesr = []
     if (obj.homework)
