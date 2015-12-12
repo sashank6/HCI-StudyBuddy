@@ -179,6 +179,6 @@ function PR_accept(i,decision)
 	localStorage.setItem(usernamecok+"_9", pending_requests)
 	display_pendingrequests()
 	pending_num_display()
-	
+	display_rightribbon()
 
 }
